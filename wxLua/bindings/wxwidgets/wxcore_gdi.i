@@ -996,7 +996,7 @@ class %delete wxIcon : public wxGDIObject
     %wxchkver_3_1_1 wxIcon(const wxIconLocation& loc);
     // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
     // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // skip as it's win-only; can use one from wxBitmap
-    %wxchkver_3_1_1 void CopyFromBitmap(const wxBitmap& bmp);
+    %win|%mac|%wxchkver_2_6 void CopyFromBitmap(const wxBitmap& bmp);
     int     GetDepth();
     int     GetHeight();
     int     GetWidth();
