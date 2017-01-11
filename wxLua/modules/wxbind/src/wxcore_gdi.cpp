@@ -9088,11 +9088,11 @@ int wxPalette_methodCount = sizeof(wxPalette_methods)/sizeof(wxLuaBindMethod) - 
 // Lua MetaTable Tag for Class 'wxIcon'
 int wxluatype_wxIcon = WXLUA_TUNKNOWN;
 
-#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
+#if ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIcon_CopyFromBitmap[] = { &wxluatype_wxIcon, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxIcon_CopyFromBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIcon_CopyFromBitmap[1] = {{ wxLua_wxIcon_CopyFromBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIcon_CopyFromBitmap }};
-//     %wxchkver_3_1_1 void CopyFromBitmap(const wxBitmap& bmp);
+//     %win|%mac|%wxchkver_2_6 void CopyFromBitmap(const wxBitmap& bmp);
 static int LUACALL wxLua_wxIcon_CopyFromBitmap(lua_State *L)
 {
     // const wxBitmap bmp
@@ -9105,7 +9105,7 @@ static int LUACALL wxLua_wxIcon_CopyFromBitmap(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
+#endif // ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIcon_GetDepth[] = { &wxluatype_wxIcon, NULL };
 static int LUACALL wxLua_wxIcon_GetDepth(lua_State *L);
@@ -9445,9 +9445,9 @@ void wxLua_wxIcon_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxIcon_methods[] = {
-#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
+#if ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
     { "CopyFromBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_CopyFromBitmap, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
+#endif // ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
 
     { "GetDepth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_GetDepth, 1, NULL },
     { "GetHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_GetHeight, 1, NULL },
