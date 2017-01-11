@@ -434,6 +434,20 @@ install(FILES
 
 install(FILES
         ${wxLua_ROOT_DIR}/bindings/wxwidgets/wx_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxaui_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxgl_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxhtml_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxmedia_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxpropgrid_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxstc_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxwebview_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_datatypes.lua
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxrc_datatypes.lua
         DESTINATION "share/wxlua/bindings")
 
 if (wxLua_LUA_LIBRARY_USE_BUILTIN)

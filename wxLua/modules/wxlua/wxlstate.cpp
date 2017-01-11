@@ -701,9 +701,9 @@ bool wxLuaState::Create(lua_State* L, int state_type)
         if (WXLUA_HASBIT(state_type, wxLUASTATE_OPENBINDINGS))
         {
             // load the bit lib, this is the accepted way, see luaL_openlibs(L)
-            lua_pushcfunction(L, luaopen_bit);
-            lua_pushstring(L, "bit");
-            lua_call(L, 1, 0);
+            // lua_pushcfunction(L, luaopen_bit);
+            // lua_pushstring(L, "bit");
+            // lua_call(L, 1, 0);
 
             lua_pushcfunction(L, luaopen_bit32);
             lua_pushstring(L, "bit32");
@@ -2498,13 +2498,13 @@ static const struct luaL_Reg bitlib[] = {
   {NULL, NULL}
 };
 
-int LUACALL luaopen_bit (lua_State *L) {
-#if LUA_VERSION_NUM >= 502
-  luaL_openlib(L, "bit", bitlib, 0);
-#else
-  luaL_register(L, "bit", bitlib);
-#endif
-  lua_pushnumber(L, BIT_BITS);
-  lua_setfield(L, -2, "bits");
-  return 1;
-}
+// int LUACALL luaopen_bit (lua_State *L) {
+// #if LUA_VERSION_NUM >= 502
+//   luaL_openlib(L, "bit", bitlib, 0);
+// #else
+//   luaL_register(L, "bit", bitlib);
+// #endif
+//   lua_pushnumber(L, BIT_BITS);
+//   lua_setfield(L, -2, "bits");
+//   return 1;
+// }

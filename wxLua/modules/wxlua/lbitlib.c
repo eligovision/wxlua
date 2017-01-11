@@ -41,6 +41,9 @@
 #if /* !defined(LUA_BITLIBNAME) && */ (LUA_VERSION_NUM < 502)
 
 /* ----- adapted from lua-5.2.0 luaconf.h: ----- */
+#if !defined(LUAI_INT32)
+#  define LUAI_INT32    int
+#endif
 
 /*
 @@ LUA_UNSIGNED is the integral type used by lua_pushunsigned/lua_tounsigned.
