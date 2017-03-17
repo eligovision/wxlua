@@ -310,7 +310,8 @@ class %delete wxImageHandler : public wxObject
     void SetName(const wxString& name);
     void SetExtension(const wxString& extension);
     void SetMimeType(const wxString& mimetype);
-    void SetType(long type);
+    %wxcompat_2_8 void SetType(long type);
+	%wxchkver_3_1_1 void SetType(wxBitmapType type);
 };
 
 // ---------------------------------------------------------------------------
@@ -654,7 +655,7 @@ class wxArtProvider : public wxObject
 {
     // wxArtProvider() - abstract class
 
-    #if %wxchkver_2_8
+    #if %wxcompat_2_8
         static void Push(%ungc wxArtProvider *provider);
         static void Insert(%ungc wxArtProvider *provider);
         static bool Pop();

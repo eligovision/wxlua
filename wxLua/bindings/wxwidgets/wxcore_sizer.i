@@ -107,11 +107,15 @@ class wxSizerItem : public wxObject
     void SetRatio(int width, int height );
     void SetRatio(const wxSize& size );
     void SetRatio(float ratio );
-    void SetSizer(wxSizer* sizer );
-    void SetSpacer(const wxSize& size );
-    void SetSpacer(int width, int height );
+	%wxchkver_3_1_1 void AssignWindow(wxWindow *window);
+	%wxchkver_3_1_1 void AssignSizer(wxSizer *sizer);
+	%wxchkver_3_1_1 void AssignSpacer(const wxSize& size);
+	%wxchkver_3_1_1 void AssignSpacer(int w, int h);
+    %wxcompat_2_8 void SetWindow(wxWindow* window );
+    %wxcompat_2_8 void SetSizer(wxSizer* sizer );
+    %wxcompat_2_8 void SetSpacer(const wxSize& size );
+    %wxcompat_2_8 void SetSpacer(int width, int height );
     void SetUserData(%ungc wxObject* userData );
-    void SetWindow(wxWindow* window );
     void Show(bool show );
 };
 
@@ -190,7 +194,7 @@ class wxSizer : public wxObject
     void SetItemMinSize(wxSizer* sizer, int width, int height );
     void SetItemMinSize(int pos, int width, int height );
     void SetSizeHints(wxWindow* window );
-    void SetVirtualSizeHints(wxWindow* window );
+    %wxcompat_2_8 void SetVirtualSizeHints(wxWindow* window );
     bool Show(wxWindow* window, bool show = true, bool recursive = false );
     bool Show(wxSizer* sizer, bool show = true, bool recursive = false );
     bool Show(size_t index, bool show = true );

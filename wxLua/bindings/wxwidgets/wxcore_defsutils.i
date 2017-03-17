@@ -491,7 +491,7 @@ enum wxStretch
     wxSHAPED,
     wxTILE,
 
-    wxADJUST_MINSIZE, // deprecated after 2.4 and takes the value of 0
+    %wxcompat_2_8 wxADJUST_MINSIZE, // deprecated after 2.4 and takes the value of 0
 
     %wxchkver_2_8_8 wxFIXED_MINSIZE,
     %wxchkver_2_8_8 wxRESERVE_SPACE_EVEN_IF_HIDDEN

@@ -155,7 +155,7 @@ class %delete wxMenuItem : public wxObject
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     %win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
-    %wxchkver_3_1_1 wxString GetName() const;
+    %wxcompat_2_8 wxString GetName() const;
     wxMenu* GetSubMenu() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     %win wxColour& GetTextColour() const;

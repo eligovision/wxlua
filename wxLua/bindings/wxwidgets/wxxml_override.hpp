@@ -78,3 +78,24 @@ static int LUACALL wxLua_wxXmlNode_GetPropValPtr(lua_State *L)
     return 2;
 }
 %end
+
+%override wxLua_wxXmlNode_GetAttributePtr
+// %rename GetPropValPtr bool GetPropVal(const wxString& propName, wxString *value) const;
+static int LUACALL wxLua_wxXmlNode_GetAttributePtr(lua_State *L)
+{
+    // wxString *value
+    wxString value;
+    // const wxString& propName
+    wxString attrName = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlNode *self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetAttribute
+    bool returns = self->GetAttribute(attrName, &value);
+    // push the result number
+    lua_pushboolean(L, returns);
+    // push the result string
+    wxlua_pushwxString(L, value);
+    // return the number of parameters
+    return 2;
+}
+%end

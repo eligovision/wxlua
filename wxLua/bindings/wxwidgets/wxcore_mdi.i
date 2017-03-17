@@ -101,13 +101,14 @@ class wxDocChildFrame : public wxFrame
 // ---------------------------------------------------------------------------
 // wxDocManager
 
-#define wxDEFAULT_DOCMAN_FLAGS
+%wxcompat_2_8 #define wxDEFAULT_DOCMAN_FLAGS
 #define wxDOC_NEW
 #define wxDOC_SILENT
 
 class wxDocManager : public wxEvtHandler
 {
-    wxDocManager(long flags = wxDEFAULT_DOCMAN_FLAGS, bool initialize = true );
+    %wxcompat_2_8 wxDocManager(long flags = wxDEFAULT_DOCMAN_FLAGS, bool initialize = true );
+    !%wxcompat_2_8 wxDocManager(long flags = 0, bool initialize = true );
 
     %wxchkver_2_6 void ActivateView(wxView* view, bool activate );
     !%wxchkver_2_6 void ActivateView(wxView* view, bool activate, bool deleting );
@@ -140,7 +141,7 @@ class wxDocManager : public wxEvtHandler
 
     // %override [bool, string buf] wxDocManager::MakeDefaultName(wxString& buf );
     // C++ Func: bool MakeDefaultName(wxString& buf );
-    bool MakeDefaultName(wxString& buf );
+    %wxcompat_2_8 bool MakeDefaultName(wxString& buf );
 
     wxFileHistory* OnCreateFileHistory( );
     void OnFileClose(wxCommandEvent &event );
@@ -249,7 +250,7 @@ class wxDocument : public wxEvtHandler
 
     // %override [string name] wxDocument::GetPrintableName(wxString& name) const;
     // C++ Func: virtual void GetPrintableName(wxString& name) const;
-    virtual void GetPrintableName(wxString& name) const;
+    %wxcompat_2_8 virtual void GetPrintableName(wxString& name) const;
 
     wxString GetTitle() const;
     wxList& GetViews() const;

@@ -64,7 +64,8 @@ wxUSE_COLOURDLG&&%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, co
 %wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "" );
 // %override [int, Lua int table] wxGetMultipleChoices(const wxString& message, const wxString& caption, Lua string table, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
 //  int wxGetMultipleChoices(const wxString& message, const wxString& caption, int n, const wxString choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
-wxUSE_CHOICEDLG int wxGetMultipleChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
+!%wxchkver_2_9_3&&wxUSE_CHOICEDLG int wxGetMultipleChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
+%wxchkver_2_9_3&&wxUSE_CHOICEDLG int wxGetSelectedChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
 
 #if wxUSE_NUMBERDLG
 %wxchkver_2_6 #include "wx/numdlg.h" // FIXME not in 2.4

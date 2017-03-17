@@ -361,7 +361,7 @@ void wxLogTrace(const wxString& mask, const wxString& message);
 // void wxLogTrace(const char *formatString, ...);
 // void wxLogTrace(wxTraceMask mask, const char *formatString, ...) - deprecated
 
-typedef unsigned long wxTraceMask
+%wxcompat_2_8 typedef unsigned long wxTraceMask
 typedef unsigned long wxLogLevel
 
 enum // wxLogLevel - uses these enums
@@ -414,7 +414,7 @@ class %delete wxLog
     static void DontCreateOnDemand();
     %wxchkver_2_8 static void SetRepetitionCounting(bool bRepetCounting = true);
     %wxchkver_2_8 static bool GetRepetitionCounting();
-    static void SetTraceMask(wxTraceMask ulMask);
+    %wxcompat_2_8 static void SetTraceMask(wxTraceMask ulMask);
     static void AddTraceMask(const wxString& str);
     static void RemoveTraceMask(const wxString& str);
     static void ClearTraceMasks();
@@ -426,7 +426,7 @@ class %delete wxLog
     static void SetTimestamp(const wxString& ts);
 
     static bool GetVerbose();
-    static wxTraceMask GetTraceMask();
+    %wxcompat_2_8 static wxTraceMask GetTraceMask();
     static bool IsAllowedTraceMask(const wxString& mask);
     static wxLogLevel GetLogLevel();
     static wxString GetTimestamp();

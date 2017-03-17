@@ -707,7 +707,8 @@ class %delete wxShowEvent : public wxEvent
     wxShowEvent(int winid = 0, bool show = false );
 
     void SetShow(bool show );
-    bool GetShow() const;
+    bool IsShown() const;
+    %wxcompat_2_8 bool GetShow() const;
 };
 
 // ---------------------------------------------------------------------------
@@ -721,7 +722,8 @@ class %delete wxIconizeEvent : public wxEvent
 
     wxIconizeEvent(int winid = 0, bool iconized = true );
 
-    bool Iconized() const;
+    %wxcompat_2_8 bool Iconized() const;
+    %wxchkver_3_1_1 bool IsIconized() const;
 };
 
 // ---------------------------------------------------------------------------

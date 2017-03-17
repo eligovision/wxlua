@@ -1018,11 +1018,11 @@ class %delete wxIcon : public wxGDIObject
 class %delete wxIconBundle
 {
     wxIconBundle();
-    wxIconBundle(const wxString& file, long type);
+    %wxcompat_2_8 wxIconBundle(const wxString& file, long type);
     wxIconBundle(const wxIcon& icon);
     wxIconBundle(const wxIconBundle& ic);
 
-    void AddIcon(const wxString& file, long type);
+    %wxcompat_2_8 void AddIcon(const wxString& file, long type);
     void AddIcon(const wxIcon& icon);
 
     wxIcon GetIcon(const wxSize& size) const;
@@ -1278,40 +1278,39 @@ enum wxRasterOperationMode
     wxSET,
 
     // wxROP_XXX and wxBLIT_XXX are wxcompat_2_8
+    %wxcompat_2_8 wxROP_BLACK,
+    %wxcompat_2_8 wxROP_COPYPEN,
+    %wxcompat_2_8 wxROP_MASKNOTPEN,
+    %wxcompat_2_8 wxROP_MASKPEN,
+    %wxcompat_2_8 wxROP_MASKPENNOT,
+    %wxcompat_2_8 wxROP_MERGENOTPEN,
+    %wxcompat_2_8 wxROP_MERGEPEN,
+    %wxcompat_2_8 wxROP_MERGEPENNOT,
+    %wxcompat_2_8 wxROP_NOP,
+    %wxcompat_2_8 wxROP_NOT,
+    %wxcompat_2_8 wxROP_NOTCOPYPEN,
+    %wxcompat_2_8 wxROP_NOTMASKPEN,
+    %wxcompat_2_8 wxROP_NOTMERGEPEN,
+    %wxcompat_2_8 wxROP_NOTXORPEN,
+    %wxcompat_2_8 wxROP_WHITE,
+    %wxcompat_2_8 wxROP_XORPEN,
 
-    wxROP_BLACK,
-    wxROP_COPYPEN,
-    wxROP_MASKNOTPEN,
-    wxROP_MASKPEN,
-    wxROP_MASKPENNOT,
-    wxROP_MERGENOTPEN,
-    wxROP_MERGEPEN,
-    wxROP_MERGEPENNOT,
-    wxROP_NOP,
-    wxROP_NOT,
-    wxROP_NOTCOPYPEN,
-    wxROP_NOTMASKPEN,
-    wxROP_NOTMERGEPEN,
-    wxROP_NOTXORPEN,
-    wxROP_WHITE,
-    wxROP_XORPEN,
-
-    wxBLIT_00220326,
-    wxBLIT_007700E6,
-    wxBLIT_00990066,
-    wxBLIT_00AA0029,
-    wxBLIT_00DD0228,
-    wxBLIT_BLACKNESS,
-    wxBLIT_DSTINVERT,
-    wxBLIT_MERGEPAINT,
-    wxBLIT_NOTSCRCOPY,
-    wxBLIT_NOTSRCERASE,
-    wxBLIT_SRCAND,
-    wxBLIT_SRCCOPY,
-    wxBLIT_SRCERASE,
-    wxBLIT_SRCINVERT,
-    wxBLIT_SRCPAINT,
-    wxBLIT_WHITENESS
+    %wxcompat_2_8 wxBLIT_00220326,
+    %wxcompat_2_8 wxBLIT_007700E6,
+    %wxcompat_2_8 wxBLIT_00990066,
+    %wxcompat_2_8 wxBLIT_00AA0029,
+    %wxcompat_2_8 wxBLIT_00DD0228,
+    %wxcompat_2_8 wxBLIT_BLACKNESS,
+    %wxcompat_2_8 wxBLIT_DSTINVERT,
+    %wxcompat_2_8 wxBLIT_MERGEPAINT,
+    %wxcompat_2_8 wxBLIT_NOTSCRCOPY,
+    %wxcompat_2_8 wxBLIT_NOTSRCERASE,
+    %wxcompat_2_8 wxBLIT_SRCAND,
+    %wxcompat_2_8 wxBLIT_SRCCOPY,
+    %wxcompat_2_8 wxBLIT_SRCERASE,
+    %wxcompat_2_8 wxBLIT_SRCINVERT,
+    %wxcompat_2_8 wxBLIT_SRCPAINT,
+    %wxcompat_2_8 wxBLIT_WHITENESS
 };
 
 enum wxFloodFillStyle
@@ -1703,6 +1702,8 @@ class %delete wxDisplay
 // ---------------------------------------------------------------------------
 // wxEffects
 
+#if %wxcompat_2_8
+
 #include "wx/effects.h"
 
 class %delete wxEffects : public wxObject
@@ -1727,6 +1728,8 @@ class %delete wxEffects : public wxObject
     void DrawSunkenEdge(wxDC& dc, const wxRect& rect, int borderSize = 1);
     bool TileBitmap(const wxRect& rect, wxDC& dc, wxBitmap& bitmap);
 };
+
+#endif //%wxcompat_2_8
 
 // ---------------------------------------------------------------------------
 // wxRenderer

@@ -208,7 +208,8 @@ class wxValidator : public wxEvtHandler
 
     static bool IsSilent( );
     wxWindow* GetWindow() const;
-    static void SetBellOnError(bool doIt = true );
+    static void SuppressBellOnError(bool suppress = true )
+    %wxcompat_2_8 static void SetBellOnError(bool doIt = true );
     void SetWindow(wxWindow* window );
     virtual bool TransferFromWindow( );
     virtual bool TransferToWindow( );

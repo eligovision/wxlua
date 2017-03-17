@@ -1137,6 +1137,46 @@ static int LUACALL wxLua_function_wxGetMultipleChoices(lua_State *L)
 }
 %end
 
+
+%override wxLua_function_wxGetSelectedChoices
+// %function size_t wxGetSelectedChoices(wxArrayInt& selections,const wxString& message,const wxString& caption,int n, const wxString *choices,wxWindow *parent = (wxWindow *) NULL,int x = -1, int y = -1, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
+static int LUACALL wxLua_function_wxGetSelectedChoices(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int height = wxCHOICE_HEIGHT
+    int height = (argCount >= 10 ? (int)wxlua_getnumbertype(L, 10) : wxCHOICE_HEIGHT);
+    // int width = wxCHOICE_WIDTH
+    int width = (argCount >= 9 ? (int)wxlua_getnumbertype(L, 9) : wxCHOICE_WIDTH);
+    // bool centre = true
+    bool centre = (argCount >= 8 ? wxlua_getbooleantype(L, 8) : true);
+    // int y = -1
+    int y = (argCount >= 7 ? (int)wxlua_getnumbertype(L, 7) : -1);
+    // int x = -1
+    int x = (argCount >= 6 ? (int)wxlua_getnumbertype(L, 6) : -1);
+    // wxWindow *parent = (wxWindow *) NULL
+    wxWindow *parent = (argCount >= 5 ? (wxWindow *)wxluaT_getuserdatatype(L, 5, wxluatype_wxWindow) : (wxWindow *) NULL);
+    // const wxString& choices[]
+    int count = 0; wxLuaSmartStringArray choices = wxlua_getwxStringarray(L, 4, count);
+    // const wxString& caption
+    wxString caption = wxlua_getwxStringtype(L, 3);
+    // const wxString& message
+    wxString message = wxlua_getwxStringtype(L, 2);
+    // wxArrayInt& selections
+    wxLuaSmartwxArrayInt selections = wxlua_getwxArrayInt(L, 1);
+
+    // call wxGetSelectedChoices
+    size_t returns = wxGetSelectedChoices(selections, message, caption, count, choices, parent, x, y, centre, width, height);
+
+    wxlua_pushwxArrayInttable(L, selections);
+
+    // push the result number
+    lua_pushnumber(L, returns);
+    // return the number of parameters
+    return 2;
+}
+%end
+
 %override wxLua_wxFileDialog_GetFilenames
 // void GetFilenames(wxArrayString& filenames) const
 static int LUACALL wxLua_wxFileDialog_GetFilenames(lua_State *L)
@@ -1186,7 +1226,11 @@ static int LUACALL wxLua_wxSingleChoiceDialog_constructor(lua_State *L)
     // wxWindow parent
     wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call constructor
+#if wxCHECK_VERSION(2,9,4)
+    wxSingleChoiceDialog *returns = new wxSingleChoiceDialog(parent, message, caption, choices, (void**)NULL, style, *pos);
+#else
     wxSingleChoiceDialog *returns = new wxSingleChoiceDialog(parent, message, caption, choices, (char**)NULL, style, *pos);
+#endif
     // add to tracked window list
     if (returns && returns->IsKindOf(CLASSINFO(wxWindow)))
         wxluaW_addtrackedwindow(L, (wxWindow*)returns);
