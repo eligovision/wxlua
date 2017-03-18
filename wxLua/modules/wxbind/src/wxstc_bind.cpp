@@ -14796,7 +14796,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 {
     static wxLuaBindNumber numberList[] =
     {
-#if wxCHECK_VERSION(2,9,5)
+#if (wxCHECK_VERSION(2,9,5)) && (!wxCHECK_VERSION(3,1,1))
         { "wxSTC_4GL_BLOCK", wxSTC_4GL_BLOCK },
         { "wxSTC_4GL_BLOCK_", wxSTC_4GL_BLOCK_ },
         { "wxSTC_4GL_CHARACTER", wxSTC_4GL_CHARACTER },
@@ -14829,6 +14829,9 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_4GL_STRING_", wxSTC_4GL_STRING_ },
         { "wxSTC_4GL_WORD", wxSTC_4GL_WORD },
         { "wxSTC_4GL_WORD_", wxSTC_4GL_WORD_ },
+#endif // (wxCHECK_VERSION(2,9,5)) && (!wxCHECK_VERSION(3,1,1))
+
+#if wxCHECK_VERSION(2,9,5)
         { "wxSTC_A68K_COMMENT", wxSTC_A68K_COMMENT },
         { "wxSTC_A68K_COMMENT_DOXYGEN", wxSTC_A68K_COMMENT_DOXYGEN },
         { "wxSTC_A68K_COMMENT_SPECIAL", wxSTC_A68K_COMMENT_SPECIAL },
@@ -14864,6 +14867,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 #endif // wxCHECK_VERSION(2,9,5)
 
 #if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_ABL_BLOCK", wxSTC_ABL_BLOCK },
+        { "wxSTC_ABL_CHARACTER", wxSTC_ABL_CHARACTER },
+        { "wxSTC_ABL_COMMENT", wxSTC_ABL_COMMENT },
+        { "wxSTC_ABL_DEFAULT", wxSTC_ABL_DEFAULT },
+        { "wxSTC_ABL_END", wxSTC_ABL_END },
+        { "wxSTC_ABL_IDENTIFIER", wxSTC_ABL_IDENTIFIER },
+        { "wxSTC_ABL_LINECOMMENT", wxSTC_ABL_LINECOMMENT },
+        { "wxSTC_ABL_NUMBER", wxSTC_ABL_NUMBER },
+        { "wxSTC_ABL_OPERATOR", wxSTC_ABL_OPERATOR },
+        { "wxSTC_ABL_PREPROCESSOR", wxSTC_ABL_PREPROCESSOR },
+        { "wxSTC_ABL_STRING", wxSTC_ABL_STRING },
+        { "wxSTC_ABL_TASKMARKER", wxSTC_ABL_TASKMARKER },
+        { "wxSTC_ABL_WORD", wxSTC_ABL_WORD },
         { "wxSTC_AC_COMMAND", wxSTC_AC_COMMAND },
         { "wxSTC_AC_DOUBLECLICK", wxSTC_AC_DOUBLECLICK },
         { "wxSTC_AC_FILLUP", wxSTC_AC_FILLUP },
@@ -15027,14 +15043,44 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_BAAN_COMMENT", wxSTC_BAAN_COMMENT },
         { "wxSTC_BAAN_COMMENTDOC", wxSTC_BAAN_COMMENTDOC },
         { "wxSTC_BAAN_DEFAULT", wxSTC_BAAN_DEFAULT },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_BAAN_DEFINEDEF", wxSTC_BAAN_DEFINEDEF },
+        { "wxSTC_BAAN_DOMDEF", wxSTC_BAAN_DOMDEF },
+        { "wxSTC_BAAN_FUNCDEF", wxSTC_BAAN_FUNCDEF },
+        { "wxSTC_BAAN_FUNCTION", wxSTC_BAAN_FUNCTION },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_BAAN_IDENTIFIER", wxSTC_BAAN_IDENTIFIER },
         { "wxSTC_BAAN_NUMBER", wxSTC_BAAN_NUMBER },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_BAAN_OBJECTDEF", wxSTC_BAAN_OBJECTDEF },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_BAAN_OPERATOR", wxSTC_BAAN_OPERATOR },
         { "wxSTC_BAAN_PREPROCESSOR", wxSTC_BAAN_PREPROCESSOR },
         { "wxSTC_BAAN_STRING", wxSTC_BAAN_STRING },
         { "wxSTC_BAAN_STRINGEOL", wxSTC_BAAN_STRINGEOL },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_BAAN_TABLEDEF", wxSTC_BAAN_TABLEDEF },
+        { "wxSTC_BAAN_TABLESQL", wxSTC_BAAN_TABLESQL },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_BAAN_WORD", wxSTC_BAAN_WORD },
         { "wxSTC_BAAN_WORD2", wxSTC_BAAN_WORD2 },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_BAAN_WORD3", wxSTC_BAAN_WORD3 },
+        { "wxSTC_BAAN_WORD4", wxSTC_BAAN_WORD4 },
+        { "wxSTC_BAAN_WORD5", wxSTC_BAAN_WORD5 },
+        { "wxSTC_BAAN_WORD6", wxSTC_BAAN_WORD6 },
+        { "wxSTC_BAAN_WORD7", wxSTC_BAAN_WORD7 },
+        { "wxSTC_BAAN_WORD8", wxSTC_BAAN_WORD8 },
+        { "wxSTC_BAAN_WORD9", wxSTC_BAAN_WORD9 },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_BAT_COMMAND", wxSTC_BAT_COMMAND },
         { "wxSTC_BAT_COMMENT", wxSTC_BAT_COMMENT },
         { "wxSTC_BAT_DEFAULT", wxSTC_BAT_DEFAULT },
@@ -15584,7 +15630,24 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 
         { "wxSTC_EDGE_BACKGROUND", wxSTC_EDGE_BACKGROUND },
         { "wxSTC_EDGE_LINE", wxSTC_EDGE_LINE },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_EDGE_MULTILINE", wxSTC_EDGE_MULTILINE },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_EDGE_NONE", wxSTC_EDGE_NONE },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_EDI_BADSEGMENT", wxSTC_EDI_BADSEGMENT },
+        { "wxSTC_EDI_DEFAULT", wxSTC_EDI_DEFAULT },
+        { "wxSTC_EDI_SEGMENTEND", wxSTC_EDI_SEGMENTEND },
+        { "wxSTC_EDI_SEGMENTSTART", wxSTC_EDI_SEGMENTSTART },
+        { "wxSTC_EDI_SEP_COMPOSITE", wxSTC_EDI_SEP_COMPOSITE },
+        { "wxSTC_EDI_SEP_ELEMENT", wxSTC_EDI_SEP_ELEMENT },
+        { "wxSTC_EDI_SEP_RELEASE", wxSTC_EDI_SEP_RELEASE },
+        { "wxSTC_EDI_UNA", wxSTC_EDI_UNA },
+        { "wxSTC_EDI_UNH", wxSTC_EDI_UNH },
+#endif // wxCHECK_VERSION(3,1,1)
 
 #if wxCHECK_VERSION(2,9,5)
         { "wxSTC_EFF_QUALITY_ANTIALIASED", wxSTC_EFF_QUALITY_ANTIALIASED },
@@ -15737,6 +15800,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_FOLDACTION_EXPAND", wxSTC_FOLDACTION_EXPAND },
         { "wxSTC_FOLDACTION_TOGGLE", wxSTC_FOLDACTION_TOGGLE },
 #endif // wxCHECK_VERSION(3,1,0)
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_FOLDDISPLAYTEXT_BOXED", wxSTC_FOLDDISPLAYTEXT_BOXED },
+        { "wxSTC_FOLDDISPLAYTEXT_HIDDEN", wxSTC_FOLDDISPLAYTEXT_HIDDEN },
+        { "wxSTC_FOLDDISPLAYTEXT_STANDARD", wxSTC_FOLDDISPLAYTEXT_STANDARD },
+#endif // wxCHECK_VERSION(3,1,1)
 
 #if !wxCHECK_VERSION(2,9,2)
         { "wxSTC_FOLDFLAG_BOX", wxSTC_FOLDFLAG_BOX },
@@ -16080,15 +16149,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_IME_WINDOWED", wxSTC_IME_WINDOWED },
 #endif // wxCHECK_VERSION(3,1,0)
 
+#if !wxCHECK_VERSION(3,1,1)
         { "wxSTC_INDIC0_MASK", wxSTC_INDIC0_MASK },
         { "wxSTC_INDIC1_MASK", wxSTC_INDIC1_MASK },
         { "wxSTC_INDIC2_MASK", wxSTC_INDIC2_MASK },
+#endif // !wxCHECK_VERSION(3,1,1)
 
 #if wxCHECK_VERSION(3,1,0)
         { "wxSTC_INDICFLAG_VALUEFORE", wxSTC_INDICFLAG_VALUEFORE },
 #endif // wxCHECK_VERSION(3,1,0)
 
+#if !wxCHECK_VERSION(3,1,1)
         { "wxSTC_INDICS_MASK", wxSTC_INDICS_MASK },
+#endif // !wxCHECK_VERSION(3,1,1)
 
 #if wxCHECK_VERSION(3,1,0)
         { "wxSTC_INDICVALUEBIT", wxSTC_INDICVALUEBIT },
@@ -16130,6 +16203,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 #endif // wxCHECK_VERSION(2,9,5)
 
         { "wxSTC_INDIC_PLAIN", wxSTC_INDIC_PLAIN },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_INDIC_POINT", wxSTC_INDIC_POINT },
+        { "wxSTC_INDIC_POINTCHARACTER", wxSTC_INDIC_POINTCHARACTER },
+#endif // wxCHECK_VERSION(3,1,1)
 
 #if wxCHECK_VERSION(2,8,12)
         { "wxSTC_INDIC_ROUNDBOX", wxSTC_INDIC_ROUNDBOX },
@@ -16346,6 +16424,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 #if wxCHECK_VERSION(2,9,5)
         { "wxSTC_LEX_ECL", wxSTC_LEX_ECL },
 #endif // wxCHECK_VERSION(2,9,5)
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_LEX_EDIFACT", wxSTC_LEX_EDIFACT },
+#endif // wxCHECK_VERSION(3,1,1)
 
         { "wxSTC_LEX_EIFFEL", wxSTC_LEX_EIFFEL },
         { "wxSTC_LEX_EIFFELKW", wxSTC_LEX_EIFFELKW },
@@ -16659,6 +16741,13 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 
 #if wxCHECK_VERSION(2,8,12)
         { "wxSTC_MARGIN_BACK", wxSTC_MARGIN_BACK },
+#endif // wxCHECK_VERSION(2,8,12)
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_MARGIN_COLOUR", wxSTC_MARGIN_COLOUR },
+#endif // wxCHECK_VERSION(3,1,1)
+
+#if wxCHECK_VERSION(2,8,12)
         { "wxSTC_MARGIN_FORE", wxSTC_MARGIN_FORE },
 #endif // wxCHECK_VERSION(2,8,12)
 
@@ -17120,6 +17209,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_PL_XLAT", wxSTC_PL_XLAT },
 #endif // wxCHECK_VERSION(2,9,5)
 
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_POPUP_ALL", wxSTC_POPUP_ALL },
+        { "wxSTC_POPUP_NEVER", wxSTC_POPUP_NEVER },
+        { "wxSTC_POPUP_TEXT", wxSTC_POPUP_TEXT },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_POV_BADDIRECTIVE", wxSTC_POV_BADDIRECTIVE },
         { "wxSTC_POV_COMMENT", wxSTC_POV_COMMENT },
         { "wxSTC_POV_COMMENTLINE", wxSTC_POV_COMMENTLINE },
@@ -17421,11 +17516,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_SCRIPTOL_TRIPLE", wxSTC_SCRIPTOL_TRIPLE },
         { "wxSTC_SCRIPTOL_WHITE", wxSTC_SCRIPTOL_WHITE },
 
-#if wxCHECK_VERSION(2,9,5)
+#if wxCHECK_VERSION(2,9,5) && !wxCHECK_VERSION(3,1,1)
         { "wxSTC_SCVS_NONE", wxSTC_SCVS_NONE },
         { "wxSTC_SCVS_RECTANGULARSELECTION", wxSTC_SCVS_RECTANGULARSELECTION },
         { "wxSTC_SCVS_USERACCESSIBLE", wxSTC_SCVS_USERACCESSIBLE },
-#endif // wxCHECK_VERSION(2,9,5)
+#endif // wxCHECK_VERSION(2,9,5) && !wxCHECK_VERSION(3,1,1)
 
         { "wxSTC_SEL_LINES", wxSTC_SEL_LINES },
         { "wxSTC_SEL_RECTANGLE", wxSTC_SEL_RECTANGLE },
@@ -17579,6 +17674,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 
         { "wxSTC_STYLE_CONTROLCHAR", wxSTC_STYLE_CONTROLCHAR },
         { "wxSTC_STYLE_DEFAULT", wxSTC_STYLE_DEFAULT },
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_STYLE_FOLDDISPLAYTEXT", wxSTC_STYLE_FOLDDISPLAYTEXT },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_STYLE_INDENTGUIDE", wxSTC_STYLE_INDENTGUIDE },
         { "wxSTC_STYLE_LASTPREDEFINED", wxSTC_STYLE_LASTPREDEFINED },
         { "wxSTC_STYLE_LINENUMBER", wxSTC_STYLE_LINENUMBER },
@@ -17663,14 +17763,22 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_TCMD_LABEL", wxSTC_TCMD_LABEL },
         { "wxSTC_TCMD_OPERATOR", wxSTC_TCMD_OPERATOR },
         { "wxSTC_TCMD_WORD", wxSTC_TCMD_WORD },
+#endif // wxCHECK_VERSION(2,9,5)
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_TD_LONGARROW", 0 },
+        { "wxSTC_TD_STRIKEOUT", 1 },
+#endif // wxCHECK_VERSION(3,1,1)
+
+#if wxCHECK_VERSION(2,9,5)
         { "wxSTC_TECHNOLOGY_DEFAULT", wxSTC_TECHNOLOGY_DEFAULT },
         { "wxSTC_TECHNOLOGY_DIRECTWRITE", wxSTC_TECHNOLOGY_DIRECTWRITE },
 #endif // wxCHECK_VERSION(2,9,5)
 
-#if wxCHECK_VERSION(3,1,0)
+#if wxCHECK_VERSION(3,1,0) && !wxCHECK_VERSION(3,1,1)
         { "wxSTC_TECHNOLOGY_DIRECTWRITEDC", wxSTC_TECHNOLOGY_DIRECTWRITEDC },
         { "wxSTC_TECHNOLOGY_DIRECTWRITERETAIN", wxSTC_TECHNOLOGY_DIRECTWRITERETAIN },
-#endif // wxCHECK_VERSION(3,1,0)
+#endif // wxCHECK_VERSION(3,1,0) && !wxCHECK_VERSION(3,1,1)
 
         { "wxSTC_TEX_COMMAND", wxSTC_TEX_COMMAND },
         { "wxSTC_TEX_DEFAULT", wxSTC_TEX_DEFAULT },
@@ -17765,6 +17873,13 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_VISUALPROLOG_STRING_VERBATIM_SPECIAL", wxSTC_VISUALPROLOG_STRING_VERBATIM_SPECIAL },
         { "wxSTC_VISUALPROLOG_VARIABLE", wxSTC_VISUALPROLOG_VARIABLE },
 #endif // wxCHECK_VERSION(2,9,5)
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_VS_NONE", wxSTC_VS_NONE },
+        { "wxSTC_VS_NOWRAPLINESTART", wxSTC_VS_NOWRAPLINESTART },
+        { "wxSTC_VS_RECTANGULARSELECTION", wxSTC_VS_RECTANGULARSELECTION },
+        { "wxSTC_VS_USERACCESSIBLE", wxSTC_VS_USERACCESSIBLE },
+#endif // wxCHECK_VERSION(3,1,1)
 
         { "wxSTC_V_COMMENT", wxSTC_V_COMMENT },
         { "wxSTC_V_COMMENTLINE", wxSTC_V_COMMENTLINE },

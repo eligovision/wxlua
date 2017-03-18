@@ -52,8 +52,7 @@ class wxGLCanvas : public wxWindow
 #endif
 
     //wxGLContext* GetContext() const; - removed in wx 3.0
-    %mac void SetCurrent( );
-    %wxchkver_2_8&!%mac void SetCurrent(const wxGLContext& RC) const;
+    void SetCurrent(const wxGLContext& RC) const;
 
     void SetColour(const wxString& colour );
     void SwapBuffers( );

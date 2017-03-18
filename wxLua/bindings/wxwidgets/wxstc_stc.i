@@ -37,6 +37,8 @@
 #define wxSTC_WS_VISIBLEALWAYS
 #define wxSTC_WS_VISIBLEAFTERINDENT
 %wxchkver_3_1_1 #define wxSTC_WS_VISIBLEONLYININDENT
+%wxchkver_3_1_1 #define wxSTC_TD_LONGARROW 0
+%wxchkver_3_1_1 #define wxSTC_TD_STRIKEOUT 1
 #define wxSTC_EOL_CRLF
 #define wxSTC_EOL_CR
 #define wxSTC_EOL_LF
@@ -101,6 +103,7 @@
 %wxchkver_2_8_12 #define wxSTC_MARGIN_FORE
 %wxchkver_2_9_2  #define wxSTC_MARGIN_TEXT
 %wxchkver_2_9_2  #define wxSTC_MARGIN_RTEXT
+%wxchkver_3_1_1  #define wxSTC_MARGIN_COLOUR
 
 /// Styles in range 32..38 are predefined for parts of the UI and are not used as normal styles.
 /// Style 39 is for future use.
@@ -111,6 +114,7 @@
 #define wxSTC_STYLE_CONTROLCHAR
 #define wxSTC_STYLE_INDENTGUIDE
 %wxchkver_2_8_12 #define wxSTC_STYLE_CALLTIP
+%wxchkver_3_1_1  #define wxSTC_STYLE_FOLDDISPLAYTEXT
 #define wxSTC_STYLE_LASTPREDEFINED
 #define wxSTC_STYLE_MAX
 
@@ -166,14 +170,16 @@
 %wxchkver_3_1_0 #define wxSTC_INDIC_COMPOSITIONTHIN
 %wxchkver_3_1_0 #define wxSTC_INDIC_FULLBOX
 %wxchkver_3_1_0 #define wxSTC_INDIC_TEXTFORE
+%wxchkver_3_1_1 #define wxSTC_INDIC_POINT
+%wxchkver_3_1_1 #define wxSTC_INDIC_POINTCHARACTER
 %wxchkver_3_1_0 #define wxSTC_INDIC_IME
 %wxchkver_3_1_0 #define wxSTC_INDIC_IME_MAX
 %wxchkver_2_9_5 #define wxSTC_INDIC_MAX
 %wxchkver_2_9_5 #define wxSTC_INDIC_CONTAINER
-#define wxSTC_INDIC0_MASK
-#define wxSTC_INDIC1_MASK
-#define wxSTC_INDIC2_MASK
-#define wxSTC_INDICS_MASK
+!%wxchkver_3_1_1 #define wxSTC_INDIC0_MASK
+!%wxchkver_3_1_1 #define wxSTC_INDIC1_MASK
+!%wxchkver_3_1_1 #define wxSTC_INDIC2_MASK
+!%wxchkver_3_1_1 #define wxSTC_INDICS_MASK
 %wxchkver_3_1_0 #define wxSTC_INDICVALUEBIT
 %wxchkver_3_1_0 #define wxSTC_INDICVALUEMASK
 %wxchkver_3_1_0 #define wxSTC_INDICFLAG_VALUEFORE
@@ -206,6 +212,9 @@
 #define wxSTC_FOLDLEVELWHITEFLAG
 #define wxSTC_FOLDLEVELHEADERFLAG
 #define wxSTC_FOLDLEVELNUMBERMASK
+%wxchkver_3_1_1 #define wxSTC_FOLDDISPLAYTEXT_HIDDEN
+%wxchkver_3_1_1 #define wxSTC_FOLDDISPLAYTEXT_STANDARD
+%wxchkver_3_1_1 #define wxSTC_FOLDDISPLAYTEXT_BOXED
 %wxchkver_3_1_0 #define wxSTC_FOLDACTION_CONTRACT
 %wxchkver_3_1_0 #define wxSTC_FOLDACTION_EXPAND
 %wxchkver_3_1_0 #define wxSTC_FOLDACTION_TOGGLE
@@ -256,6 +265,10 @@
 #define wxSTC_EDGE_NONE
 #define wxSTC_EDGE_LINE
 #define wxSTC_EDGE_BACKGROUND
+%wxchkver_3_1_1 #define wxSTC_EDGE_MULTILINE
+%wxchkver_3_1_1 #define wxSTC_POPUP_NEVER
+%wxchkver_3_1_1 #define wxSTC_POPUP_ALL
+%wxchkver_3_1_1 #define wxSTC_POPUP_TEXT
 %wxchkver_2_9_5 #define wxSTC_STATUS_OK
 %wxchkver_2_9_5 #define wxSTC_STATUS_FAILURE
 %wxchkver_2_9_5 #define wxSTC_STATUS_BADALLOC
@@ -322,13 +335,17 @@
 %wxchkver_2_9_5 #define wxSTC_ANNOTATION_BOXED
 %wxchkver_3_1_0 #define wxSTC_ANNOTATION_INDENTED
 %wxchkver_2_9_5 #define wxSTC_UNDO_MAY_COALESCE
-%wxchkver_2_9_5 #define wxSTC_SCVS_NONE
-%wxchkver_2_9_5 #define wxSTC_SCVS_RECTANGULARSELECTION
-%wxchkver_2_9_5 #define wxSTC_SCVS_USERACCESSIBLE
+%wxchkver_2_9_5&&!%wxchkver_3_1_1  #define wxSTC_SCVS_NONE
+%%wxchkver_2_9_5&&!%wxchkver_3_1_1 #define wxSTC_SCVS_RECTANGULARSELECTION
+%%wxchkver_2_9_5&&!%wxchkver_3_1_1 #define wxSTC_SCVS_USERACCESSIBLE
+%wxchkver_3_1_1 #define wxSTC_VS_NONE
+%wxchkver_3_1_1 #define wxSTC_VS_RECTANGULARSELECTION
+%wxchkver_3_1_1 #define wxSTC_VS_USERACCESSIBLE
+%wxchkver_3_1_1 #define wxSTC_VS_NOWRAPLINESTART
 %wxchkver_2_9_5 #define wxSTC_TECHNOLOGY_DEFAULT
 %wxchkver_2_9_5 #define wxSTC_TECHNOLOGY_DIRECTWRITE
-%wxchkver_3_1_0 #define wxSTC_TECHNOLOGY_DIRECTWRITERETAIN
-%wxchkver_3_1_0 #define wxSTC_TECHNOLOGY_DIRECTWRITEDC
+%wxchkver_3_1_0&&!%wxchkver_3_1_1 #define wxSTC_TECHNOLOGY_DIRECTWRITERETAIN
+%wxchkver_3_1_0&&!%wxchkver_3_1_1 #define wxSTC_TECHNOLOGY_DIRECTWRITEDC
 
 /// Line end types which may be used in addition to LF, CR, and CRLF
 /// SC_LINE_END_TYPE_UNICODE includes U+2028 Line Separator,
@@ -529,6 +546,7 @@
 %wxchkver_3_1_0 #define wxSTC_LEX_IHEX
 %wxchkver_3_1_0 #define wxSTC_LEX_TEHEX
 %wxchkver_3_1_1 #define wxSTC_LEX_JSON
+%wxchkver_3_1_1 #define wxSTC_LEX_EDIFACT
 
 /// When a lexer specifies its language as SCLEX_AUTOMATIC it receives a
 /// value assigned in sequence from SCLEX_AUTOMATIC+1.
@@ -1062,6 +1080,20 @@
 #define wxSTC_BAAN_IDENTIFIER
 #define wxSTC_BAAN_STRINGEOL
 #define wxSTC_BAAN_WORD2
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD3
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD4
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD5
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD6
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD7
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD8
+%wxchkver_3_1_1 #define wxSTC_BAAN_WORD9
+%wxchkver_3_1_1 #define wxSTC_BAAN_TABLEDEF
+%wxchkver_3_1_1 #define wxSTC_BAAN_TABLESQL
+%wxchkver_3_1_1 #define wxSTC_BAAN_FUNCTION
+%wxchkver_3_1_1 #define wxSTC_BAAN_DOMDEF
+%wxchkver_3_1_1 #define wxSTC_BAAN_FUNCDEF
+%wxchkver_3_1_1 #define wxSTC_BAAN_OBJECTDEF
+%wxchkver_3_1_1 #define wxSTC_BAAN_DEFINEDEF
 
 /// Lexical states for SCLEX_LISP
 #define wxSTC_LISP_DEFAULT
@@ -1833,6 +1865,7 @@
 %wxchkver_2_9_5 #define wxSTC_PLM_KEYWORD
 
 /// Lexical state for SCLEX_PROGRESS
+#if !%wxchkver_3_1_1
 %wxchkver_2_9_5 #define wxSTC_4GL_DEFAULT
 %wxchkver_2_9_5 #define wxSTC_4GL_NUMBER
 %wxchkver_2_9_5 #define wxSTC_4GL_WORD
@@ -1865,6 +1898,22 @@
 %wxchkver_2_9_5 #define wxSTC_4GL_COMMENT4_
 %wxchkver_2_9_5 #define wxSTC_4GL_COMMENT5_
 %wxchkver_2_9_5 #define wxSTC_4GL_COMMENT6_
+#endif
+#if %wxchkver_3_1_1
+#define wxSTC_ABL_DEFAULT
+#define wxSTC_ABL_NUMBER
+#define wxSTC_ABL_WORD
+#define wxSTC_ABL_STRING
+#define wxSTC_ABL_CHARACTER
+#define wxSTC_ABL_PREPROCESSOR
+#define wxSTC_ABL_OPERATOR
+#define wxSTC_ABL_IDENTIFIER
+#define wxSTC_ABL_BLOCK
+#define wxSTC_ABL_END
+#define wxSTC_ABL_COMMENT
+#define wxSTC_ABL_TASKMARKER
+#define wxSTC_ABL_LINECOMMENT
+#endif
 
 /// Lexical states for SCLEX_ABAQUS
 %wxchkver_2_9_5 #define wxSTC_ABAQUS_DEFAULT
@@ -2418,6 +2467,15 @@
 %wxchkver_3_1_1 #define wxSTC_JSON_KEYWORD
 %wxchkver_3_1_1 #define wxSTC_JSON_LDKEYWORD
 %wxchkver_3_1_1 #define wxSTC_JSON_ERROR
+%wxchkver_3_1_1 #define wxSTC_EDI_DEFAULT
+%wxchkver_3_1_1 #define wxSTC_EDI_SEGMENTSTART
+%wxchkver_3_1_1 #define wxSTC_EDI_SEGMENTEND
+%wxchkver_3_1_1 #define wxSTC_EDI_SEP_ELEMENT
+%wxchkver_3_1_1 #define wxSTC_EDI_SEP_COMPOSITE
+%wxchkver_3_1_1 #define wxSTC_EDI_SEP_RELEASE
+%wxchkver_3_1_1 #define wxSTC_EDI_UNA
+%wxchkver_3_1_1 #define wxSTC_EDI_UNH
+%wxchkver_3_1_1 #define wxSTC_EDI_BADSEGMENT
 
 // deprecated items
 !%wxchkver_2_8 #define wxSTC_LEX_ASP

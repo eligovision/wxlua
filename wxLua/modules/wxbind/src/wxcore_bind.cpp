@@ -2423,8 +2423,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
         { "wxTAB_TRAVERSAL", wxTAB_TRAVERSAL },
 
-#if wxLUA_USE_wxToolbar
+#if (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToolbar)
         { "wxTB_3DBUTTONS", wxTB_3DBUTTONS },
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToolbar)
+
+#if wxLUA_USE_wxToolbar
         { "wxTB_DOCKABLE", wxTB_DOCKABLE },
         { "wxTB_FLAT", wxTB_FLAT },
         { "wxTB_HORIZONTAL", wxTB_HORIZONTAL },
