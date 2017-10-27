@@ -4233,6 +4233,21 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxKill[1] = {{ wxLua_function_w
 
 #endif // wxLUA_USE_wxProcess
 
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLaunchDefaultApplication[] = { &wxluatype_TSTRING, NULL };
+// bool wxLaunchDefaultApplication(const wxString &document);
+static int LUACALL wxLua_function_wxLaunchDefaultApplication(lua_State *L)
+{
+    // const wxString document
+    const wxString document = wxlua_getwxStringtype(L, 1);
+    // call wxLaunchDefaultApplication
+    bool returns = (wxLaunchDefaultApplication(document));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxLaunchDefaultApplication[1] = {{ wxLua_function_wxLaunchDefaultApplication, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxLaunchDefaultApplication }};
+
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLaunchDefaultBrowser[] = { &wxluatype_TSTRING, NULL };
 // bool wxLaunchDefaultBrowser(const wxString& sUrl);
 static int LUACALL wxLua_function_wxLaunchDefaultBrowser(lua_State *L)
@@ -4567,6 +4582,7 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxKill", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxKill, 1, NULL },
 #endif // wxLUA_USE_wxProcess
 
+        { "wxLaunchDefaultApplication", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxLaunchDefaultApplication, 1, NULL },
         { "wxLaunchDefaultBrowser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxLaunchDefaultBrowser, 1, NULL },
 
 #if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxFrame)

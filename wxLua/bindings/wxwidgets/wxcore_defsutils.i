@@ -256,6 +256,7 @@ wxMouseState wxGetMouseState();
 // bool wxWriteResource(const wxString& section, const wxString& entry, const wxString& value, const wxString& file = "");
 // wxString  wxGetStockLabel(wxWindowID id, bool withCodes = true, wxString accelerator = wxEmptyString);
 wxWindow* wxGetTopLevelParent(wxWindow *win);
+bool wxLaunchDefaultApplication(const wxString &document);
 bool wxLaunchDefaultBrowser(const wxString& sUrl);
 //%win wxString wxLoadUserResource(const wxString& resourceName, const wxString& resourceType="TEXT");
 void wxPostEvent(wxEvtHandler *dest, wxEvent& event);
