@@ -5466,7 +5466,6 @@ wx_dataTypeTable =
 -- ---------------------------------------------------------------------------
 wx_preprocConditionTable =
 {
-  ["%%wxchkver_2_9_5"] = "wxCHECK_VERSION(2,9,5)",
   ["%__WIN16__"] = "defined(__WIN16__)",
   ["%__WIN32__"] = "defined(__WIN32__)",
   ["%__WIN95__"] = "defined(__WIN95__)",

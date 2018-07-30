@@ -634,6 +634,7 @@ public:
     //lua_unboxpointer(L,i)
     //lua_pop(L,n)            lua_settop(L, -(n)-1)
 
+    static void luaL_Register(lua_State *L, const char *libname, const luaL_Reg *l);
     void lua_Register(const char* funcName, lua_CFunction f);
     wxLUA_UNICODE_ONLY(void lua_Register(const wxString& funcName, lua_CFunction f) { lua_Register(wx2lua(funcName), f); })
     void lua_PushCFunction(lua_CFunction f);
@@ -663,7 +664,7 @@ public:
     const char* lua_GetUpvalue(int funcindex, int n);
     const char* lua_SetUpvalue(int funcindex, int n);
 
-    int lua_SetHook(lua_Hook func, int mask, int count);
+    void lua_SetHook(lua_Hook func, int mask, int count);
     lua_Hook lua_GetHook();
     int lua_GetHookMask();
     int lua_GetHookCount();

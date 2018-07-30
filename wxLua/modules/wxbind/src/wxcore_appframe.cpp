@@ -134,7 +134,7 @@ static int LUACALL wxLua_wxAppConsole_GetClassName(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 static int LUACALL wxLua_wxAppConsole_GetInstance(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAppConsole_GetInstance[1] = {{ wxLua_wxAppConsole_GetInstance, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 //     %wxchkver_3_1_1 static wxAppConsole* GetInstance();
@@ -148,7 +148,7 @@ static int LUACALL wxLua_wxAppConsole_GetInstance(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_GetMainLoop[] = { &wxluatype_wxAppConsole, NULL };
@@ -230,7 +230,7 @@ static int LUACALL wxLua_wxAppConsole_IsMainLoopRunning(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_IsScheduledForDestruction[] = { &wxluatype_wxAppConsole, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxAppConsole_IsScheduledForDestruction(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAppConsole_IsScheduledForDestruction[1] = {{ wxLua_wxAppConsole_IsScheduledForDestruction, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAppConsole_IsScheduledForDestruction }};
@@ -249,7 +249,7 @@ static int LUACALL wxLua_wxAppConsole_IsScheduledForDestruction(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_MainLoop[] = { &wxluatype_wxAppConsole, NULL };
@@ -441,7 +441,7 @@ static int LUACALL wxLua_wxAppConsole_RethrowStoredException(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_ScheduleForDestruction[] = { &wxluatype_wxAppConsole, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxAppConsole_ScheduleForDestruction(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAppConsole_ScheduleForDestruction[1] = {{ wxLua_wxAppConsole_ScheduleForDestruction, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAppConsole_ScheduleForDestruction }};
@@ -458,7 +458,7 @@ static int LUACALL wxLua_wxAppConsole_ScheduleForDestruction(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_SetAppDisplayName[] = { &wxluatype_wxAppConsole, &wxluatype_TSTRING, NULL };
@@ -525,7 +525,7 @@ static int LUACALL wxLua_wxAppConsole_SetClassName(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_SetInstance[] = { &wxluatype_wxAppConsole, NULL };
 static int LUACALL wxLua_wxAppConsole_SetInstance(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAppConsole_SetInstance[1] = {{ wxLua_wxAppConsole_SetInstance, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxAppConsole_SetInstance }};
@@ -540,7 +540,7 @@ static int LUACALL wxLua_wxAppConsole_SetInstance(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_SetVendorDisplayName[] = { &wxluatype_wxAppConsole, &wxluatype_TSTRING, NULL };
@@ -662,9 +662,9 @@ wxLuaBindMethod wxAppConsole_methods[] = {
     { "GetClassName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_GetClassName, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
     { "GetInstance", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxAppConsole_GetInstance, 1, NULL },
-#endif // (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
     { "GetMainLoop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_GetMainLoop, 1, NULL },
@@ -674,9 +674,9 @@ wxLuaBindMethod wxAppConsole_methods[] = {
     { "IsMainLoopRunning", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxAppConsole_IsMainLoopRunning, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
     { "IsScheduledForDestruction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_IsScheduledForDestruction, 1, NULL },
-#endif // (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
     { "MainLoop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_MainLoop, 1, NULL },
@@ -693,9 +693,9 @@ wxLuaBindMethod wxAppConsole_methods[] = {
     { "RethrowStoredException", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_RethrowStoredException, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
     { "ScheduleForDestruction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_ScheduleForDestruction, 1, NULL },
-#endif // (wxLUA_USE_wxObject) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxObject)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
     { "SetAppDisplayName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_SetAppDisplayName, 1, NULL },
@@ -704,9 +704,9 @@ wxLuaBindMethod wxAppConsole_methods[] = {
     { "SetClassName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_SetClassName, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
     { "SetInstance", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxAppConsole_SetInstance, 1, NULL },
-#endif // (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
     { "SetVendorDisplayName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAppConsole_SetVendorDisplayName, 1, NULL },
@@ -796,7 +796,7 @@ static int LUACALL wxLua_wxApp_GetClassName(lua_State *L)
 
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_GetDisplayMode[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_GetDisplayMode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_GetDisplayMode[1] = {{ wxLua_wxApp_GetDisplayMode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxApp_GetDisplayMode }};
@@ -816,7 +816,7 @@ static int LUACALL wxLua_wxApp_GetDisplayMode(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_GetExitOnFrameDelete[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_GetExitOnFrameDelete(lua_State *L);
@@ -835,7 +835,7 @@ static int LUACALL wxLua_wxApp_GetExitOnFrameDelete(lua_State *L)
 }
 
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_GetLayoutDirection[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_GetLayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_GetLayoutDirection[1] = {{ wxLua_wxApp_GetLayoutDirection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxApp_GetLayoutDirection }};
@@ -852,7 +852,7 @@ static int LUACALL wxLua_wxApp_GetLayoutDirection(lua_State *L)
     return 1;
 }
 
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0)))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_GetTopWindow[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_GetTopWindow(lua_State *L);
@@ -1203,7 +1203,7 @@ static int LUACALL wxLua_wxApp_SetClassName(lua_State *L)
 
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_SetDisplayMode[] = { &wxluatype_wxApp, &wxluatype_wxVideoMode, NULL };
 static int LUACALL wxLua_wxApp_SetDisplayMode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_SetDisplayMode[1] = {{ wxLua_wxApp_SetDisplayMode, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxApp_SetDisplayMode }};
@@ -1222,7 +1222,7 @@ static int LUACALL wxLua_wxApp_SetDisplayMode(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_SetExitOnFrameDelete[] = { &wxluatype_wxApp, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxApp_SetExitOnFrameDelete(lua_State *L);
@@ -1340,7 +1340,7 @@ static int LUACALL wxLua_wxApp_SetVendorName(lua_State *L)
 
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 static int LUACALL wxLua_wxApp_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_constructor[1] = {{ wxLua_wxApp_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
 //     %wxchkver_3_1_1 wxApp();
@@ -1354,7 +1354,7 @@ static int LUACALL wxLua_wxApp_constructor(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 
 
 
@@ -1390,15 +1390,15 @@ wxLuaBindMethod wxApp_methods[] = {
     { "GetClassName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetClassName, 1, NULL },
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
     { "GetDisplayMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetDisplayMode, 1, NULL },
-#endif // (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
     { "GetExitOnFrameDelete", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetExitOnFrameDelete, 1, NULL },
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0)))
     { "GetLayoutDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetLayoutDirection, 1, NULL },
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0)))
 
     { "GetTopWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetTopWindow, 1, NULL },
     { "GetUseBestVisual", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetUseBestVisual, 1, NULL },
@@ -1454,9 +1454,9 @@ wxLuaBindMethod wxApp_methods[] = {
     { "SetClassName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_SetClassName, 1, NULL },
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
     { "SetDisplayMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_SetDisplayMode, 1, NULL },
-#endif // (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
     { "SetExitOnFrameDelete", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_SetExitOnFrameDelete, 1, NULL },
 
@@ -1474,9 +1474,9 @@ wxLuaBindMethod wxApp_methods[] = {
     { "SetVendorName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_SetVendorName, 1, NULL },
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
 
-#if (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
     { "wxApp", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxApp_constructor, 1, NULL },
-#endif // (wxLUA_USE_wxApp) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)) && (wxLUA_USE_wxApp)
 
     { 0, 0, 0, 0 },
 };
@@ -1758,7 +1758,7 @@ static int LUACALL wxLua_wxTopLevelWindow_GetDefaultSize(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_GetIcon[] = { &wxluatype_wxTopLevelWindow, NULL };
 static int LUACALL wxLua_wxTopLevelWindow_GetIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_GetIcon[1] = {{ wxLua_wxTopLevelWindow_GetIcon, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTopLevelWindow_GetIcon }};
@@ -1778,7 +1778,7 @@ static int LUACALL wxLua_wxTopLevelWindow_GetIcon(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
 
 #if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxIcon)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_GetIcons[] = { &wxluatype_wxTopLevelWindow, NULL };
@@ -2079,7 +2079,7 @@ static int LUACALL wxLua_wxTopLevelWindow_SetDefaultItem(lua_State *L)
 
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 
-#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_SetIcon[] = { &wxluatype_wxTopLevelWindow, &wxluatype_wxIcon, NULL };
 static int LUACALL wxLua_wxTopLevelWindow_SetIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_SetIcon[1] = {{ wxLua_wxTopLevelWindow_SetIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTopLevelWindow_SetIcon }};
@@ -2112,9 +2112,9 @@ static int LUACALL wxLua_wxTopLevelWindow_SetIcons(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_SetMaxSize[] = { &wxluatype_wxTopLevelWindow, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxTopLevelWindow_SetMaxSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_SetMaxSize[1] = {{ wxLua_wxTopLevelWindow_SetMaxSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTopLevelWindow_SetMaxSize }};
@@ -2147,7 +2147,7 @@ static int LUACALL wxLua_wxTopLevelWindow_SetMinSize(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_SetRepresentedFilename[] = { &wxluatype_wxTopLevelWindow, &wxluatype_TSTRING, NULL };
@@ -2189,7 +2189,7 @@ static int LUACALL wxLua_wxTopLevelWindow_SetShape(lua_State *L)
 
 #endif // ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxRegion)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_SetSizeHints1[] = { &wxluatype_wxTopLevelWindow, &wxluatype_wxSize, &wxluatype_wxSize, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxTopLevelWindow_SetSizeHints1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_SetSizeHints1[1] = {{ wxLua_wxTopLevelWindow_SetSizeHints1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxTopLevelWindow_SetSizeHints1 }};
@@ -2212,7 +2212,7 @@ static int LUACALL wxLua_wxTopLevelWindow_SetSizeHints1(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_SetSizeHints[] = { &wxluatype_wxTopLevelWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTopLevelWindow_SetSizeHints(lua_State *L);
@@ -2362,7 +2362,7 @@ static int LUACALL wxLua_wxTopLevelWindow_ShowWithoutActivating(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 
-#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTopLevelWindow_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxTopLevelWindow_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_constructor1[1] = {{ wxLua_wxTopLevelWindow_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxTopLevelWindow_constructor1 }};
@@ -2395,7 +2395,7 @@ static int LUACALL wxLua_wxTopLevelWindow_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)
 
 #if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 static int LUACALL wxLua_wxTopLevelWindow_constructor(lua_State *L);
@@ -2417,19 +2417,19 @@ static int LUACALL wxLua_wxTopLevelWindow_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if ((wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_SetSizeHints_overload[] =
 {
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxTopLevelWindow_SetSizeHints1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxTopLevelWindow_SetSizeHints1 },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxTopLevelWindow_SetSizeHints, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxTopLevelWindow_SetSizeHints },
 };
 static int s_wxluafunc_wxLua_wxTopLevelWindow_SetSizeHints_overload_count = sizeof(s_wxluafunc_wxLua_wxTopLevelWindow_SetSizeHints_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // ((wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 
 #if ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
 // function overload table
@@ -2448,14 +2448,14 @@ static int s_wxluafunc_wxLua_wxTopLevelWindow_SetTransparent_overload_count = si
 
 #endif // ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
 
-#if ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
+#if ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_constructor_overload[] =
 {
 
-#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxTopLevelWindow_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxTopLevelWindow_constructor1 },
-#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)
 
 #if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
     { wxLua_wxTopLevelWindow_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
@@ -2463,7 +2463,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxTopLevelWindow_constructor_overload[] 
 };
 static int s_wxluafunc_wxLua_wxTopLevelWindow_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxTopLevelWindow_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
+#endif // ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
 
 void wxLua_wxTopLevelWindow_delete_function(void** p)
 {
@@ -2500,9 +2500,9 @@ wxLuaBindMethod wxTopLevelWindow_methods[] = {
     { "GetDefaultSize", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxTopLevelWindow_GetDefaultSize, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
     { "GetIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_GetIcon, 1, NULL },
-#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
 
 #if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxIcon)
     { "GetIcons", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_GetIcons, 1, NULL },
@@ -2546,15 +2546,15 @@ wxLuaBindMethod wxTopLevelWindow_methods[] = {
     { "SetDefaultItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetDefaultItem, 1, NULL },
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 
-#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
     { "SetIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetIcon, 1, NULL },
     { "SetIcons", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetIcons, 1, NULL },
-#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxIcon)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
     { "SetMaxSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetMaxSize, 1, NULL },
     { "SetMinSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetMinSize, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
     { "SetRepresentedFilename", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetRepresentedFilename, 1, NULL },
@@ -2564,9 +2564,9 @@ wxLuaBindMethod wxTopLevelWindow_methods[] = {
     { "SetShape", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetShape, 1, NULL },
 #endif // ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxRegion)
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#if ((wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
     { "SetSizeHints", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetSizeHints_overload, s_wxluafunc_wxLua_wxTopLevelWindow_SetSizeHints_overload_count, 0 },
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
+#endif // ((wxLUA_USE_wxFrame || wxLUA_USE_wxDialog) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 
     { "SetTitle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_SetTitle, 1, NULL },
 
@@ -2584,9 +2584,9 @@ wxLuaBindMethod wxTopLevelWindow_methods[] = {
     { "ShowWithoutActivating", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTopLevelWindow_ShowWithoutActivating, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)
 
-#if ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
+#if ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
     { "wxTopLevelWindow", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTopLevelWindow_constructor_overload, s_wxluafunc_wxLua_wxTopLevelWindow_constructor_overload_count, 0 },
-#endif // ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
+#endif // ((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog)) && (wxLUA_USE_wxFrame || wxLUA_USE_wxDialog))
 
     { 0, 0, 0, 0 },
 };
@@ -2625,7 +2625,7 @@ static int LUACALL wxLua_wxFrame_Centre(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_Create[] = { &wxluatype_wxFrame, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_Create[1] = {{ wxLua_wxFrame_Create, WXLUAMETHOD_METHOD, 4, 8, s_wxluatypeArray_wxLua_wxFrame_Create }};
@@ -2658,9 +2658,9 @@ static int LUACALL wxLua_wxFrame_Create(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_CreateStatusBar[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_CreateStatusBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_CreateStatusBar[1] = {{ wxLua_wxFrame_CreateStatusBar, WXLUAMETHOD_METHOD, 1, 5, s_wxluatypeArray_wxLua_wxFrame_CreateStatusBar }};
@@ -2687,9 +2687,9 @@ static int LUACALL wxLua_wxFrame_CreateStatusBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
-#if (wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_CreateToolBar1[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_CreateToolBar1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_CreateToolBar1[1] = {{ wxLua_wxFrame_CreateToolBar1, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFrame_CreateToolBar1 }};
@@ -2714,9 +2714,9 @@ static int LUACALL wxLua_wxFrame_CreateToolBar1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 
-#if (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_CreateToolBar[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_CreateToolBar(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_CreateToolBar[1] = {{ wxLua_wxFrame_CreateToolBar, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFrame_CreateToolBar }};
@@ -2741,7 +2741,7 @@ static int LUACALL wxLua_wxFrame_CreateToolBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_DoGiveHelp[] = { &wxluatype_wxFrame, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
@@ -2764,7 +2764,7 @@ static int LUACALL wxLua_wxFrame_DoGiveHelp(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_GetClientAreaOrigin[] = { &wxluatype_wxFrame, NULL };
 static int LUACALL wxLua_wxFrame_GetClientAreaOrigin(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_GetClientAreaOrigin[1] = {{ wxLua_wxFrame_GetClientAreaOrigin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFrame_GetClientAreaOrigin }};
@@ -2784,9 +2784,9 @@ static int LUACALL wxLua_wxFrame_GetClientAreaOrigin(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_GetMenuBar[] = { &wxluatype_wxFrame, NULL };
 static int LUACALL wxLua_wxFrame_GetMenuBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_GetMenuBar[1] = {{ wxLua_wxFrame_GetMenuBar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFrame_GetMenuBar }};
@@ -2803,9 +2803,9 @@ static int LUACALL wxLua_wxFrame_GetMenuBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_GetStatusBar[] = { &wxluatype_wxFrame, NULL };
 static int LUACALL wxLua_wxFrame_GetStatusBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_GetStatusBar[1] = {{ wxLua_wxFrame_GetStatusBar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFrame_GetStatusBar }};
@@ -2822,7 +2822,7 @@ static int LUACALL wxLua_wxFrame_GetStatusBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_GetStatusBarPane[] = { &wxluatype_wxFrame, NULL };
 static int LUACALL wxLua_wxFrame_GetStatusBarPane(lua_State *L);
@@ -2841,7 +2841,7 @@ static int LUACALL wxLua_wxFrame_GetStatusBarPane(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_GetToolBar[] = { &wxluatype_wxFrame, NULL };
 static int LUACALL wxLua_wxFrame_GetToolBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_GetToolBar[1] = {{ wxLua_wxFrame_GetToolBar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFrame_GetToolBar }};
@@ -2858,9 +2858,9 @@ static int LUACALL wxLua_wxFrame_GetToolBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_OnCreateStatusBar[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_OnCreateStatusBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_OnCreateStatusBar[1] = {{ wxLua_wxFrame_OnCreateStatusBar, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxFrame_OnCreateStatusBar }};
@@ -2885,9 +2885,9 @@ static int LUACALL wxLua_wxFrame_OnCreateStatusBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
-#if (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_OnCreateToolBar[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_OnCreateToolBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_OnCreateToolBar[1] = {{ wxLua_wxFrame_OnCreateToolBar, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxFrame_OnCreateToolBar }};
@@ -2910,7 +2910,7 @@ static int LUACALL wxLua_wxFrame_OnCreateToolBar(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_PopStatusText[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, NULL };
@@ -2992,7 +2992,7 @@ static int LUACALL wxLua_wxFrame_SendSizeEvent(lua_State *L)
 
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 
-#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetMenuBar[] = { &wxluatype_wxFrame, &wxluatype_wxMenuBar, NULL };
 static int LUACALL wxLua_wxFrame_SetMenuBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_SetMenuBar[1] = {{ wxLua_wxFrame_SetMenuBar, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFrame_SetMenuBar }};
@@ -3009,9 +3009,9 @@ static int LUACALL wxLua_wxFrame_SetMenuBar(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetStatusBar[] = { &wxluatype_wxFrame, &wxluatype_wxStatusBar, NULL };
 static int LUACALL wxLua_wxFrame_SetStatusBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_SetStatusBar[1] = {{ wxLua_wxFrame_SetStatusBar, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFrame_SetStatusBar }};
@@ -3028,7 +3028,7 @@ static int LUACALL wxLua_wxFrame_SetStatusBar(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetStatusBarPane[] = { &wxluatype_wxFrame, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFrame_SetStatusBarPane(lua_State *L);
@@ -3083,7 +3083,7 @@ static int LUACALL wxLua_wxFrame_SetStatusWidths(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetToolBar[] = { &wxluatype_wxFrame, &wxluatype_wxToolBar, NULL };
 static int LUACALL wxLua_wxFrame_SetToolBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_SetToolBar[1] = {{ wxLua_wxFrame_SetToolBar, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFrame_SetToolBar }};
@@ -3100,9 +3100,9 @@ static int LUACALL wxLua_wxFrame_SetToolBar(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFrame_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_constructor1[1] = {{ wxLua_wxFrame_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxFrame_constructor1 }};
@@ -3135,7 +3135,7 @@ static int LUACALL wxLua_wxFrame_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 
 static int LUACALL wxLua_wxFrame_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_constructor[1] = {{ wxLua_wxFrame_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -3155,36 +3155,36 @@ static int LUACALL wxLua_wxFrame_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))||((wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))
+#if (((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_CreateToolBar_overload[] =
 {
 
-#if (wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
     { wxLua_wxFrame_CreateToolBar1, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFrame_CreateToolBar1 },
-#endif // (wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 
-#if (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
     { wxLua_wxFrame_CreateToolBar, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFrame_CreateToolBar },
-#endif // (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 };
 static int s_wxluafunc_wxLua_wxFrame_CreateToolBar_overload_count = sizeof(s_wxluafunc_wxLua_wxFrame_CreateToolBar_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))||((wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))
+#endif // (((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame))||(wxLUA_USE_wxFrame)
+#if ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_constructor_overload[] =
 {
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxFrame_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxFrame_constructor1 },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxFrame_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxFrame_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxFrame_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame))||(wxLUA_USE_wxFrame)
+#endif // ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame)
 
 void wxLua_wxFrame_delete_function(void** p)
 {
@@ -3198,47 +3198,47 @@ wxLuaBindMethod wxFrame_methods[] = {
     { "Centre", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_Centre, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_Create, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
     { "CreateStatusBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_CreateStatusBar, 1, NULL },
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
-#if ((wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))||((wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))
+#if (((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))
     { "CreateToolBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_CreateToolBar_overload, s_wxluafunc_wxLua_wxFrame_CreateToolBar_overload_count, 0 },
-#endif // ((wxLUA_USE_wxToolbar) && ((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))||((wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)))
+#endif // (((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar))
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
     { "DoGiveHelp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_DoGiveHelp, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
     { "GetClientAreaOrigin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_GetClientAreaOrigin, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "GetMenuBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_GetMenuBar, 1, NULL },
-#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
     { "GetStatusBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_GetStatusBar, 1, NULL },
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
     { "GetStatusBarPane", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_GetStatusBarPane, 1, NULL },
 
-#if (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
     { "GetToolBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_GetToolBar, 1, NULL },
-#endif // (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
     { "OnCreateStatusBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_OnCreateStatusBar, 1, NULL },
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
-#if (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
     { "OnCreateToolBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_OnCreateToolBar, 1, NULL },
-#endif // (wxLUA_USE_wxToolbar) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)) && (wxLUA_USE_wxToolbar)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
     { "PopStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_PopStatusText, 1, NULL },
@@ -3256,25 +3256,25 @@ wxLuaBindMethod wxFrame_methods[] = {
     { "SendSizeEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SendSizeEvent, 1, NULL },
 #endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFrame)
 
-#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "SetMenuBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetMenuBar, 1, NULL },
-#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
-#if (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
     { "SetStatusBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusBar, 1, NULL },
-#endif // (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
     { "SetStatusBarPane", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusBarPane, 1, NULL },
     { "SetStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusText, 1, NULL },
     { "SetStatusWidths", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusWidths, 1, NULL },
 
-#if (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
     { "SetToolBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetToolBar, 1, NULL },
-#endif // (wxLUA_USE_wxToolbar) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame))||(wxLUA_USE_wxFrame)
+#if ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame)
     { "wxFrame", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFrame_constructor_overload, s_wxluafunc_wxLua_wxFrame_constructor_overload_count, 0 },
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxFrame))||(wxLUA_USE_wxFrame)
+#endif // ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxFrame)
 
     { 0, 0, 0, 0 },
 };
@@ -3292,7 +3292,7 @@ int wxFrame_methodCount = sizeof(wxFrame_methods)/sizeof(wxLuaBindMethod) - 1;
 // Lua MetaTable Tag for Class 'wxMiniFrame'
 int wxluatype_wxMiniFrame = WXLUA_TUNKNOWN;
 
-#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#if ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMiniFrame_Create[] = { &wxluatype_wxMiniFrame, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMiniFrame_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMiniFrame_Create[1] = {{ wxLua_wxMiniFrame_Create, WXLUAMETHOD_METHOD, 4, 8, s_wxluatypeArray_wxLua_wxMiniFrame_Create }};
@@ -3357,7 +3357,7 @@ static int LUACALL wxLua_wxMiniFrame_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#endif // ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect)
 
 static int LUACALL wxLua_wxMiniFrame_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMiniFrame_constructor[1] = {{ wxLua_wxMiniFrame_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -3377,19 +3377,19 @@ static int LUACALL wxLua_wxMiniFrame_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#if (((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMiniFrame_constructor_overload[] =
 {
 
-#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#if ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxMiniFrame_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxMiniFrame_constructor1 },
-#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#endif // ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxMiniFrame_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxMiniFrame_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxMiniFrame_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#endif // (((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
 
 void wxLua_wxMiniFrame_delete_function(void** p)
 {
@@ -3399,13 +3399,13 @@ void wxLua_wxMiniFrame_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMiniFrame_methods[] = {
-#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#if ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect)
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMiniFrame_Create, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#endif // ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect)
 
-#if ((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#if (((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
     { "wxMiniFrame", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMiniFrame_constructor_overload, s_wxluafunc_wxLua_wxMiniFrame_constructor_overload_count, 0 },
-#endif // ((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
+#endif // (((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)) && (wxLUA_USE_wxPointSizeRect))||((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
 
     { 0, 0, 0, 0 },
 };

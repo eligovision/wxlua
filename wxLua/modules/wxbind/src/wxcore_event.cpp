@@ -2044,7 +2044,7 @@ static int LUACALL wxLua_wxMouseEvent_GetLinesPerAction(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxDC)
+#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetLogicalPosition[] = { &wxluatype_wxMouseEvent, &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxMouseEvent_GetLogicalPosition(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_GetLogicalPosition[1] = {{ wxLua_wxMouseEvent_GetLogicalPosition, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseEvent_GetLogicalPosition }};
@@ -2066,7 +2066,7 @@ static int LUACALL wxLua_wxMouseEvent_GetLogicalPosition(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxDC)
+#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
 
 #if wxLUA_USE_wxPointSizeRect
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetPosition[] = { &wxluatype_wxMouseEvent, NULL };
@@ -2491,9 +2491,9 @@ wxLuaBindMethod wxMouseEvent_methods[] = {
     { "Entering", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Entering, 1, NULL },
     { "GetLinesPerAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetLinesPerAction, 1, NULL },
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxDC)
+#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
     { "GetLogicalPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetLogicalPosition, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxDC)
+#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
 
 #if wxLUA_USE_wxPointSizeRect
     { "GetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetPosition, 1, NULL },

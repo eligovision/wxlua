@@ -104,7 +104,7 @@ static int LUACALL wxLua_wxProcess_Exists(lua_State *L)
 }
 
 
-#if (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#if ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProcess_GetErrorStream[] = { &wxluatype_wxProcess, NULL };
 static int LUACALL wxLua_wxProcess_GetErrorStream(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProcess_GetErrorStream[1] = {{ wxLua_wxProcess_GetErrorStream, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProcess_GetErrorStream }};
@@ -153,7 +153,7 @@ static int LUACALL wxLua_wxProcess_GetOutputStream(lua_State *L)
     return 1;
 }
 
-#endif // (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#endif // ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProcess_GetPid[] = { &wxluatype_wxProcess, NULL };
 static int LUACALL wxLua_wxProcess_GetPid(lua_State *L);
@@ -296,7 +296,7 @@ static int LUACALL wxLua_wxProcess_Redirect(lua_State *L)
 }
 
 
-#if (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#if ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProcess_SetPipeStreams[] = { &wxluatype_wxProcess, &wxluatype_wxInputStream, &wxluatype_wxOutputStream, &wxluatype_wxInputStream, NULL };
 static int LUACALL wxLua_wxProcess_SetPipeStreams(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProcess_SetPipeStreams[1] = {{ wxLua_wxProcess_SetPipeStreams, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxProcess_SetPipeStreams }};
@@ -317,7 +317,7 @@ static int LUACALL wxLua_wxProcess_SetPipeStreams(lua_State *L)
     return 0;
 }
 
-#endif // (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#endif // ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProcess_SetPriority[] = { &wxluatype_wxProcess, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxProcess_SetPriority(lua_State *L);
@@ -411,11 +411,11 @@ wxLuaBindMethod wxProcess_methods[] = {
     { "Detach", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_Detach, 1, NULL },
     { "Exists", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxProcess_Exists, 1, NULL },
 
-#if (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#if ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
     { "GetErrorStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_GetErrorStream, 1, NULL },
     { "GetInputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_GetInputStream, 1, NULL },
     { "GetOutputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_GetOutputStream, 1, NULL },
-#endif // (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#endif // ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
 
     { "GetPid", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_GetPid, 1, NULL },
 
@@ -430,9 +430,9 @@ wxLuaBindMethod wxProcess_methods[] = {
     { "Open", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxProcess_Open, 1, NULL },
     { "Redirect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_Redirect, 1, NULL },
 
-#if (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#if ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
     { "SetPipeStreams", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_SetPipeStreams, 1, NULL },
-#endif // (wxUSE_STREAMS) && ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess))
+#endif // ((wxUSE_STREAMS) && (wxLUA_USE_wxProcess)) && (wxUSE_STREAMS)
 
     { "SetPriority", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_SetPriority, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxProcess_delete, 1, NULL },

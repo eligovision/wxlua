@@ -1130,7 +1130,7 @@ static int LUACALL wxLua_wxLog_GetTraceMask(lua_State *L)
 
 #endif // ((defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
-#if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#if (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
 static int LUACALL wxLua_wxLog_GetTraceMasks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLog_GetTraceMasks[1] = {{ wxLua_wxLog_GetTraceMasks, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 //     static wxArrayString GetTraceMasks(); // not const wxArrayString since we copy it anyway
@@ -1147,7 +1147,7 @@ static int LUACALL wxLua_wxLog_GetTraceMasks(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#endif // (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
 static int LUACALL wxLua_wxLog_GetVerbose(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLog_GetVerbose[1] = {{ wxLua_wxLog_GetVerbose, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -1374,9 +1374,9 @@ wxLuaBindMethod wxLog_methods[] = {
     { "GetTraceMask", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetTraceMask, 1, NULL },
 #endif // ((defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
-#if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#if (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
     { "GetTraceMasks", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetTraceMasks, 1, NULL },
-#endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#endif // (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
     { "GetVerbose", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetVerbose, 1, NULL },
     { "IsAllowedTraceMask", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_IsAllowedTraceMask, 1, NULL },

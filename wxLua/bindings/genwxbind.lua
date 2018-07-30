@@ -3218,7 +3218,7 @@ function GenerateLuaLanguageBinding(interface)
 
                 -- build member condition
                 local membercondition = nil
-                for idx, condition in pairs(dependConditions) do
+                for idx, condition in pairs_sort(dependConditions) do
                     membercondition = AddCondition(membercondition, condition)
                 end
                 membercondition = FixCondition(membercondition)
@@ -4308,7 +4308,7 @@ function GenerateLuaLanguageBinding(interface)
 
                 -- build method condition
                 local methodcondition = nil
-                for idx, condition in pairs(dependConditions) do
+                for idx, condition in pairs_sort(dependConditions) do
                     methodcondition = AddCondition(methodcondition, condition)
                 end
 
@@ -4357,10 +4357,10 @@ function GenerateLuaLanguageBinding(interface)
 
         if (parseObject.ObjType == "objtype_class") or (parseObject.ObjType == "objtype_struct") then
             -- Class Includes
-            for condition, includeBindingList in pairs(interface.includeBindingTable) do
+            for condition, includeBindingList in pairs_sort(interface.includeBindingTable) do
                 if not classIncludeBindingTable[condition] then classIncludeBindingTable[condition] = {} end
 
-                for idx, includeBinding in pairs(includeBindingList) do
+                for idx, includeBinding in pairs_sort(includeBindingList) do
                     classIncludeBindingTable[condition][idx] = includeBinding
                 end
             end
@@ -4823,7 +4823,7 @@ function GenerateHookClassFileTable(fileData)
 
     classNames = TableSort(classNames)
 
-    for _, c in pairs(classNames) do
+    for _, c in pairs_sort(classNames) do
         table.insert(fileData, "static const char* wxluaclassname_"..c.." = \""..c.."\";\n")
     end
 
@@ -5387,7 +5387,7 @@ function RemoveExtra_wxLuaBindCFunc(fileData)
 
             cfuncTable[s] = n
         elseif string.find(fileData[n], "s_wxluafunc", 1, 1) then
-            for k, v in pairs(cfuncTable) do
+            for k, v in pairs_sort(cfuncTable) do
                 if string.find(fileData[n], k..",", 1, 1) or string.find(fileData[n], k.." ", 1, 1) then
                     cfuncTable[k] = -1 -- found
                 end
@@ -5395,7 +5395,7 @@ function RemoveExtra_wxLuaBindCFunc(fileData)
         end
     end
 
-    for k, v in pairs(cfuncTable) do
+    for k, v in pairs_sort(cfuncTable) do
         if v > 0 then
             fileData[v] = "// "..fileData[v]
         end
@@ -5534,7 +5534,7 @@ function main()
 
     -- load any cached settings from other wrappers
     if datatype_cache_input_fileTable then
-        for key, filename in pairs(datatype_cache_input_fileTable) do
+        for key, filename in pairs_sort(datatype_cache_input_fileTable) do
             if FileExists(filename) then
                 local cache = loadfile(filename)
                 cache() -- run loaded file

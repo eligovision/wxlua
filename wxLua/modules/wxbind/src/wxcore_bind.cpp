@@ -2423,9 +2423,9 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
         { "wxTAB_TRAVERSAL", wxTAB_TRAVERSAL },
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToolbar)
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxToolbar)
         { "wxTB_3DBUTTONS", wxTB_3DBUTTONS },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToolbar)
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxToolbar)
 
 #if wxLUA_USE_wxToolbar
         { "wxTB_DOCKABLE", wxTB_DOCKABLE },
@@ -3371,7 +3371,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxExecute1[1] = {{ wxLua_functi
 
 #endif // (wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxProcess)
 
-#if (wxLUA_USE_wxProcess) && (!wxCHECK_VERSION(2,6,0))
+#if (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxProcess)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxExecute[] = { &wxluatype_TSTRING, &wxluatype_TBOOLEAN, &wxluatype_wxProcess, NULL };
 // !%wxchkver_2_6 long wxExecute(const wxString& command, bool sync = false, wxProcess *callback = NULL);
 static int LUACALL wxLua_function_wxExecute(lua_State *L)
@@ -3393,7 +3393,7 @@ static int LUACALL wxLua_function_wxExecute(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxExecute[1] = {{ wxLua_function_wxExecute, WXLUAMETHOD_CFUNCTION, 1, 3, s_wxluatypeArray_wxLua_function_wxExecute }};
 
-#endif // (wxLUA_USE_wxProcess) && (!wxCHECK_VERSION(2,6,0))
+#endif // (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxProcess)
 
 #if wxLUA_USE_wxArrayString
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxExecuteStdout[] = { &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_TNUMBER, NULL };
@@ -3685,7 +3685,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetClientDisplayRect[1] = {{ 
 
 #endif // wxLUA_USE_wxPointSizeRect
 
-#if (wxUSE_COLOURDLG && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_COLOURDLG && wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetColourFromUser1[] = { &wxluatype_wxWindow, &wxluatype_wxColour, &wxluatype_TSTRING, NULL };
 // wxUSE_COLOURDLG&&%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit, const wxString& caption = "" );
 static int LUACALL wxLua_function_wxGetColourFromUser1(lua_State *L)
@@ -3710,7 +3710,7 @@ static int LUACALL wxLua_function_wxGetColourFromUser1(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetColourFromUser1[1] = {{ wxLua_function_wxGetColourFromUser1, WXLUAMETHOD_CFUNCTION, 2, 3, s_wxluatypeArray_wxLua_function_wxGetColourFromUser1 }};
 
-#endif // (wxUSE_COLOURDLG && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_COLOURDLG && wxCHECK_VERSION(2,8,0))
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_COLOURDLG && !wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetColourFromUser[] = { &wxluatype_wxWindow, &wxluatype_wxColour, NULL };
@@ -3768,7 +3768,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetDisplaySizeMM[1] = {{ wxLu
 
 #endif // wxLUA_USE_wxPointSizeRect
 
-#if (wxLUA_USE_wxFont) && (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetFontFromUser1[] = { &wxluatype_wxWindow, &wxluatype_wxFont, &wxluatype_TSTRING, NULL };
 // %wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "" );
 static int LUACALL wxLua_function_wxGetFontFromUser1(lua_State *L)
@@ -3793,7 +3793,7 @@ static int LUACALL wxLua_function_wxGetFontFromUser1(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetFontFromUser1[1] = {{ wxLua_function_wxGetFontFromUser1, WXLUAMETHOD_CFUNCTION, 0, 3, s_wxluatypeArray_wxLua_function_wxGetFontFromUser1 }};
 
-#endif // (wxLUA_USE_wxFont) && (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
 
 #if (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetFontFromUser[] = { &wxluatype_wxWindow, &wxluatype_wxFont, NULL };
@@ -4046,7 +4046,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetSelectedChoices[1] = {{ wx
 
 #endif // wxCHECK_VERSION(2,9,3) && wxUSE_CHOICEDLG
 
-#if (wxUSE_CHOICEDLG) && (wxLUA_USE_wxArrayString)
+#if (wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetSingleChoice[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 // wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
 static int LUACALL wxLua_function_wxGetSingleChoice(lua_State *L)
@@ -4113,7 +4113,7 @@ static int LUACALL wxLua_function_wxGetSingleChoiceIndex(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetSingleChoiceIndex[1] = {{ wxLua_function_wxGetSingleChoiceIndex, WXLUAMETHOD_CFUNCTION, 3, 9, s_wxluatypeArray_wxLua_function_wxGetSingleChoiceIndex }};
 
-#endif // (wxUSE_CHOICEDLG) && (wxLUA_USE_wxArrayString)
+#endif // (wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG)
 
 #if wxUSE_TEXTDLG
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTextFromUser[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, NULL };
@@ -4264,7 +4264,7 @@ static int LUACALL wxLua_function_wxLaunchDefaultBrowser(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxLaunchDefaultBrowser[1] = {{ wxLua_function_wxLaunchDefaultBrowser, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxLaunchDefaultBrowser }};
 
 
-#if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxLog && wxUSE_LOG)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLogStatus[] = { &wxluatype_wxFrame, &wxluatype_TSTRING, NULL };
 // void wxLogStatus(wxFrame *frame, const wxString& message );
 static int LUACALL wxLua_function_wxLogStatus(lua_State *L)
@@ -4280,7 +4280,7 @@ static int LUACALL wxLua_function_wxLogStatus(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxLogStatus[1] = {{ wxLua_function_wxLogStatus, WXLUAMETHOD_CFUNCTION, 2, 2, s_wxluatypeArray_wxLua_function_wxLogStatus }};
 
-#endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxMessageBox[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 // int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1 );
@@ -4467,9 +4467,9 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
 
 #if (wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxProcess)
         { "wxExecute", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxExecute1, 1, NULL },
-#elif (wxLUA_USE_wxProcess) && (!wxCHECK_VERSION(2,6,0))
+#elif (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxProcess)
         { "wxExecute", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxExecute, 1, NULL },
-#endif // (wxLUA_USE_wxProcess) && (!wxCHECK_VERSION(2,6,0))
+#endif // (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxProcess)
 #if wxLUA_USE_wxArrayString
         { "wxExecuteStdout", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxExecuteStdout, 1, NULL },
         { "wxExecuteStdoutStderr", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxExecuteStdoutStderr, 1, NULL },
@@ -4514,7 +4514,7 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxGetClientDisplayRect", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetClientDisplayRect, 1, NULL },
 #endif // wxLUA_USE_wxPointSizeRect
 
-#if (wxUSE_COLOURDLG && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_COLOURDLG && wxCHECK_VERSION(2,8,0))
         { "wxGetColourFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetColourFromUser1, 1, NULL },
 #elif (wxLUA_USE_wxColourPenBrush) && (wxUSE_COLOURDLG && !wxCHECK_VERSION(2,8,0))
         { "wxGetColourFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetColourFromUser, 1, NULL },
@@ -4524,7 +4524,7 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxGetDisplaySizeMM", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetDisplaySizeMM, 1, NULL },
 #endif // wxLUA_USE_wxPointSizeRect
 
-#if (wxLUA_USE_wxFont) && (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
         { "wxGetFontFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetFontFromUser1, 1, NULL },
 #elif (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
         { "wxGetFontFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetFontFromUser, 1, NULL },
@@ -4561,10 +4561,10 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxGetSelectedChoices", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetSelectedChoices, 1, NULL },
 #endif // wxCHECK_VERSION(2,9,3) && wxUSE_CHOICEDLG
 
-#if (wxUSE_CHOICEDLG) && (wxLUA_USE_wxArrayString)
+#if (wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG)
         { "wxGetSingleChoice", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetSingleChoice, 1, NULL },
         { "wxGetSingleChoiceIndex", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetSingleChoiceIndex, 1, NULL },
-#endif // (wxUSE_CHOICEDLG) && (wxLUA_USE_wxArrayString)
+#endif // (wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG)
 
 #if wxUSE_TEXTDLG
         { "wxGetTextFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTextFromUser, 1, NULL },
@@ -4585,9 +4585,9 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxLaunchDefaultApplication", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxLaunchDefaultApplication, 1, NULL },
         { "wxLaunchDefaultBrowser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxLaunchDefaultBrowser, 1, NULL },
 
-#if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxFrame)
+#if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxLog && wxUSE_LOG)
         { "wxLogStatus", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxLogStatus, 1, NULL },
-#endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxFrame)
+#endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
         { "wxMessageBox", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxMessageBox, 1, NULL },
         { "wxNewId", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxNewId, 1, NULL },
