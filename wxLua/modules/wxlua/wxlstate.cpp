@@ -2513,10 +2513,11 @@ static const struct luaL_Reg bitlib[] = {
   {NULL, NULL}
 };
 
+#if !defined(LUA_LJDIR)
 int LUACALL luaopen_bit (lua_State *L) {
   wxLuaState::luaL_Register(L, "bit", bitlib);
   lua_pushnumber(L, BIT_BITS);
   lua_setfield(L, -2, "bits");
   return 1;
 }
-
+#endif
