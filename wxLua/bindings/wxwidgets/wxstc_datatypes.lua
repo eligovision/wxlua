@@ -211,6 +211,12 @@ wxstc_dataTypeTable =
     Name = "wxAlignment",
     ValueType = "enum",
   },
+  wxAntialiasMode = {
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = true,
+    Name = "wxAntialiasMode",
+    ValueType = "enum",
+  },
   wxAnyButton = {
     BaseClasses = {
       [1] = "wxControl",
@@ -709,6 +715,12 @@ wxstc_dataTypeTable =
     IsNumber = false,
     Name = "wxCommandProcessor",
     ValueType = "class",
+  },
+  wxCompositionMode = {
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = true,
+    Name = "wxCompositionMode",
+    ValueType = "enum",
   },
   wxConfig = {
     BaseClasses = {
@@ -1697,6 +1709,105 @@ wxstc_dataTypeTable =
     Name = "wxGenericValidator",
     ValueType = "class",
   },
+  wxGraphicsBitmap = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsBitmap",
+    ValueType = "class",
+  },
+  wxGraphicsBrush = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsBrush",
+    ValueType = "class",
+  },
+  wxGraphicsContext = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsContext",
+    ValueType = "class",
+  },
+  wxGraphicsFont = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsFont",
+    ValueType = "class",
+  },
+  wxGraphicsGradientStop = {
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsGradientStop",
+    ValueType = "class",
+  },
+  wxGraphicsGradientStops = {
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsGradientStops",
+    ValueType = "class",
+  },
+  wxGraphicsMatrix = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsMatrix",
+    ValueType = "class",
+  },
+  wxGraphicsObject = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsObject",
+    ValueType = "class",
+  },
+  wxGraphicsPath = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsPath",
+    ValueType = "class",
+  },
+  wxGraphicsPen = {
+    BaseClasses = {
+      [1] = "wxGraphicsObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsPen",
+    ValueType = "class",
+  },
+  wxGraphicsPenInfo = {
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsPenInfo",
+    ValueType = "class",
+  },
+  wxGraphicsRenderer = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGraphicsRenderer",
+    ValueType = "class",
+  },
   wxGridBagSizer = {
     BaseClasses = {
       [1] = "wxFlexGridSizer",
@@ -1959,6 +2070,12 @@ wxstc_dataTypeTable =
     IsNumber = false,
     Name = "wxInternetFSHandler",
     ValueType = "class",
+  },
+  wxInterpolationQuality = {
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = true,
+    Name = "wxInterpolationQuality",
+    ValueType = "enum",
   },
   wxItemContainer = {
     BaseClasses = {
