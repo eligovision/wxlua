@@ -146,6 +146,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #include "wx/ctrlsub.h"
 #include "wx/defs.h"
 #include "wx/event.h"
+#include "wx/graphics.h"
 #include "wx/process.h"
 #include "wx/utils.h"
 #include "wx/wupdlock.h"
@@ -509,6 +510,17 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/cmndata.h"
     #include "wx/fontdlg.h"
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
+
+#if wxUSE_GRAPHICS_CONTEXT
+    #include "wx/affinematrix2d.h"
+    #include "wx/colour.h"
+    #include "wx/dynarray.h"
+    #include "wx/font.h"
+    #include "wx/geometry.h"
+    #include "wx/image.h"
+    #include "wx/peninfobase.h"
+    #include "wx/vector.h"
+#endif // wxUSE_GRAPHICS_CONTEXT
 
 #if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
     #include "wx/infobar.h"
@@ -1234,6 +1246,21 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFontData;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFontDialog;
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
+
+#if wxUSE_GRAPHICS_CONTEXT
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsBitmap;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsBrush;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsContext;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsFont;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsGradientStop;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsGradientStops;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsMatrix;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsObject;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPath;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPen;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPenInfo;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsRenderer;
+#endif // wxUSE_GRAPHICS_CONTEXT
 
 #if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxInfoBar;
