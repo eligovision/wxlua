@@ -1050,6 +1050,7 @@ class wxAuiMDIParentFrame : public wxFrame
 // wxAuiMDIChildFrame
 //-----------------------------------------------------------------------------
 
+// TODO: inherit from wxTDIChildFrame for 3.1.2 and upper
 class wxAuiMDIChildFrame : public wxPanel
 {
     wxAuiMDIChildFrame();
@@ -1061,13 +1062,13 @@ class wxAuiMDIChildFrame : public wxPanel
     virtual wxMenuBar *GetMenuBar() const;
 
     virtual void SetTitle(const wxString& title);
-    virtual wxString GetTitle() const;
+    !%wxchkver_3_1_2 virtual wxString GetTitle() const;
 
     virtual void SetIcons(const wxIconBundle& icons);
     virtual const wxIconBundle& GetIcons() const;
 
     virtual void SetIcon(const wxIcon& icon);
-    virtual const wxIcon& GetIcon() const;
+    !%wxchkver_3_1_2 virtual const wxIcon& GetIcon() const;
 
     virtual void Activate();
     virtual bool Destroy();
@@ -1111,8 +1112,8 @@ class wxAuiMDIChildFrame : public wxPanel
     // This function needs to be called when a size change is confirmed,
     // we needed this function to prevent anybody from the outside
     // changing the panel... it messes the UI layout when we would allow it.
-    void ApplyMDIChildFrameRect();
-    void DoShow(bool show);
+    !%wxchkver_3_1_2 void ApplyMDIChildFrameRect();
+    !%wxchkver_3_1_2 void DoShow(bool show);
 };
 
 //-----------------------------------------------------------------------------

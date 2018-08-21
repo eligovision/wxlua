@@ -34,7 +34,11 @@ class %delete wxHtmlCell : public wxObject
 
     // %override bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
     // C++ Func: bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
-    %not_overload %wxchkver_2_9_4 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
+    %not_overload %wxchkver_2_9_4 & !%wxchkver_3_1_2 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
+
+    // %override bool AdjustPagebreak(int pagebreak, int pageHeight );
+    // C++ Func: bool AdjustPagebreak(int pagebreak, int pageHeight );
+    %not_overload %wxchkver_3_1_2 virtual bool AdjustPagebreak(int pagebreak, int pageHeight); // int* known_pagebreaks, int number_of_pages );
 
     //virtual void Draw(wxDC& dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo& info );
     //virtual void DrawInvisible(wxDC& dc, int x, int y, wxHtmlRenderingInfo& info );
@@ -454,7 +458,7 @@ class %delete wxHtmlDCRenderer : public wxObject
     void SetSize(int width, int height );
     void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true );
     !%wxchkver_2_8 int Render(int x, int y, int from = 0, int dont_render = false); //, int *known_pagebreaks = NULL, int number_of_pages = 0 );
-    %wxchkver_2_8 int Render(int x, int y, wxArrayInt& known_pagebreaks, int from = 0, int dont_render = false, int to = INT_MAX);
+    %wxchkver_2_8 & !%wxchkver_2_8 int Render(int x, int y, wxArrayInt& known_pagebreaks, int from = 0, int dont_render = false, int to = INT_MAX);
     int GetTotalHeight( );
 };
 
