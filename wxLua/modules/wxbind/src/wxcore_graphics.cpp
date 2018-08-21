@@ -218,7 +218,7 @@ static int LUACALL wxLua_wxGraphicsPenInfo_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor[1] = {{ wxLua_wxGraphicsPenInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-// 	wxGraphicsPenInfo();
+//     wxGraphicsPenInfo();
 static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L)
 {
     // call constructor
@@ -1636,6 +1636,9 @@ static int LUACALL wxLua_wxGraphicsGradientStop_SetPosition(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsGradientStop_delete[] = { &wxluatype_wxGraphicsGradientStop, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsGradientStop_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsGradientStop_delete }};
+
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsGradientStop_constructor[] = { &wxluatype_wxColour, &wxluatype_TNUMBER, NULL };
@@ -1652,6 +1655,8 @@ static int LUACALL wxLua_wxGraphicsGradientStop_constructor(lua_State *L)
     wxColour col = (argCount >= 1 ? *(wxColour*)wxluaT_getuserdatatype(L, 1, wxluatype_wxColour) : wxTransparentColour);
     // call constructor
     wxGraphicsGradientStop* returns = new wxGraphicsGradientStop(col, pos);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsGradientStop);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsGradientStop);
 
@@ -1681,6 +1686,7 @@ wxLuaBindMethod wxGraphicsGradientStop_methods[] = {
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
 
     { "SetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsGradientStop_SetPosition, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsGradientStop_delete, 1, NULL },
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
     { "wxGraphicsGradientStop", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGraphicsGradientStop_constructor, 1, NULL },
@@ -1827,6 +1833,13 @@ static int LUACALL wxLua_wxGraphicsGradientStops_SetStartColour(lua_State *L)
     return 0;
 }
 
+#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsGradientStops_delete[] = { &wxluatype_wxGraphicsGradientStops, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsGradientStops_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsGradientStops_delete }};
+
+
+#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsGradientStops_constructor[] = { &wxluatype_wxColour, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxGraphicsGradientStops_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsGradientStops_constructor[1] = {{ wxLua_wxGraphicsGradientStops_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxGraphicsGradientStops_constructor }};
@@ -1841,6 +1854,8 @@ static int LUACALL wxLua_wxGraphicsGradientStops_constructor(lua_State *L)
     wxColour startCol = (argCount >= 1 ? *(wxColour*)wxluaT_getuserdatatype(L, 1, wxluatype_wxColour) : wxTransparentColour);
     // call constructor
     wxGraphicsGradientStops* returns = new wxGraphicsGradientStops(startCol, endCol);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsGradientStops);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsGradientStops);
 
@@ -1884,6 +1899,11 @@ wxLuaBindMethod wxGraphicsGradientStops_methods[] = {
     { "GetStartColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsGradientStops_GetStartColour, 1, NULL },
     { "SetEndColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsGradientStops_SetEndColour, 1, NULL },
     { "SetStartColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsGradientStops_SetStartColour, 1, NULL },
+#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsGradientStops_delete, 1, NULL },
+
+#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
     { "wxGraphicsGradientStops", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGraphicsGradientStops_constructor, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
 
@@ -2001,11 +2021,12 @@ static int LUACALL wxLua_wxGraphicsContext_ConcatTransform(lua_State *L)
 
 static int LUACALL wxLua_wxGraphicsContext_Create5(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_Create5[1] = {{ wxLua_wxGraphicsContext_Create5, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxGraphicsContext * Create();
+//     static %gc wxGraphicsContext* Create();
 static int LUACALL wxLua_wxGraphicsContext_Create5(lua_State *L)
 {
     // call Create
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::Create();
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2017,13 +2038,14 @@ static int LUACALL wxLua_wxGraphicsContext_Create5(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Create4[] = { &wxluatype_wxImage, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Create4(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_Create4[1] = {{ wxLua_wxGraphicsContext_Create4, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_Create4 }};
-//     static wxGraphicsContext* Create(wxImage& image);
+//     static %gc wxGraphicsContext* Create(wxImage& image);
 static int LUACALL wxLua_wxGraphicsContext_Create4(lua_State *L)
 {
     // wxImage image
     wxImage * image = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::Create(*image);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2035,13 +2057,14 @@ static int LUACALL wxLua_wxGraphicsContext_Create4(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Create3[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Create3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_Create3[1] = {{ wxLua_wxGraphicsContext_Create3, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_Create3 }};
-//     static wxGraphicsContext* Create( wxWindow* window );
+//     static %gc wxGraphicsContext* Create( wxWindow* window );
 static int LUACALL wxLua_wxGraphicsContext_Create3(lua_State *L)
 {
     // wxWindow window
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call Create
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::Create(window);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2053,13 +2076,14 @@ static int LUACALL wxLua_wxGraphicsContext_Create3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Create2[] = { &wxluatype_wxPrinterDC, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Create2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_Create2[1] = {{ wxLua_wxGraphicsContext_Create2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_Create2 }};
-//     static wxGraphicsContext* Create( const wxPrinterDC& dc);
+//     static %gc wxGraphicsContext* Create( const wxPrinterDC& dc);
 static int LUACALL wxLua_wxGraphicsContext_Create2(lua_State *L)
 {
     // const wxPrinterDC dc
     const wxPrinterDC * dc = (const wxPrinterDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrinterDC);
     // call Create
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::Create(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2072,13 +2096,14 @@ static int LUACALL wxLua_wxGraphicsContext_Create2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Create1[] = { &wxluatype_wxMemoryDC, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Create1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_Create1[1] = {{ wxLua_wxGraphicsContext_Create1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_Create1 }};
-//     static wxGraphicsContext* Create( const wxMemoryDC& dc);
+//     static %gc wxGraphicsContext* Create( const wxMemoryDC& dc);
 static int LUACALL wxLua_wxGraphicsContext_Create1(lua_State *L)
 {
     // const wxMemoryDC dc
     const wxMemoryDC * dc = (const wxMemoryDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryDC);
     // call Create
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::Create(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2088,13 +2113,14 @@ static int LUACALL wxLua_wxGraphicsContext_Create1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Create[] = { &wxluatype_wxWindowDC, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Create(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_Create[1] = {{ wxLua_wxGraphicsContext_Create, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_Create }};
-//     static wxGraphicsContext* Create( const wxWindowDC& dc);
+//     static %gc wxGraphicsContext* Create( const wxWindowDC& dc);
 static int LUACALL wxLua_wxGraphicsContext_Create(lua_State *L)
 {
     // const wxWindowDC dc
     const wxWindowDC * dc = (const wxWindowDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindowDC);
     // call Create
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::Create(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2256,13 +2282,14 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromNative[] = { &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateFromNative(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateFromNative[1] = {{ wxLua_wxGraphicsContext_CreateFromNative, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromNative }};
-//     static wxGraphicsContext* CreateFromNative( void * context );
+//     static %gc wxGraphicsContext* CreateFromNative( void * context );
 static int LUACALL wxLua_wxGraphicsContext_CreateFromNative(lua_State *L)
 {
     // void context
     void * context = (void *)wxlua_touserdata(L, 1);
     // call CreateFromNative
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::CreateFromNative(context);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2272,13 +2299,14 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFromNative(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromNativeWindow[] = { &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateFromNativeWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateFromNativeWindow[1] = {{ wxLua_wxGraphicsContext_CreateFromNativeWindow, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromNativeWindow }};
-//     static wxGraphicsContext* CreateFromNativeWindow( void * window );
+//     static %gc wxGraphicsContext* CreateFromNativeWindow( void * window );
 static int LUACALL wxLua_wxGraphicsContext_CreateFromNativeWindow(lua_State *L)
 {
     // void window
     void * window = (void *)wxlua_touserdata(L, 1);
     // call CreateFromNativeWindow
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::CreateFromNativeWindow(window);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -2290,13 +2318,14 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFromNativeWindow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromUnknownDC[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateFromUnknownDC[1] = {{ wxLua_wxGraphicsContext_CreateFromUnknownDC, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromUnknownDC }};
-//     static wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
+//     static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
 static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L)
 {
     // const wxDC dc
     const wxDC * dc = (const wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call CreateFromUnknownDC
     wxGraphicsContext* returns = (wxGraphicsContext*)wxGraphicsContext::CreateFromUnknownDC(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -3105,7 +3134,7 @@ static int LUACALL wxLua_wxGraphicsContext_GetSize(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent[1] = {{ wxLua_wxGraphicsContext_GetTextExtent, WXLUAMETHOD_METHOD, 4, 6, s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent }};
-// 	                            wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
+//                                 wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
 static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L)
 {
     // get number of arguments
@@ -4043,7 +4072,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateBrush(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContext2[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_wxPrinterDC, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContext2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreateContext2[1] = {{ wxLua_wxGraphicsRenderer_CreateContext2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContext2 }};
-//     virtual wxGraphicsContext * CreateContext( const wxPrinterDC& dc);// = 0;
+//     virtual %gc wxGraphicsContext* CreateContext( const wxPrinterDC& dc);// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContext2(lua_State *L)
 {
     // const wxPrinterDC dc
@@ -4052,6 +4081,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContext2(lua_State *L)
     wxGraphicsRenderer * self = (wxGraphicsRenderer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsRenderer);
     // call CreateContext
     wxGraphicsContext* returns = (wxGraphicsContext*)self->CreateContext(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -4064,7 +4094,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContext2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContext1[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_wxMemoryDC, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContext1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreateContext1[1] = {{ wxLua_wxGraphicsRenderer_CreateContext1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContext1 }};
-//     virtual wxGraphicsContext * CreateContext( const wxMemoryDC& dc);// = 0;
+//     virtual %gc wxGraphicsContext* CreateContext( const wxMemoryDC& dc);// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContext1(lua_State *L)
 {
     // const wxMemoryDC dc
@@ -4073,6 +4103,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContext1(lua_State *L)
     wxGraphicsRenderer * self = (wxGraphicsRenderer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsRenderer);
     // call CreateContext
     wxGraphicsContext* returns = (wxGraphicsContext*)self->CreateContext(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -4082,7 +4113,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContext1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContext[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_wxWindowDC, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContext(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreateContext[1] = {{ wxLua_wxGraphicsRenderer_CreateContext, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContext }};
-//     virtual wxGraphicsContext * CreateContext( const wxWindowDC& dc);// = 0;
+//     virtual %gc wxGraphicsContext* CreateContext( const wxWindowDC& dc);// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContext(lua_State *L)
 {
     // const wxWindowDC dc
@@ -4091,6 +4122,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContext(lua_State *L)
     wxGraphicsRenderer * self = (wxGraphicsRenderer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsRenderer);
     // call CreateContext
     wxGraphicsContext* returns = (wxGraphicsContext*)self->CreateContext(*dc);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -4103,7 +4135,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContextFromImage[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_wxImage, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContextFromImage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreateContextFromImage[1] = {{ wxLua_wxGraphicsRenderer_CreateContextFromImage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateContextFromImage }};
-//     virtual wxGraphicsContext * CreateContextFromImage(wxImage& image);// = 0;
+//     virtual %gc wxGraphicsContext* CreateContextFromImage(wxImage& image);// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreateContextFromImage(lua_State *L)
 {
     // wxImage image
@@ -4112,6 +4144,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateContextFromImage(lua_State *L)
     wxGraphicsRenderer * self = (wxGraphicsRenderer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsRenderer);
     // call CreateContextFromImage
     wxGraphicsContext* returns = (wxGraphicsContext*)self->CreateContextFromImage(*image);
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 
@@ -4206,13 +4239,14 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreateMatrix(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateMeasuringContext[] = { &wxluatype_wxGraphicsRenderer, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateMeasuringContext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreateMeasuringContext[1] = {{ wxLua_wxGraphicsRenderer_CreateMeasuringContext, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateMeasuringContext }};
-//     virtual wxGraphicsContext * CreateMeasuringContext();// = 0;
+//     virtual %gc wxGraphicsContext* CreateMeasuringContext();// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreateMeasuringContext(lua_State *L)
 {
     // get this
     wxGraphicsRenderer * self = (wxGraphicsRenderer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsRenderer);
     // call CreateMeasuringContext
     wxGraphicsContext* returns = (wxGraphicsContext*)self->CreateMeasuringContext();
+    if (!wxluaO_isgcobject(L, returns)) wxluaO_addgcobject(L, returns, wxluatype_wxGraphicsContext);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsContext);
 

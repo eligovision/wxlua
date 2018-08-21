@@ -7,7 +7,7 @@
 // wxWidgets:   Updated to 3.1.1
 // ===========================================================================
 
-// TODO && FIXME: Check for %delete and versions
+// TODO && FIXME: Check for %delete, %gc, %ungc and versions
 
 #include "wx/graphics.h"
 
@@ -33,7 +33,7 @@ enum wxInterpolationQuality
     // default interpolation
     wxINTERPOLATION_DEFAULT,
     // no interpolation
-    wxINTERPOLATION_NONE, 
+    wxINTERPOLATION_NONE,
     // fast interpolation, suited for interactivity
     wxINTERPOLATION_FAST,
     // better quality
@@ -87,7 +87,7 @@ class %delete wxGraphicsObject : public wxObject
 
 class %delete wxGraphicsPenInfo// : public wxPenInfoBase<wxGraphicsPenInfo>
 {
-	wxGraphicsPenInfo();
+    wxGraphicsPenInfo();
     wxGraphicsPenInfo(const wxColour& colour,// = wxColour(),
                       wxDouble width = 1.0,
                       wxPenStyle style = wxPENSTYLE_SOLID);
@@ -132,7 +132,7 @@ class %delete wxGraphicsBitmap : public wxGraphicsObject
 #if wxUSE_IMAGE
     wxImage ConvertToImage() const;
 #endif // wxUSE_IMAGE
-    
+
     void* GetNativeBitmap() const;
 
 //    const wxGraphicsBitmapData* GetBitmapData() const;
@@ -280,7 +280,7 @@ class %delete wxGraphicsPath : public wxGraphicsObject
 
 
 // Describes a single gradient stop.
-class wxGraphicsGradientStop
+class %delete wxGraphicsGradientStop
 {
     wxGraphicsGradientStop(wxColour col = wxTransparentColour, float pos = 0.0);
 
@@ -297,7 +297,7 @@ class wxGraphicsGradientStop
 // highest). The first stop (index 0, position 0.0) is always the starting
 // colour and the last one (index GetCount() - 1, position 1.0) is the end
 // colour.
-class wxGraphicsGradientStops
+class %delete wxGraphicsGradientStops
 {
     wxGraphicsGradientStops(wxColour startCol = wxTransparentColour,
                             wxColour endCol = wxTransparentColour);
@@ -324,27 +324,27 @@ class wxGraphicsGradientStops
 
 class %delete wxGraphicsContext : public wxGraphicsObject
 {
-    static wxGraphicsContext* Create( const wxWindowDC& dc);
-    static wxGraphicsContext* Create( const wxMemoryDC& dc);
+    static %gc wxGraphicsContext* Create( const wxWindowDC& dc);
+    static %gc wxGraphicsContext* Create( const wxMemoryDC& dc);
 #if wxUSE_PRINTING_ARCHITECTURE
-    static wxGraphicsContext* Create( const wxPrinterDC& dc);
+    static %gc wxGraphicsContext* Create( const wxPrinterDC& dc);
 #endif
 
     // Create a context from a DC of unknown type, if supported, returns NULL otherwise
-    static wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
-    static wxGraphicsContext* CreateFromNative( void * context );
-    static wxGraphicsContext* CreateFromNativeWindow( void * window );
-    static wxGraphicsContext* Create( wxWindow* window );
+    static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
+    static %gc wxGraphicsContext* CreateFromNative( void * context );
+    static %gc wxGraphicsContext* CreateFromNativeWindow( void * window );
+    static %gc wxGraphicsContext* Create( wxWindow* window );
 
 #if wxUSE_IMAGE
     // Create a context for drawing onto a wxImage. The image life time must be
     // greater than that of the context itself as when the context is destroyed
     // it will copy its contents to the specified image.
-    static wxGraphicsContext* Create(wxImage& image);
+    static %gc wxGraphicsContext* Create(wxImage& image);
 #endif // wxUSE_IMAGE
 
     // create a context that can be used for measuring texts only, no drawing allowed
-    static wxGraphicsContext * Create();
+    static %gc wxGraphicsContext* Create();
 
     // begin a new document (relevant only for printing / pdf etc) if there is a progress dialog, message will be shown
     virtual bool StartDoc( const wxString& message );
@@ -409,7 +409,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
 
     // create a 'native' matrix corresponding to these values
     virtual wxGraphicsMatrix CreateMatrix( wxDouble a=1.0, wxDouble b=0.0,
-	                                       wxDouble c=0.0, wxDouble d=1.0,
+                                           wxDouble c=0.0, wxDouble d=1.0,
                                            wxDouble tx=0.0, wxDouble ty=0.0) const;
 
 //    wxGraphicsMatrix CreateMatrix( const wxAffineMatrix2DBase& mat ) const;
@@ -443,10 +443,10 @@ class %delete wxGraphicsContext : public wxGraphicsObject
 
     // returns the current interpolation quality
     virtual wxInterpolationQuality GetInterpolationQuality() const;
-    
+
     // sets the interpolation quality, returns true if it supported
     virtual bool SetInterpolationQuality(wxInterpolationQuality interpolation);// = 0;
-    
+
     // returns the current compositing operator
     virtual wxCompositionMode GetCompositionMode() const;
 
@@ -543,7 +543,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
 
 
     virtual void GetTextExtent( const wxString &text, wxDouble *width, wxDouble *height,
-	                            wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
+                                wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
 
 //    virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
 
@@ -586,11 +586,11 @@ class %delete wxGraphicsContext : public wxGraphicsObject
 
     // helper to determine if a 0.5 offset should be applied for the drawing operation
     virtual bool ShouldOffset() const;
-    
-    // indicates whether the context should try to offset for pixel boundaries, this only makes sense on 
+
+    // indicates whether the context should try to offset for pixel boundaries, this only makes sense on
     // bitmap devices like screen, by default this is turned off
     virtual void EnableOffset(bool enable = true);
-    
+
     void DisableOffset();
     bool OffsetEnabled();
 };
@@ -621,10 +621,10 @@ class %delete wxGraphicsRenderer : public wxObject
 
     // Context
 
-    virtual wxGraphicsContext * CreateContext( const wxWindowDC& dc);// = 0;
-    virtual wxGraphicsContext * CreateContext( const wxMemoryDC& dc);// = 0;
+    virtual %gc wxGraphicsContext* CreateContext( const wxWindowDC& dc);// = 0;
+    virtual %gc wxGraphicsContext* CreateContext( const wxMemoryDC& dc);// = 0;
 #if wxUSE_PRINTING_ARCHITECTURE
-    virtual wxGraphicsContext * CreateContext( const wxPrinterDC& dc);// = 0;
+    virtual %gc wxGraphicsContext* CreateContext( const wxPrinterDC& dc);// = 0;
 #endif
 //#ifdef __WXMSW__
 //#if wxUSE_ENH_METAFILE
@@ -643,11 +643,11 @@ class %delete wxGraphicsRenderer : public wxObject
 //    virtual wxGraphicsContext * CreateContext( wxWindow* window );// = 0;
 //
 #if wxUSE_IMAGE
-    virtual wxGraphicsContext * CreateContextFromImage(wxImage& image);// = 0;
+    virtual %gc wxGraphicsContext* CreateContextFromImage(wxImage& image);// = 0;
 #endif // wxUSE_IMAGE
 
     // create a context that can be used for measuring texts only, no drawing allowed
-    virtual wxGraphicsContext * CreateMeasuringContext();// = 0;
+    virtual %gc wxGraphicsContext* CreateMeasuringContext();// = 0;
 
     // Path
 
