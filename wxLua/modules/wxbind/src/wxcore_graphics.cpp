@@ -4495,3 +4495,155 @@ int wxGraphicsRenderer_methodCount = sizeof(wxGraphicsRenderer_methods)/sizeof(w
 
 #endif  // wxUSE_GRAPHICS_CONTEXT
 
+
+#if wxUSE_GRAPHICS_CONTEXT
+// ---------------------------------------------------------------------------
+// Bind class wxGCDC
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxGCDC'
+int wxluatype_wxGCDC = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGCDC_delete[] = { &wxluatype_wxGCDC, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_delete }};
+
+static int LUACALL wxLua_wxGCDC_constructor4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor4[1] = {{ wxLua_wxGCDC_constructor4, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxGCDC();
+static int LUACALL wxLua_wxGCDC_constructor4(lua_State *L)
+{
+    // call constructor
+    wxGCDC* returns = new wxGCDC();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGCDC);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGCDC);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGCDC_constructor3[] = { &wxluatype_wxGraphicsContext, NULL };
+static int LUACALL wxLua_wxGCDC_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor3[1] = {{ wxLua_wxGCDC_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor3 }};
+//     wxGCDC(wxGraphicsContext* context);    
+static int LUACALL wxLua_wxGCDC_constructor3(lua_State *L)
+{
+    // wxGraphicsContext context
+    wxGraphicsContext * context = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call constructor
+    wxGCDC* returns = new wxGCDC(context);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGCDC);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGCDC);
+
+    return 1;
+}
+
+
+#if (((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGCDC_constructor2[] = { &wxluatype_wxPrinterDC, NULL };
+static int LUACALL wxLua_wxGCDC_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor2[1] = {{ wxLua_wxGCDC_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor2 }};
+//     wxGCDC( const wxPrinterDC& dc );
+static int LUACALL wxLua_wxGCDC_constructor2(lua_State *L)
+{
+    // const wxPrinterDC dc
+    const wxPrinterDC * dc = (const wxPrinterDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrinterDC);
+    // call constructor
+    wxGCDC* returns = new wxGCDC(*dc);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGCDC);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGCDC);
+
+    return 1;
+}
+
+#endif // (((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGCDC_constructor1[] = { &wxluatype_wxMemoryDC, NULL };
+static int LUACALL wxLua_wxGCDC_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor1[1] = {{ wxLua_wxGCDC_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor1 }};
+//     wxGCDC( const wxMemoryDC& dc );
+static int LUACALL wxLua_wxGCDC_constructor1(lua_State *L)
+{
+    // const wxMemoryDC dc
+    const wxMemoryDC * dc = (const wxMemoryDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryDC);
+    // call constructor
+    wxGCDC* returns = new wxGCDC(*dc);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGCDC);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGCDC);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGCDC_constructor[] = { &wxluatype_wxWindowDC, NULL };
+static int LUACALL wxLua_wxGCDC_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor[1] = {{ wxLua_wxGCDC_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor }};
+//     wxGCDC( const wxWindowDC& dc );
+static int LUACALL wxLua_wxGCDC_constructor(lua_State *L)
+{
+    // const wxWindowDC dc
+    const wxWindowDC * dc = (const wxWindowDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindowDC);
+    // call constructor
+    wxGCDC* returns = new wxGCDC(*dc);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxGCDC);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGCDC);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+
+
+
+#if (wxUSE_GRAPHICS_CONTEXT)||((((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor_overload[] =
+{
+    { wxLua_wxGCDC_constructor4, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+    { wxLua_wxGCDC_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor3 },
+
+#if (((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGCDC_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor2 },
+#endif // (((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGCDC_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor1 },
+#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGCDC_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor },
+#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+};
+static int s_wxluafunc_wxLua_wxGCDC_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxGCDC_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxUSE_GRAPHICS_CONTEXT)||((((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT))
+
+void wxLua_wxGCDC_delete_function(void** p)
+{
+    wxGCDC* o = (wxGCDC*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxGCDC_methods[] = {
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGCDC_delete, 1, NULL },
+
+#if (wxUSE_GRAPHICS_CONTEXT)||((((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT))
+    { "wxGCDC", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGCDC_constructor_overload, s_wxluafunc_wxLua_wxGCDC_constructor_overload_count, 0 },
+#endif // (wxUSE_GRAPHICS_CONTEXT)||((((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))) && ((wxUSE_GRAPHICS_CONTEXT) && (wxUSE_PRINTING_ARCHITECTURE))) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxGCDC_methodCount = sizeof(wxGCDC_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_GRAPHICS_CONTEXT
+

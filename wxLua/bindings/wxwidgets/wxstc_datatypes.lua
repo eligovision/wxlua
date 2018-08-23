@@ -1665,6 +1665,15 @@ wxstc_dataTypeTable =
     Name = "wxGBSpan",
     ValueType = "class",
   },
+  wxGCDC = {
+    BaseClasses = {
+      [1] = "wxDC",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGCDC",
+    ValueType = "class",
+  },
   wxGDIObject = {
     BaseClasses = {
       [1] = "wxObject",

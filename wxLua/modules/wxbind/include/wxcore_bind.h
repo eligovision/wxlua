@@ -144,6 +144,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 
 #include "wx/control.h"
 #include "wx/ctrlsub.h"
+#include "wx/dcgraph.h"
 #include "wx/defs.h"
 #include "wx/event.h"
 #include "wx/graphics.h"
@@ -1258,6 +1259,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
 
 #if wxUSE_GRAPHICS_CONTEXT
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGCDC;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsBitmap;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsBrush;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsContext;

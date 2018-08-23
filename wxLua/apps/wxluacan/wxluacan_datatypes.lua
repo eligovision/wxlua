@@ -608,9 +608,10 @@ wxluacan_dataTypeTable =
   },
   wxAutoBufferedPaintDC = {
     BaseClasses = {
-      [1] = "wxDC",
+      [1] = "wxPaintDC",
+      [2] = "wxBufferedPaintDC",
     },
-    Condition = "(wxLUA_USE_wxDC) && (wxCHECK_VERSION(2,8,0))",
+    Condition = "(wxLUA_USE_wxDC) && (wxCHECK_VERSION(2,8,0)) && (!wxALWAYS_NATIVE_DOUBLE_BUFFER)",
     IsNumber = false,
     Name = "wxAutoBufferedPaintDC",
     ValueType = "class",
@@ -2062,6 +2063,15 @@ wxluacan_dataTypeTable =
     Condition = "(wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))",
     IsNumber = false,
     Name = "wxGBSpan",
+    ValueType = "class",
+  },
+  wxGCDC = {
+    BaseClasses = {
+      [1] = "wxDC",
+    },
+    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    IsNumber = false,
+    Name = "wxGCDC",
     ValueType = "class",
   },
   wxGDIObject = {

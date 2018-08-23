@@ -4759,6 +4759,7 @@ static const char* wxluaclassname_wxFrame = "wxFrame";
 static const char* wxluaclassname_wxGBPosition = "wxGBPosition";
 static const char* wxluaclassname_wxGBSizerItem = "wxGBSizerItem";
 static const char* wxluaclassname_wxGBSpan = "wxGBSpan";
+static const char* wxluaclassname_wxGCDC = "wxGCDC";
 static const char* wxluaclassname_wxGDIObject = "wxGDIObject";
 static const char* wxluaclassname_wxGIFHandler = "wxGIFHandler";
 static const char* wxluaclassname_wxGauge = "wxGauge";
@@ -5163,6 +5164,8 @@ static const char* wxluabaseclassnames_wxFrame[] = { wxluaclassname_wxTopLevelWi
 static wxLuaBindClass* wxluabaseclassbinds_wxFrame[] = { NULL };
 static const char* wxluabaseclassnames_wxGBSizerItem[] = { wxluaclassname_wxSizerItem, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxGBSizerItem[] = { NULL };
+static const char* wxluabaseclassnames_wxGCDC[] = { wxluaclassname_wxDC, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxGCDC[] = { NULL };
 static const char* wxluabaseclassnames_wxGDIObject[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxGDIObject[] = { NULL };
 static const char* wxluabaseclassnames_wxGIFHandler[] = { wxluaclassname_wxImageHandler, NULL };
@@ -6902,6 +6905,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
 
 #if wxUSE_GRAPHICS_CONTEXT
+    extern wxLuaBindMethod wxGCDC_methods[];
+    extern int wxGCDC_methodCount;
+    extern void wxLua_wxGCDC_delete_function(void** p);
     extern wxLuaBindMethod wxGraphicsBitmap_methods[];
     extern int wxGraphicsBitmap_methodCount;
     extern void wxLua_wxGraphicsBitmap_delete_function(void** p);
@@ -7299,6 +7305,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxGBSizerItem, wxGBSizerItem_methods, wxGBSizerItem_methodCount, CLASSINFO(wxGBSizerItem), &wxluatype_wxGBSizerItem, wxluabaseclassnames_wxGBSizerItem, wxluabaseclassbinds_wxGBSizerItem, NULL, NULL, NULL, 0, &wxLua_wxGBSizerItem_delete_function, },
         { wxluaclassname_wxGBSpan, wxGBSpan_methods, wxGBSpan_methodCount, NULL, &wxluatype_wxGBSpan, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxGBSpan_delete_function, },
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+
+#if wxUSE_GRAPHICS_CONTEXT
+        { wxluaclassname_wxGCDC, wxGCDC_methods, wxGCDC_methodCount, CLASSINFO(wxGCDC), &wxluatype_wxGCDC, wxluabaseclassnames_wxGCDC, wxluabaseclassbinds_wxGCDC, NULL, NULL, NULL, 0, &wxLua_wxGCDC_delete_function, },
+#endif // wxUSE_GRAPHICS_CONTEXT
 
         { wxluaclassname_wxGDIObject, wxGDIObject_methods, wxGDIObject_methodCount, CLASSINFO(wxGDIObject), &wxluatype_wxGDIObject, wxluabaseclassnames_wxGDIObject, wxluabaseclassbinds_wxGDIObject, NULL, NULL, NULL, 0, &wxLua_wxGDIObject_delete_function, },
 
