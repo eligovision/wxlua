@@ -3997,6 +3997,23 @@ wxadv_dataTypeTable =
     Name = "wxSpinCtrl",
     ValueType = "class",
   },
+  wxSpinCtrlDouble = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL",
+    IsNumber = false,
+    Name = "wxSpinCtrlDouble",
+    ValueType = "class",
+  },
+  wxSpinDoubleEvent = {
+    BaseClasses = {
+      [1] = "wxNotifyEvent",
+    },
+    IsNumber = false,
+    Name = "wxSpinDoubleEvent",
+    ValueType = "class",
+  },
   wxSpinEvent = {
     BaseClasses = {
       [1] = "wxNotifyEvent",

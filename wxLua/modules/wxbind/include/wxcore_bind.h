@@ -148,6 +148,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #include "wx/event.h"
 #include "wx/graphics.h"
 #include "wx/process.h"
+#include "wx/spinctrl.h"
 #include "wx/utils.h"
 #include "wx/wupdlock.h"
 
@@ -443,6 +444,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
     #include "wx/spinctrl.h"
 #endif // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
+
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+    #include "wx/spinctrl.h"
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
 
 #if wxLUA_USE_wxSplitterWindow
     #include "wx/splitter.h"
@@ -771,6 +776,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxScrollWinEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSetCursorEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxShowEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizeEvent;
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinDoubleEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSysColourChangedEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxUpdateUIEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxVisualAttributes;
@@ -1154,6 +1160,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinCtrl;
 #endif // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
+
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinCtrlDouble;
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
 
 #if wxLUA_USE_wxSplitterWindow
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSplitterEvent;
