@@ -9,6 +9,7 @@
 
 // TODO && FIXME: Check for %delete, %gc, %ungc and versions
 
+#include "wx/dcgraph.h"
 #include "wx/graphics.h"
 
 #if wxUSE_GRAPHICS_CONTEXT
@@ -698,6 +699,27 @@ class %delete wxGraphicsRenderer : public wxObject
 
     virtual wxString GetName() const;// = 0;
     virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
+};
+
+class %delete wxGCDC: public wxDC
+{
+    wxGCDC( const wxWindowDC& dc );
+    wxGCDC( const wxMemoryDC& dc );
+#if wxUSE_PRINTING_ARCHITECTURE
+    wxGCDC( const wxPrinterDC& dc );
+#endif
+//#if defined(__WXMSW__) && wxUSE_ENH_METAFILE
+//    wxGCDC( const wxEnhMetaFileDC& dc );
+//#endif
+    wxGCDC(wxGraphicsContext* context);
+    wxGCDC();
+
+//#ifdef __WXMSW__
+//    // override wxDC virtual functions to provide access to HDC associated with
+//    // this Graphics object (implemented in src/msw/graphics.cpp)
+//    virtual WXHDC AcquireHDC() wxOVERRIDE;
+//    virtual void ReleaseHDC(WXHDC hdc) wxOVERRIDE;
+//#endif // __WXMSW__
 };
 
 #endif // wxUSE_GRAPHICS_CONTEXT
