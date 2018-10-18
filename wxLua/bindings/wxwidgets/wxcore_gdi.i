@@ -1194,8 +1194,8 @@ class %delete wxMask : public wxObject
     wxMask(const wxBitmap& bitmap);
     wxMask(const wxBitmap& bitmap, const wxColour& colour);
     %win bool Create(const wxBitmap& bitmap, int index);
-    bool Create(const wxBitmap& bitmap);
-    bool Create(const wxBitmap& bitmap, const wxColour& colour);
+//  bool Create(const wxBitmap& bitmap);
+//  bool Create(const wxBitmap& bitmap, const wxColour& colour);
     %wxchkver_3_1_1 wxBitmap GetBitmap() const;
     !%wxchkver_3_1_1 wxMask& operator=(const wxMask& m) const;
 };

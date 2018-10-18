@@ -11270,54 +11270,10 @@ int wxCursor_methodCount = sizeof(wxCursor_methods)/sizeof(wxLuaBindMethod) - 1;
 // Lua MetaTable Tag for Class 'wxMask'
 int wxluatype_wxMask = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMask_Create2[] = { &wxluatype_wxMask, &wxluatype_wxBitmap, &wxluatype_wxColour, NULL };
-static int LUACALL wxLua_wxMask_Create2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMask_Create2[1] = {{ wxLua_wxMask_Create2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMask_Create2 }};
-//     bool Create(const wxBitmap& bitmap, const wxColour& colour);
-static int LUACALL wxLua_wxMask_Create2(lua_State *L)
-{
-    // const wxColour colour
-    const wxColour * colour = (const wxColour *)wxluaT_getuserdatatype(L, 3, wxluatype_wxColour);
-    // const wxBitmap bitmap
-    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
-    // get this
-    wxMask * self = (wxMask *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMask);
-    // call Create
-    bool returns = (self->Create(*bitmap, *colour));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask)
-
-#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMask_Create1[] = { &wxluatype_wxMask, &wxluatype_wxBitmap, NULL };
-static int LUACALL wxLua_wxMask_Create1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMask_Create1[1] = {{ wxLua_wxMask_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMask_Create1 }};
-//     bool Create(const wxBitmap& bitmap);
-static int LUACALL wxLua_wxMask_Create1(lua_State *L)
-{
-    // const wxBitmap bitmap
-    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
-    // get this
-    wxMask * self = (wxMask *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMask);
-    // call Create
-    bool returns = (self->Create(*bitmap));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask)
-
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMask_Create[] = { &wxluatype_wxMask, &wxluatype_wxBitmap, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxMask_Create(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMask_Create[1] = {{ wxLua_wxMask_Create, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMask_Create }};
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMask_Create[1] = {{ wxLua_wxMask_Create, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMask_Create }};
 //     %win bool Create(const wxBitmap& bitmap, int index);
 static int LUACALL wxLua_wxMask_Create(lua_State *L)
 {
@@ -11470,27 +11426,6 @@ static int LUACALL wxLua_wxMask_constructor(lua_State *L)
 
 
 
-#if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask))||(((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap))
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMask_Create_overload[] =
-{
-
-#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask)
-    { wxLua_wxMask_Create2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMask_Create2 },
-#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask)
-
-#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask)
-    { wxLua_wxMask_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMask_Create1 },
-#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask)
-
-#if ((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)
-    { wxLua_wxMask_Create, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMask_Create },
-#endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)
-};
-static int s_wxluafunc_wxLua_wxMask_Create_overload_count = sizeof(s_wxluafunc_wxLua_wxMask_Create_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask))||(((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap))
-
 #if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask))||((((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxMask))||(wxLUA_USE_wxMask)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMask_constructor_overload[] =
@@ -11521,9 +11456,9 @@ void wxLua_wxMask_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMask_methods[] = {
-#if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask))||(((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap))
-    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMask_Create_overload, s_wxluafunc_wxLua_wxMask_Create_overload_count, 0 },
-#endif // (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxMask))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMask))||(((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap))
+#if ((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMask_Create, 1, NULL },
+#endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)
 
 #if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMask)) && (wxLUA_USE_wxBitmap)
     { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMask_GetBitmap, 1, NULL },

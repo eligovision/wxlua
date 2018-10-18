@@ -608,10 +608,9 @@ wxluacan_dataTypeTable =
   },
   wxAutoBufferedPaintDC = {
     BaseClasses = {
-      [1] = "wxPaintDC",
-      [2] = "wxBufferedPaintDC",
+      [1] = "wxDC",
     },
-    Condition = "(wxLUA_USE_wxDC) && (wxCHECK_VERSION(2,8,0)) && (!wxALWAYS_NATIVE_DOUBLE_BUFFER)",
+    Condition = "(wxLUA_USE_wxDC) && (wxCHECK_VERSION(2,8,0))",
     IsNumber = false,
     Name = "wxAutoBufferedPaintDC",
     ValueType = "class",

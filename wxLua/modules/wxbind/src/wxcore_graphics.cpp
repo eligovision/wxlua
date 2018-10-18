@@ -4525,7 +4525,7 @@ static int LUACALL wxLua_wxGCDC_constructor4(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGCDC_constructor3[] = { &wxluatype_wxGraphicsContext, NULL };
 static int LUACALL wxLua_wxGCDC_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGCDC_constructor3[1] = {{ wxLua_wxGCDC_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxGCDC_constructor3 }};
-//     wxGCDC(wxGraphicsContext* context);    
+//     wxGCDC(wxGraphicsContext* context);
 static int LUACALL wxLua_wxGCDC_constructor3(lua_State *L)
 {
     // wxGraphicsContext context
