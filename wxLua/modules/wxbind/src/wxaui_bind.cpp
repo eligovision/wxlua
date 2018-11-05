@@ -8065,6 +8065,28 @@ static int LUACALL wxLua_wxAuiPaneInfo_Hide(lua_State *L)
     return 1;
 }
 
+
+#if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_Icon[] = { &wxluatype_wxAuiPaneInfo, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAuiPaneInfo_Icon(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_Icon[1] = {{ wxLua_wxAuiPaneInfo_Icon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiPaneInfo_Icon }};
+//     wxAuiPaneInfo& Icon(const wxBitmap& b);
+static int LUACALL wxLua_wxAuiPaneInfo_Icon(lua_State *L)
+{
+    // const wxBitmap b
+    const wxBitmap * b = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAuiPaneInfo * self = (wxAuiPaneInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiPaneInfo);
+    // call Icon
+    wxAuiPaneInfo* returns = (wxAuiPaneInfo*)&self->Icon(*b);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAuiPaneInfo);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsBottomDockable[] = { &wxluatype_wxAuiPaneInfo, NULL };
 static int LUACALL wxLua_wxAuiPaneInfo_IsBottomDockable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_IsBottomDockable[1] = {{ wxLua_wxAuiPaneInfo_IsBottomDockable, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsBottomDockable }};
@@ -9294,6 +9316,11 @@ wxLuaBindMethod wxAuiPaneInfo_methods[] = {
     { "HasMinimizeButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_HasMinimizeButton, 1, NULL },
     { "HasPinButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_HasPinButton, 1, NULL },
     { "Hide", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Hide, 1, NULL },
+
+#if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+    { "Icon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Icon, 1, NULL },
+#endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+
     { "IsBottomDockable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsBottomDockable, 1, NULL },
     { "IsDestroyOnClose", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsDestroyOnClose, 1, NULL },
     { "IsDocked", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsDocked, 1, NULL },

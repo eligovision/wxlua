@@ -781,6 +781,7 @@ class %delete wxAuiPaneInfo
     wxAuiPaneInfo& Dock();
     wxAuiPaneInfo& Float();
     wxAuiPaneInfo& Hide();
+    wxAuiPaneInfo& Icon(const wxBitmap& b);
     wxAuiPaneInfo& Show(bool show = true);
     wxAuiPaneInfo& CaptionVisible(bool visible = true);
     wxAuiPaneInfo& Maximize();
