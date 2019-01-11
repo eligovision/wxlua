@@ -1008,6 +1008,18 @@ wxxml_dataTypeTable =
     Name = "wxTextCoord",
     ValueType = "number",
   },
+  wxTextInputStream = {
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxTextInputStream",
+    ValueType = "class",
+  },
+  wxTextOutputStream = {
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxTextOutputStream",
+    ValueType = "class",
+  },
   wxTimeSpan = {
     Condition = "wxLUA_USE_wxTimeSpan && wxUSE_DATETIME",
     IsNumber = false,

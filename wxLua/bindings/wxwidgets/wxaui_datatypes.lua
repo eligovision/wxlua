@@ -4188,6 +4188,18 @@ wxaui_dataTypeTable =
     Name = "wxTextEntryDialog",
     ValueType = "class",
   },
+  wxTextInputStream = {
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxTextInputStream",
+    ValueType = "class",
+  },
+  wxTextOutputStream = {
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxTextOutputStream",
+    ValueType = "class",
+  },
   wxTextPos = {
     IsNumber = true,
     Name = "wxTextPos",
