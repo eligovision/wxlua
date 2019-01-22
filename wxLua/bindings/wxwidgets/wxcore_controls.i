@@ -302,8 +302,10 @@ class wxComboBox : public wxControl, public wxItemContainer
 
 #define wxGA_HORIZONTAL
 %wxcompat_2_6 #define wxGA_PROGRESSBAR
-#define wxGA_SMOOTH
 #define wxGA_VERTICAL
+%wxchkver_3_1_0 #define wxGA_PROGRESS
+#define wxGA_SMOOTH
+%wxchkver_3_1_0 #define wxGA_TEXT
 
 class wxGauge : public wxControl
 {
