@@ -9,6 +9,70 @@
 // Overrides for wxaui_aui.i
 // ----------------------------------------------------------------------------
 
+
+%override wxLua_wxAuiTabCtrl_ButtonHitTest
+// wxAuiTabContainerButton* ButtonHitTest(int x, int y) const;
+static int LUACALL wxLua_wxAuiTabCtrl_ButtonHitTest(lua_State *L)
+{
+    // int y
+    int y = (int)wxlua_getnumbertype(L, 3);
+    // int x
+    int x = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAuiTabCtrl * self = (wxAuiTabCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiTabCtrl);
+    // call ButtonHitTest
+    wxAuiTabContainerButton * hit;
+    bool returns = (self->ButtonHitTest(x, y, &hit));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, hit, wxluatype_wxAuiTabContainerButton);
+        return 1;
+    }
+    return 0;
+}
+%end
+
+%override wxLua_wxAuiTabCtrl_TabHitTest
+// wxWindow* TabHitTest(int x, int y) const;
+static int LUACALL wxLua_wxAuiTabCtrl_TabHitTest(lua_State *L)
+{
+    // int y
+    int y = (int)wxlua_getnumbertype(L, 3);
+    // int x
+    int x = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAuiTabCtrl * self = (wxAuiTabCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiTabCtrl);
+    // call TabHitTest
+    wxWindow * hit;
+    bool returns = (self->TabHitTest(x, y, &hit));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, hit, wxluatype_wxWindow);
+        return 1;
+    }
+    return 0;
+}
+%end
+
+%override wxLua_wxAuiNotebook_FindTab
+// wxAuiTabCtrl* FindTab(wxWindow*);
+static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
+{
+    // wxWindow page
+    wxWindow * page = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxAuiNotebook * self = (wxAuiNotebook *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiNotebook);
+    // call FindTab
+    int idx;
+    wxAuiTabCtrl *ctrl;
+    bool returns = (self->FindTab(page, &ctrl, &idx));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, ctrl, wxluatype_wxAuiTabCtrl);
+        lua_pushinteger(L, idx);
+        return 2;
+    }
+    return 0;
+}
+%end
+
 %override wxLua_wxAuiMDIChildFrame_GetIcon
 // virtual const wxIcon& GetIcon() const;
 static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcon(lua_State *L)

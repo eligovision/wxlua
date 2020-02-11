@@ -34,9 +34,9 @@ extern WXDLLIMPEXP_BINDWXBASE wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Loc
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 33
+#if WXLUA_BINDING_VERSION > 37
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 33
+#endif //WXLUA_BINDING_VERSION > 37
 // ---------------------------------------------------------------------------
 
 // binding class
@@ -83,6 +83,10 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     #include "wx/stdpaths.h"
 #endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
+
+#if wxLUA_USE_wxArrayDouble
+    #include "wx/dynarray.h"
+#endif // wxLUA_USE_wxArrayDouble
 
 #if wxLUA_USE_wxArrayInt
     #include "wx/dynarray.h"
@@ -229,6 +233,10 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVersionInfo;
 #endif // wxCHECK_VERSION(2,9,2)
 
+#if wxLUA_USE_wxArrayDouble
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxArrayDouble;
+#endif // wxLUA_USE_wxArrayDouble
+
 #if wxLUA_USE_wxArrayInt
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxArrayInt;
 #endif // wxLUA_USE_wxArrayInt
@@ -298,6 +306,10 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLogNull;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLogPassThrough;
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
+
+#if wxLUA_USE_wxMemoryBuffer
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryBuffer;
+#endif // wxLUA_USE_wxMemoryBuffer
 
 #if wxLUA_USE_wxObject
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxObject;

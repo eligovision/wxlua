@@ -29,11 +29,11 @@ include( build/CMakewxAppLib.cmake )
 # wxLua version
 # ===========================================================================
 
-set( wxLua_VERSION           "3.0.0.4" )
+set( wxLua_VERSION           "3.0.0.8" )
 set( wxLua_MAJOR_VERSION     "3" )
 set( wxLua_MINOR_VERSION     "0" )
 set( wxLua_RELEASE_VERSION   "0" )
-set( wxLua_SUBRELEASE_NUMBER "4")
+set( wxLua_SUBRELEASE_NUMBER "8")
 
 # ===========================================================================
 # wxWidgets libraries and wxLua bindings setup
@@ -477,6 +477,7 @@ install(FILES
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
+        ${wxLua_ROOT_DIR}/modules/wxbind/setup/wxluasetup.h
         DESTINATION "include/wxlua")
 
 install(FILES

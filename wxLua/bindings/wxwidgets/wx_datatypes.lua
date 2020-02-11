@@ -207,6 +207,12 @@ wx_dataTypeTable =
     Name = "wxActivateEvent",
     ValueType = "class",
   },
+  wxAffineMatrix2D = {
+    Condition = "(wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)",
+    IsNumber = false,
+    Name = "wxAffineMatrix2D",
+    ValueType = "class",
+  },
   wxAlignment = {
     IsNumber = true,
     Name = "wxAlignment",
@@ -281,6 +287,12 @@ wx_dataTypeTable =
     Condition = "(wxUSE_FILESYSTEM) && (wxUSE_STREAMS)",
     IsNumber = false,
     Name = "wxArchiveFSHandler",
+    ValueType = "class",
+  },
+  wxArrayDouble = {
+    Condition = "wxLUA_USE_wxArrayDouble",
+    IsNumber = false,
+    Name = "wxArrayDouble",
     ValueType = "class",
   },
   wxArrayInt = {
@@ -2248,7 +2260,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxGraphicsPenInfo = {
-    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)",
     IsNumber = false,
     Name = "wxGraphicsPenInfo",
     ValueType = "class",
@@ -3514,6 +3526,12 @@ wx_dataTypeTable =
     Name = "wxMask",
     ValueType = "class",
   },
+  wxMatrix2D = {
+    Condition = "(wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)",
+    IsNumber = false,
+    Name = "wxMatrix2D",
+    ValueType = "struct",
+  },
   wxMaximizeEvent = {
     BaseClasses = {
       [1] = "wxEvent",
@@ -3551,6 +3569,12 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxMediaState",
     ValueType = "enum",
+  },
+  wxMemoryBuffer = {
+    Condition = "wxLUA_USE_wxMemoryBuffer",
+    IsNumber = false,
+    Name = "wxMemoryBuffer",
+    ValueType = "class",
   },
   wxMemoryConfig = {
     BaseClasses = {
@@ -4041,6 +4065,11 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxPoint2DDouble",
     ValueType = "class",
+  },
+  wxPoint2DDoubleArray_FromLuaTable = {
+    IsNumber = true,
+    Name = "wxPoint2DDoubleArray_FromLuaTable",
+    ValueType = "special",
   },
   wxPoint2DInt = {
     Condition = "wxLUA_USE_Geometry && wxUSE_GEOMETRY",
@@ -5016,6 +5045,12 @@ wx_dataTypeTable =
     Name = "wxSysColourChangedEvent",
     ValueType = "class",
   },
+  wxSystemAppearance = {
+    Condition = "(wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)",
+    IsNumber = false,
+    Name = "wxSystemAppearance",
+    ValueType = "class",
+  },
   wxSystemColour = {
     Condition = "wxLUA_USE_wxSystemSettings",
     IsNumber = true,
@@ -5846,6 +5881,7 @@ wx_preprocConditionTable =
   ["%wxchkver_3_1_1"] = "wxCHECK_VERSION(3,1,1)",
   ["%wxchkver_3_1_2"] = "wxCHECK_VERSION(3,1,2)",
   ["%wxchkver_3_1_3"] = "wxCHECK_VERSION(3,1,3)",
+  ["%wxchkver_3_1_4"] = "wxCHECK_VERSION(3,1,4)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",
   ["%wxcompat_2_8"] = "(defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)",
@@ -5865,6 +5901,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxAcceleratorTable = "wxLUA_USE_wxAcceleratorTable",
   wxLUA_USE_wxAnimation = "wxLUA_USE_wxAnimation",
   wxLUA_USE_wxApp = "wxLUA_USE_wxApp",
+  wxLUA_USE_wxArrayDouble = "wxLUA_USE_wxArrayDouble",
   wxLUA_USE_wxArrayInt = "wxLUA_USE_wxArrayInt",
   wxLUA_USE_wxArrayString = "wxLUA_USE_wxArrayString",
   wxLUA_USE_wxArtProvider = "wxLUA_USE_wxArtProvider",

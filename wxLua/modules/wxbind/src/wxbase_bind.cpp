@@ -27,6 +27,10 @@
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
+
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
 wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local(wxDateTime::Local);
 
 // ---------------------------------------------------------------------------
@@ -1142,7 +1146,7 @@ static int LUACALL wxLua_function_wxFileSize(lua_State *L)
         wxStructStat statstr;
         wxStat(str, &statstr);
         // push the result string
-        lua_pushnumber(L, (int)statstr.st_size);
+        lua_pushinteger(L, (int)statstr.st_size);
 
         return 1;
     }
@@ -1207,6 +1211,12 @@ static int LUACALL wxLua_function_wxGetElapsedTime(lua_State *L)
     // call wxGetElapsedTime
     long returns = (wxGetElapsedTime(resetTimer));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1306,6 +1316,12 @@ static int LUACALL wxLua_function_wxGetLocalTime(lua_State *L)
     // call wxGetLocalTime
     long returns = (wxGetLocalTime());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1381,9 +1397,9 @@ static int LUACALL wxLua_function_wxGetOsVersion(lua_State *L)
     // call wxGetOsVersion
     int returns = wxGetOsVersion(&major, &minor);
     // push the result numbers
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, major);
-    lua_pushnumber(L, minor);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, major);
+    lua_pushinteger(L, minor);
     // return the number of parameters
     return 3;
 }
@@ -1533,6 +1549,12 @@ static int LUACALL wxLua_function_wxGetUTCTime(lua_State *L)
     // call wxGetUTCTime
     long returns = (wxGetUTCTime());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2071,6 +2093,12 @@ static int LUACALL wxLua_function_wxSysErrorCode(lua_State *L)
     // call wxSysErrorCode
     unsigned long returns = (wxSysErrorCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2326,6 +2354,7 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxbase(size_t &count)
 // ---------------------------------------------------------------------------
 
 static const char* wxluaclassname_wxArchiveFSHandler = "wxArchiveFSHandler";
+static const char* wxluaclassname_wxArrayDouble = "wxArrayDouble";
 static const char* wxluaclassname_wxArrayInt = "wxArrayInt";
 static const char* wxluaclassname_wxArrayString = "wxArrayString";
 static const char* wxluaclassname_wxClassInfo = "wxClassInfo";
@@ -2379,6 +2408,7 @@ static const char* wxluaclassname_wxLogChain = "wxLogChain";
 static const char* wxluaclassname_wxLogNull = "wxLogNull";
 static const char* wxluaclassname_wxLogPassThrough = "wxLogPassThrough";
 static const char* wxluaclassname_wxLongLong = "wxLongLong";
+static const char* wxluaclassname_wxMemoryBuffer = "wxMemoryBuffer";
 static const char* wxluaclassname_wxMemoryConfig = "wxMemoryConfig";
 static const char* wxluaclassname_wxMemoryInputStream = "wxMemoryInputStream";
 static const char* wxluaclassname_wxMimeTypesManager = "wxMimeTypesManager";
@@ -2575,6 +2605,12 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern void wxLua_wxVersionInfo_delete_function(void** p);
 #endif // wxCHECK_VERSION(2,9,2)
 
+#if wxLUA_USE_wxArrayDouble
+    extern wxLuaBindMethod wxArrayDouble_methods[];
+    extern int wxArrayDouble_methodCount;
+    extern void wxLua_wxArrayDouble_delete_function(void** p);
+#endif // wxLUA_USE_wxArrayDouble
+
 #if wxLUA_USE_wxArrayInt
     extern wxLuaBindMethod wxArrayInt_methods[];
     extern int wxArrayInt_methodCount;
@@ -2707,6 +2743,12 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern void wxLua_wxLogPassThrough_delete_function(void** p);
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
+#if wxLUA_USE_wxMemoryBuffer
+    extern wxLuaBindMethod wxMemoryBuffer_methods[];
+    extern int wxMemoryBuffer_methodCount;
+    extern void wxLua_wxMemoryBuffer_delete_function(void** p);
+#endif // wxLUA_USE_wxMemoryBuffer
+
 #if wxLUA_USE_wxObject
     extern wxLuaBindMethod wxObject_methods[];
     extern int wxObject_methodCount;
@@ -2816,6 +2858,10 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #if (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
         { wxluaclassname_wxArchiveFSHandler, wxArchiveFSHandler_methods, wxArchiveFSHandler_methodCount, CLASSINFO(wxArchiveFSHandler), &wxluatype_wxArchiveFSHandler, wxluabaseclassnames_wxArchiveFSHandler, wxluabaseclassbinds_wxArchiveFSHandler, NULL, NULL, NULL, 0, &wxLua_wxArchiveFSHandler_delete_function, }, 
 #endif // (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
+
+#if wxLUA_USE_wxArrayDouble
+        { wxluaclassname_wxArrayDouble, wxArrayDouble_methods, wxArrayDouble_methodCount, NULL, &wxluatype_wxArrayDouble, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxArrayDouble_delete_function, }, 
+#endif // wxLUA_USE_wxArrayDouble
 
 #if wxLUA_USE_wxArrayInt
         { wxluaclassname_wxArrayInt, wxArrayInt_methods, wxArrayInt_methodCount, NULL, &wxluatype_wxArrayInt, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxArrayInt_delete_function, }, 
@@ -2961,6 +3007,10 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
         { wxluaclassname_wxLongLong, wxLongLong_methods, wxLongLong_methodCount, NULL, &wxluatype_wxLongLong, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxLongLong_delete_function, }, 
 #endif // wxUSE_LONGLONG
 
+#if wxLUA_USE_wxMemoryBuffer
+        { wxluaclassname_wxMemoryBuffer, wxMemoryBuffer_methods, wxMemoryBuffer_methodCount, NULL, &wxluatype_wxMemoryBuffer, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxMemoryBuffer_delete_function, }, 
+#endif // wxLUA_USE_wxMemoryBuffer
+
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
         { wxluaclassname_wxMemoryConfig, wxMemoryConfig_methods, wxMemoryConfig_methodCount, NULL, &wxluatype_wxMemoryConfig, wxluabaseclassnames_wxMemoryConfig, wxluabaseclassbinds_wxMemoryConfig, NULL, NULL, NULL, 0, &wxLua_wxMemoryConfig_delete_function, }, 
 #endif // wxLUA_USE_wxConfig && wxUSE_CONFIG
@@ -3087,6 +3137,7 @@ bool wxLuaBinding_wxbase::RegisterBinding(const wxLuaState& wxlState)
     p_wxluatype_wxArrayString       = &wxluatype_wxArrayString;
     p_wxluatype_wxSortedArrayString = &wxluatype_wxSortedArrayString;
     p_wxluatype_wxArrayInt          = &wxluatype_wxArrayInt;
+    p_wxluatype_wxArrayDouble       = &wxluatype_wxArrayDouble;
 
     return ret;
 }

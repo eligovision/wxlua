@@ -75,9 +75,9 @@ long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const 
 
 wxUSE_TEXTDLG wxString wxGetPasswordFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL);
 wxUSE_TEXTDLG wxString wxGetTextFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true);
-// int wxGetMultipleChoice(const wxString& message, const wxString& caption, int n, const wxString& choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200);
 wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
 wxUSE_CHOICEDLG int wxGetSingleChoiceIndex(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
+wxUSE_CHOICEDLG int wxGetSelectedChoices(wxArrayInt& selections, const wxString& message, const wxString& caption, const wxArrayString& aChoices, wxWindow* parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
 bool wxIsBusy();
 int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1);
 // bool wxShowTip(wxWindow *parent, wxTipProvider *tipProvider, bool showAtStartup = true);
@@ -441,6 +441,12 @@ class %delete wxFindDialogEvent : public wxCommandEvent
     %wxEventType wxEVT_COMMAND_FIND_REPLACE        // EVT_FIND_REPLACE(id, fn);
     %wxEventType wxEVT_COMMAND_FIND_REPLACE_ALL    // EVT_FIND_REPLACE_ALL(id, fn);
     %wxEventType wxEVT_COMMAND_FIND_CLOSE          // EVT_FIND_CLOSE(id, fn);
+
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND             // wx3.0 alias for wxEVT_COMMAND_FIND
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_NEXT        // wx3.0 alias for wxEVT_COMMAND_FIND_NEXT
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_REPLACE     // wx3.0 alias for wxEVT_COMMAND_FIND_REPLACE
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_REPLACE_ALL // wx3.0 alias for wxEVT_COMMAND_FIND_REPLACE_ALL
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_CLOSE       // wx3.0 alias for wxEVT_COMMAND_FIND_CLOSE
 
     wxFindDialogEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 

@@ -45,9 +45,9 @@ static int LUACALL wxLua_function_wxGetOsVersion(lua_State *L)
     // call wxGetOsVersion
     int returns = wxGetOsVersion(&major, &minor);
     // push the result numbers
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, major);
-    lua_pushnumber(L, minor);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, major);
+    lua_pushinteger(L, minor);
     // return the number of parameters
     return 3;
 }
@@ -101,8 +101,8 @@ static int LUACALL wxLua_wxRegEx_GetMatchIndexes(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     // push the match start and length indexes
-    lua_pushnumber(L, start);
-    lua_pushnumber(L, len);
+    lua_pushinteger(L, start);
+    lua_pushinteger(L, len);
     // return the number of parameters
     return 3;
 }
@@ -125,7 +125,7 @@ static int LUACALL wxLua_wxRegEx_Replace(lua_State *L)
     // call Replace
     int returns = self->Replace(&text, replacement, maxMatches);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -146,7 +146,7 @@ static int LUACALL wxLua_wxRegEx_ReplaceAll(lua_State *L)
     // call ReplaceAll
     int returns = self->ReplaceAll(&text, replacement);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -167,11 +167,40 @@ static int LUACALL wxLua_wxRegEx_ReplaceFirst(lua_State *L)
     // call ReplaceFirst
     int returns = self->ReplaceFirst(&text, replacement);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
     return 2;
+}
+%end
+
+%override wxLua_wxEvtHandler_CallAfter
+class wxEvtHandlerLuaCallback : public wxEvtHandler
+{
+public:
+    void Callback(lua_State *L, int funcref) {
+        int old_top = lua_gettop(L);
+        lua_rawgeti(L, LUA_REGISTRYINDEX, funcref);
+        luaL_unref(L, LUA_REGISTRYINDEX, funcref); // remove ref to function
+        int res = lua_pcall(L, 0, 0, 0);
+        if (res > 0) lua_error(L);
+        lua_settop(L, old_top);
+    }
+};
+
+static int LUACALL wxLua_wxEvtHandler_CallAfter(lua_State *L)
+{
+    if (!lua_isfunction(L, 2))
+        wxlua_argerror(L, 2, wxT("a Lua function"));
+
+    lua_pushvalue(L, 2); // push function to top of stack
+    int funcref = luaL_ref(L, LUA_REGISTRYINDEX); // ref function and pop it from stack
+
+    wxEvtHandler *self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    self->CallAfter(&wxEvtHandlerLuaCallback::Callback, L, funcref);
+
+    return 0;
 }
 %end
 
@@ -252,22 +281,6 @@ static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L)
             //void Connect(int eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
             func_idx = 3;
             evttype_idx = 2;
-/*
-            // Is this right? wxWidgets just uses wxID_ANY for no winId overload
-            if (evtHandler->IsKindOf(CLASSINFO(wxWindow)))
-            {
-                // FIXME! bug in Mac this is the fix
-#if !defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)
-                winId = ((wxWindow *)evtHandler)->GetId();
-                wxPrintf(wxT("winId %d\n"), winId);
-#endif
-            }
-            else
-            {
-                wxlua_error(L, "wxLua: Connect: Unexpected event object type, expected a wxWindow.");
-                return 0;
-            }
-*/
             break;
         }
         default:
@@ -459,7 +472,7 @@ static int LUACALL wxLua_wxConfigBase_ReadInt(lua_State *L)
     // push the result bool
     lua_pushboolean(L, ret);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }
@@ -483,7 +496,7 @@ static int LUACALL wxLua_wxConfigBase_ReadFloat(lua_State *L)
     // push the result bool
     lua_pushboolean(L, ret);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }
@@ -507,7 +520,7 @@ static int LUACALL wxLua_wxConfigBase_GetFirstGroup(lua_State *L)
     // push the result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -531,7 +544,7 @@ static int LUACALL wxLua_wxConfigBase_GetFirstEntry(lua_State *L)
     // push the next string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -553,7 +566,7 @@ static int LUACALL wxLua_wxConfigBase_GetNextGroup(lua_State *L)
     // push the next result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -575,7 +588,7 @@ static int LUACALL wxLua_wxConfigBase_GetNextEntry(lua_State *L)
     // push the result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -701,6 +714,16 @@ static int LUACALL wxLua_wxArrayInt_ToLuaTable(lua_State *L)
 }
 %end
 
+%override wxLua_wxArrayDouble_ToLuaTable
+// int ToLuaTable() const
+static int LUACALL wxLua_wxArrayDouble_ToLuaTable(lua_State *L)
+{
+    wxArrayDouble * self = (wxArrayDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxArrayDouble);
+    wxlua_pushwxArrayDoubletable(L, *self);
+    return 1;
+}
+%end
+
 %override wxLua_wxArrayString_ToLuaTable
 // int ToLuaTable() const
 static int LUACALL wxLua_wxArrayString_ToLuaTable(lua_State *L)
@@ -708,6 +731,86 @@ static int LUACALL wxLua_wxArrayString_ToLuaTable(lua_State *L)
     wxArrayString * self = (wxArrayString *)wxluaT_getuserdatatype(L, 1, wxluatype_wxArrayString);
     wxlua_pushwxArrayStringtable(L, *self);
     return 1;
+}
+%end
+
+%override wxLua_wxMemoryBuffer_GetByte
+//     unsigned char GetByte(int index, size_t length = 1);
+static int LUACALL wxLua_wxMemoryBuffer_GetByte(lua_State *L)
+{
+    // int index
+    int index = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    if (index < 0 || (unsigned)index >= self->GetDataLen())
+        return 0;
+    // int length (optional)
+    int length = 1;
+    if (lua_gettop(L) >= 3)
+        length = (size_t)wxlua_getnumbertype(L, 3);
+    if (length <= 0)
+        return 0;
+    if ((unsigned)(index + length) > self->GetDataLen())
+        length = self->GetDataLen() - index;
+    int count = 0;
+    while (count < length) {
+        unsigned char returns = ((unsigned char *)(self->GetData()))[index + count];
+        lua_pushinteger(L, returns);
+        count++;
+    }
+    return length;
+}
+%end
+
+%override wxLua_wxMemoryBuffer_SetByte
+//     void SetByte(int index, unsigned char data);
+static int LUACALL wxLua_wxMemoryBuffer_SetByte(lua_State *L)
+{
+    // int index
+    int index = (int)wxlua_getnumbertype(L, 2);
+    wxASSERT_MSG(index >= 0, "index out of range");
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // more data? (optional)
+    int length = lua_gettop(L) - 2;
+    if (length <= 0)
+        return 0;  //  Do nothing
+    // get data pointer
+    unsigned char *dptr = (unsigned char *)self->GetWriteBuf(index + length);
+    wxASSERT_MSG(dptr != NULL, "cannot reallocate buffer");
+    int count = 0;
+    while (count < length) {
+        ((unsigned char *)(self->GetData()))[index + count] = (unsigned char)wxlua_getnumbertype(L, 3 + count);
+        count++;
+    }
+    if (self->GetDataLen() < (unsigned)(index + length))
+        self->SetDataLen(index + length);
+    return 0;
+}
+%end
+
+%override wxLua_wxMemoryBuffer_Fill
+//     void Fill(unsigned char data, int start_index, size_t length);
+static int LUACALL wxLua_wxMemoryBuffer_Fill(lua_State *L)
+{
+    // size_t length
+    size_t length = (size_t)wxlua_getnumbertype(L, 4);
+    // int start_index
+    int start_index = (int)wxlua_getnumbertype(L, 3);
+    // unsigned char data
+    int data = (unsigned char)wxlua_getnumbertype(L, 2);
+    wxASSERT_MSG(start_index >= 0, "index out of range");
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    if (length <= 0)
+        return 0;  //  Do nothing
+    // get data pointer
+    unsigned char *dptr = (unsigned char *)self->GetWriteBuf(start_index + length);
+    wxASSERT_MSG(dptr != NULL, "cannot reallocate buffer");
+    memset(dptr + start_index, data, length);
+    if (self->GetDataLen() < start_index + length)
+        self->SetDataLen(start_index + length);
+    return 0;
 }
 %end
 
@@ -941,7 +1044,7 @@ static int LUACALL wxLua_function_wxFileSize(lua_State *L)
         wxStructStat statstr;
         wxStat(str, &statstr);
         // push the result string
-        lua_pushnumber(L, (int)statstr.st_size);
+        lua_pushinteger(L, (int)statstr.st_size);
 
         return 1;
     }
@@ -1120,7 +1223,7 @@ static int LUACALL wxLua_wxDir_GetAllFiles(lua_State *L)
     // call GetAllFiles
     unsigned int returns = wxDir::GetAllFiles(dirname, &files, filespec, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, files);
     // return the number of parameters
     return 2;
@@ -1142,7 +1245,7 @@ static int LUACALL wxLua_wxFile_Read(lua_State *L)
         // call Read
         unsigned int returns = self->Read(buffer, count);
         // push the result number
-        lua_pushnumber(L, returns);
+        lua_pushinteger(L, returns);
         lua_pushlstring(L, (const char *) buffer, returns);
         free(buffer);
         // return the number of parameters
@@ -1167,7 +1270,7 @@ static int LUACALL wxLua_wxFile_Write(lua_State *L)
     // call Write
     unsigned int returns = self->Write(buffer, nbytes);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 1;
 }
@@ -1249,7 +1352,7 @@ static int LUACALL wxLua_wxInputStream_UngetchString(lua_State *L)
     // call Ungetch
     size_t returns = self->Ungetch(buffer, size);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 1;
 }

@@ -359,6 +359,37 @@ class %delete wxArrayInt
 
 #endif //wxLUA_USE_wxArrayInt
 
+#if wxLUA_USE_wxArrayDouble
+
+#include "wx/dynarray.h"
+
+class %delete wxArrayDouble
+{
+    wxArrayDouble();
+    wxArrayDouble(const wxArrayDouble& array);
+
+    // %override [Lua table] wxArrayDouble::ToLuaTable() const;
+    // returns a table array of numbers
+    int ToLuaTable() const;
+
+    void Add(double num);
+    void Alloc(size_t count);
+    void Clear();
+    void Empty();
+    int  GetCount() const;
+    bool IsEmpty() const;
+    int  Index(double n, bool searchFromEnd = false);
+    void Insert(double num, int n, int copies = 1);
+    double Item(int n);
+    void Remove(int n);
+    void RemoveAt(size_t index);
+    void Shrink();
+
+    double operator[](size_t nIndex);
+};
+
+#endif //wxLUA_USE_wxArrayDouble
+
 // ---------------------------------------------------------------------------
 // wxArrayString
 //
@@ -487,3 +518,59 @@ class %delete wxULongLong
 };
 
 #endif wxUSE_LONGLONG
+
+#if wxLUA_USE_wxMemoryBuffer
+
+class %delete wxMemoryBuffer
+{
+public:
+    // ctor and dtor
+    wxMemoryBuffer(size_t size = wxMemoryBufferData::DefBufSize);
+
+    // copy and assignment
+    wxMemoryBuffer(const wxMemoryBuffer& src);
+
+    // Accessors
+    void  *GetData() const;
+    size_t GetBufSize() const;
+    size_t GetDataLen() const;
+
+    %wxchkver_2_9_4 bool IsEmpty() const;
+
+    void   SetBufSize(size_t size);
+    void   SetDataLen(size_t len);
+
+    %wxchkver_2_9_4 void Clear();
+
+    // Ensure the buffer is big enough and return a pointer to it
+    void *GetWriteBuf(size_t sizeNeeded);
+
+    // Update the length after the write
+    void  UngetWriteBuf(size_t sizeUsed);
+
+    // Like the above, but appends to the buffer
+    void *GetAppendBuf(size_t sizeNeeded);
+
+    // Update the length after the append
+    void  UngetAppendBuf(size_t sizeUsed);
+
+    // Other ways to append to the buffer
+    void  AppendByte(char data);
+
+    void  AppendData(const void *data, size_t len);
+
+    // gives up ownership of data, returns the pointer; after this call,
+    // data isn't freed by the buffer and its content is reset to empty
+    void *release();
+
+    // wxLua specific
+    //  Get the data at the given index. If length > 1, then multiple values are returned.
+    unsigned char GetByte(int index, size_t length = 1);
+    //  Set the data at the given index. If multiple data are given, the following values are
+    //  set at the subsequent positions. Data length and buffer size are updated if necessary.
+    void SetByte(int index, unsigned char data);
+    //  Set the same byte to the specified range. Data length and buffer size are updated if necessary.
+    void Fill(unsigned char data, int start_index, size_t length);
+};
+
+#endif

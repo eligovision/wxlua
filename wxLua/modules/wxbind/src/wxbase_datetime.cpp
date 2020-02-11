@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxDateTime && wxUSE_DATETIME
 // ---------------------------------------------------------------------------
@@ -48,6 +52,12 @@ static int LUACALL wxLua_wxDateTime_TimeZone_GetOffset(lua_State *L)
     // call GetOffset
     long returns = (self->GetOffset());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -178,6 +188,12 @@ static int LUACALL wxLua_wxDateTime_ConvertYearToBC(lua_State *L)
     // call ConvertYearToBC
     int returns = (wxDateTime::ConvertYearToBC(year));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -328,6 +344,12 @@ static int LUACALL wxLua_wxDateTime_GetAsDOS(lua_State *L)
     // call GetAsDOS
     unsigned long returns = (self->GetAsDOS());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -371,6 +393,12 @@ static int LUACALL wxLua_wxDateTime_GetCentury1(lua_State *L)
     // call GetCentury
     int returns = (self->GetCentury(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -387,6 +415,12 @@ static int LUACALL wxLua_wxDateTime_GetCentury(lua_State *L)
     // call GetCentury
     int returns = (wxDateTime::GetCentury(year));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -400,6 +434,12 @@ static int LUACALL wxLua_wxDateTime_GetCountry(lua_State *L)
     // call GetCountry
     wxDateTime::Country returns = (wxDateTime::GetCountry());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -418,6 +458,12 @@ static int LUACALL wxLua_wxDateTime_GetCurrentMonth(lua_State *L)
     // call GetCurrentMonth
     wxDateTime::Month returns = (wxDateTime::GetCurrentMonth(cal));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -436,6 +482,12 @@ static int LUACALL wxLua_wxDateTime_GetCurrentYear(lua_State *L)
     // call GetCurrentYear
     int returns = (wxDateTime::GetCurrentYear(cal));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -475,6 +527,12 @@ static int LUACALL wxLua_wxDateTime_GetDay(lua_State *L)
     // call GetDay
     wxDateTime::wxDateTime_t returns = (self->GetDay(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -495,6 +553,12 @@ static int LUACALL wxLua_wxDateTime_GetDayOfYear(lua_State *L)
     // call GetDayOfYear
     wxDateTime::wxDateTime_t returns = (self->GetDayOfYear(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -538,6 +602,12 @@ static int LUACALL wxLua_wxDateTime_GetHour(lua_State *L)
     // call GetHour
     wxDateTime::wxDateTime_t returns = (self->GetHour(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -553,7 +623,7 @@ static int LUACALL wxLua_wxDateTime_GetJDN(lua_State *L)
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call GetJDN
     double returns = (self->GetJDN());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -569,7 +639,7 @@ static int LUACALL wxLua_wxDateTime_GetJulianDayNumber(lua_State *L)
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call GetJulianDayNumber
     double returns = (self->GetJulianDayNumber());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -637,7 +707,7 @@ static int LUACALL wxLua_wxDateTime_GetMJD(lua_State *L)
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call GetMJD
     double returns = (self->GetMJD());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -658,6 +728,12 @@ static int LUACALL wxLua_wxDateTime_GetMillisecond(lua_State *L)
     // call GetMillisecond
     wxDateTime::wxDateTime_t returns = (self->GetMillisecond(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -678,6 +754,12 @@ static int LUACALL wxLua_wxDateTime_GetMinute(lua_State *L)
     // call GetMinute
     wxDateTime::wxDateTime_t returns = (self->GetMinute(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -693,7 +775,7 @@ static int LUACALL wxLua_wxDateTime_GetModifiedJulianDayNumber(lua_State *L)
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call GetModifiedJulianDayNumber
     double returns = (self->GetModifiedJulianDayNumber());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -714,6 +796,12 @@ static int LUACALL wxLua_wxDateTime_GetMonth(lua_State *L)
     // call GetMonth
     wxDateTime::Month returns = (self->GetMonth(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -777,6 +865,12 @@ static int LUACALL wxLua_wxDateTime_GetNumberOfDays1(lua_State *L)
     // call GetNumberOfDays
     wxDateTime::wxDateTime_t returns = (wxDateTime::GetNumberOfDays(month, year, cal));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -797,6 +891,12 @@ static int LUACALL wxLua_wxDateTime_GetNumberOfDays(lua_State *L)
     // call GetNumberOfDays
     wxDateTime::wxDateTime_t returns = (wxDateTime::GetNumberOfDays(year, cal));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -833,7 +933,7 @@ static int LUACALL wxLua_wxDateTime_GetRataDie(lua_State *L)
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call GetRataDie
     double returns = (self->GetRataDie());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -854,6 +954,12 @@ static int LUACALL wxLua_wxDateTime_GetSecond(lua_State *L)
     // call GetSecond
     wxDateTime::wxDateTime_t returns = (self->GetSecond(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -870,6 +976,12 @@ static int LUACALL wxLua_wxDateTime_GetTicks1(lua_State *L)
     // call GetTicks
     time_t returns = (self->GetTicks());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -886,6 +998,12 @@ static int LUACALL wxLua_wxDateTime_GetTicks(lua_State *L)
     // call GetTicks
     long returns = (self->GetTicks());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -935,6 +1053,12 @@ static int LUACALL wxLua_wxDateTime_GetWeekDay1(lua_State *L)
     // call GetWeekDay
     wxDateTime::WeekDay returns = (self->GetWeekDay(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1027,6 +1151,12 @@ static int LUACALL wxLua_wxDateTime_GetWeekOfMonth(lua_State *L)
     // call GetWeekOfMonth
     wxDateTime::wxDateTime_t returns = (self->GetWeekOfMonth(flags, *tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1049,6 +1179,12 @@ static int LUACALL wxLua_wxDateTime_GetWeekOfYear(lua_State *L)
     // call GetWeekOfYear
     wxDateTime::wxDateTime_t returns = (self->GetWeekOfYear(flags, *tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1069,6 +1205,12 @@ static int LUACALL wxLua_wxDateTime_GetYear(lua_State *L)
     // call GetYear
     int returns = (self->GetYear(*tz));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1150,6 +1292,12 @@ static int LUACALL wxLua_wxDateTime_IsDST(lua_State *L)
     // call IsDST
     int returns = (self->IsDST(country));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3514,6 +3662,12 @@ static int LUACALL wxLua_wxDateTimeArray_GetCount(lua_State *L)
     // call GetCount
     int returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3828,6 +3982,12 @@ static int LUACALL wxLua_wxTimeSpan_GetDays(lua_State *L)
     // call GetDays
     int returns = (self->GetDays());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3844,6 +4004,12 @@ static int LUACALL wxLua_wxTimeSpan_GetHours(lua_State *L)
     // call GetHours
     int returns = (self->GetHours());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3883,6 +4049,12 @@ static int LUACALL wxLua_wxTimeSpan_GetMinutes(lua_State *L)
     // call GetMinutes
     int returns = (self->GetMinutes());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3941,6 +4113,12 @@ static int LUACALL wxLua_wxTimeSpan_GetWeeks(lua_State *L)
     // call GetWeeks
     int returns = (self->GetWeeks());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4458,6 +4636,12 @@ static int LUACALL wxLua_wxDateSpan_GetDays(lua_State *L)
     // call GetDays
     int returns = (self->GetDays());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4474,6 +4658,12 @@ static int LUACALL wxLua_wxDateSpan_GetMonths(lua_State *L)
     // call GetMonths
     int returns = (self->GetMonths());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4490,6 +4680,12 @@ static int LUACALL wxLua_wxDateSpan_GetTotalDays(lua_State *L)
     // call GetTotalDays
     int returns = (self->GetTotalDays());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4506,6 +4702,12 @@ static int LUACALL wxLua_wxDateSpan_GetWeeks(lua_State *L)
     // call GetWeeks
     int returns = (self->GetWeeks());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4522,6 +4724,12 @@ static int LUACALL wxLua_wxDateSpan_GetYears(lua_State *L)
     // call GetYears
     int returns = (self->GetYears());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4923,6 +5131,12 @@ static int LUACALL wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange(lua_State
     // call GetHolidaysInRange
     size_t returns = (wxDateTimeHolidayAuthority::GetHolidaysInRange(*dtStart, *dtEnd, *holidays));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5085,6 +5299,12 @@ static int LUACALL wxLua_wxStopWatch_Time(lua_State *L)
     // call Time
     long returns = (self->Time());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5178,7 +5398,13 @@ static int LUACALL wxLua_wxLanguageInfo_Get_Language(lua_State *L)
 {
     // get this
     wxLanguageInfo *self = (wxLanguageInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLanguageInfo);
-    // push the result number
+    // push the result integer? number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(self->Language) == (double)(self->Language)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, self->Language);
+} else
+#endif
     lua_pushnumber(L, self->Language);
     // return the number of values
     return 1;
@@ -5194,7 +5420,13 @@ static int LUACALL wxLua_wxLanguageInfo_Get_LayoutDirection(lua_State *L)
 {
     // get this
     wxLanguageInfo *self = (wxLanguageInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLanguageInfo);
-    // push the result number
+    // push the result integer? number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(self->LayoutDirection) == (double)(self->LayoutDirection)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, self->LayoutDirection);
+} else
+#endif
     lua_pushnumber(L, self->LayoutDirection);
     // return the number of values
     return 1;
@@ -5497,6 +5729,12 @@ static int LUACALL wxLua_wxLocale_GetLanguage(lua_State *L)
     // call GetLanguage
     int returns = (self->GetLanguage());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5699,6 +5937,12 @@ static int LUACALL wxLua_wxLocale_GetSystemEncoding(lua_State *L)
     // call GetSystemEncoding
     wxFontEncoding returns = (wxLocale::GetSystemEncoding());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5725,6 +5969,12 @@ static int LUACALL wxLua_wxLocale_GetSystemLanguage(lua_State *L)
     // call GetSystemLanguage
     int returns = (wxLocale::GetSystemLanguage());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

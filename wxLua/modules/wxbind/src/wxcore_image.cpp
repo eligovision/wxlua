@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxImage && wxUSE_IMAGE
 // ---------------------------------------------------------------------------
@@ -217,6 +221,12 @@ static int LUACALL wxLua_wxImage_ComputeHistogram(lua_State *L)
     // call ComputeHistogram
     unsigned long returns = (self->ComputeHistogram(*histogram));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -385,15 +395,15 @@ static int LUACALL wxLua_wxImage_Create5(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 4);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 4);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 3);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 3);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(*sz, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data));
+    bool returns = (self->Create(*sz, data, alpha, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -414,9 +424,9 @@ static int LUACALL wxLua_wxImage_Create4(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 6 ? wxlua_getbooleantype(L, 6) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 5);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 5);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 4);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 4);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
@@ -424,7 +434,7 @@ static int LUACALL wxLua_wxImage_Create4(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(width, height, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data));
+    bool returns = (self->Create(width, height, data, alpha, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -445,13 +455,13 @@ static int LUACALL wxLua_wxImage_Create3(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 3);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 3);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(*sz, (unsigned char*)(const char*)data, static_data));
+    bool returns = (self->Create(*sz, data, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -472,7 +482,7 @@ static int LUACALL wxLua_wxImage_Create2(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : false);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 4);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 4);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
@@ -480,7 +490,7 @@ static int LUACALL wxLua_wxImage_Create2(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(width, height, (unsigned char*)(const char*)data, static_data));
+    bool returns = (self->Create(width, height, data, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -572,9 +582,9 @@ static int LUACALL wxLua_wxImage_FindFirstUnusedColour(lua_State *L)
     bool returns = self->FindFirstUnusedColour(&r, &g, &b, startR, startG, startB);
     // push the result flag
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, r);
-    lua_pushnumber(L, g);
-    lua_pushnumber(L, b);
+    lua_pushinteger(L, r);
+    lua_pushinteger(L, g);
+    lua_pushinteger(L, b);
 
     return 4;
 }
@@ -726,6 +736,12 @@ static int LUACALL wxLua_wxImage_GetAlpha(lua_State *L)
     // call GetAlpha
     unsigned char returns = (self->GetAlpha(x, y));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -746,6 +762,12 @@ static int LUACALL wxLua_wxImage_GetBlue(lua_State *L)
     // call GetBlue
     unsigned char returns = (self->GetBlue(x, y));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -779,6 +801,12 @@ static int LUACALL wxLua_wxImage_GetDefaultLoadFlags(lua_State *L)
     // call GetDefaultLoadFlags
     int returns = (wxImage::GetDefaultLoadFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -801,6 +829,12 @@ static int LUACALL wxLua_wxImage_GetGreen(lua_State *L)
     // call GetGreen
     unsigned char returns = (self->GetGreen(x, y));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -834,6 +868,12 @@ static int LUACALL wxLua_wxImage_GetHeight(lua_State *L)
     // call GetHeight
     int returns = (self->GetHeight());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -856,6 +896,12 @@ static int LUACALL wxLua_wxImage_GetImageCount1(lua_State *L)
     // call GetImageCount
     int returns = (wxImage::GetImageCount(*stream, type));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -878,6 +924,12 @@ static int LUACALL wxLua_wxImage_GetImageCount(lua_State *L)
     // call GetImageCount
     int returns = (wxImage::GetImageCount(filename, type));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -909,6 +961,12 @@ static int LUACALL wxLua_wxImage_GetLoadFlags(lua_State *L)
     // call GetLoadFlags
     int returns = (self->GetLoadFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -927,6 +985,12 @@ static int LUACALL wxLua_wxImage_GetMaskBlue(lua_State *L)
     // call GetMaskBlue
     unsigned char returns = (self->GetMaskBlue());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -943,6 +1007,12 @@ static int LUACALL wxLua_wxImage_GetMaskGreen(lua_State *L)
     // call GetMaskGreen
     unsigned char returns = (self->GetMaskGreen());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -959,6 +1029,12 @@ static int LUACALL wxLua_wxImage_GetMaskRed(lua_State *L)
     // call GetMaskRed
     unsigned char returns = (self->GetMaskRed());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -995,6 +1071,12 @@ static int LUACALL wxLua_wxImage_GetOptionInt(lua_State *L)
     // call GetOptionInt
     int returns = (self->GetOptionInt(name));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1014,9 +1096,9 @@ static int LUACALL wxLua_wxImage_GetOrFindMaskColour(lua_State *L)
     bool returns = self->GetOrFindMaskColour(&r, &g, &b);
     // push the result flag
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, r);
-    lua_pushnumber(L, g);
-    lua_pushnumber(L, b);
+    lua_pushinteger(L, r);
+    lua_pushinteger(L, g);
+    lua_pushinteger(L, b);
 
     return 4;
 }
@@ -1060,6 +1142,12 @@ static int LUACALL wxLua_wxImage_GetRed(lua_State *L)
     // call GetRed
     unsigned char returns = (self->GetRed(x, y));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1124,6 +1212,12 @@ static int LUACALL wxLua_wxImage_GetType(lua_State *L)
     // call GetType
     wxBitmapType returns = (self->GetType());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1142,6 +1236,12 @@ static int LUACALL wxLua_wxImage_GetWidth(lua_State *L)
     // call GetWidth
     int returns = (self->GetWidth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1163,9 +1263,9 @@ static int LUACALL wxLua_wxImage_HSVtoRGB(lua_State *L)
     // call HSVtoRGB
     wxImage::RGBValue rgbValue = wxImage::HSVtoRGB(wxImage::HSVValue(h, s, v));
     // push the result number
-    lua_pushnumber(L, rgbValue.red);
-    lua_pushnumber(L, rgbValue.green);
-    lua_pushnumber(L, rgbValue.blue);
+    lua_pushinteger(L, rgbValue.red);
+    lua_pushinteger(L, rgbValue.green);
+    lua_pushinteger(L, rgbValue.blue);
 
     return 3;
 }
@@ -1216,6 +1316,12 @@ static int LUACALL wxLua_wxImage_HasOption(lua_State *L)
     // call HasOption
     int returns = (self->HasOption(name));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1488,9 +1594,9 @@ static int LUACALL wxLua_wxImage_RGBtoHSV(lua_State *L)
     // call HSVtoRGB
     wxImage::HSVValue hsvValue = wxImage::RGBtoHSV(wxImage::RGBValue(r, g, b));
     // push the result number
-    lua_pushnumber(L, hsvValue.hue);
-    lua_pushnumber(L, hsvValue.saturation);
-    lua_pushnumber(L, hsvValue.value);
+    lua_pushinteger(L, hsvValue.hue);
+    lua_pushinteger(L, hsvValue.saturation);
+    lua_pushinteger(L, hsvValue.value);
 
     return 3;
 }
@@ -2012,7 +2118,7 @@ static int LUACALL wxLua_wxImage_SetAlphaData(lua_State *L)
 {
     // unsigned char *data
     size_t len = 0;
-    unsigned char *data = (unsigned char *)lua_tolstring(L, 2, &len);
+    unsigned char *data = (unsigned char *)wxlua_getstringtypelen(L, 2, &len);
     // get this
     wxImage *self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetData
@@ -2060,11 +2166,11 @@ static int LUACALL wxLua_wxImage_SetAlpha(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
     // unsigned char alpha = NULL
-    wxCharBuffer alpha = (argCount >= 2 ? wxlua_getstringtype(L, 2) : NULL);
+    unsigned char * alpha = (argCount >= 2 ? (unsigned char *)wxlua_getstringtype(L, 2) : NULL);
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetAlpha
-    self->SetAlpha((unsigned char*)(const char*)alpha, static_data);
+    self->SetAlpha(alpha, static_data);
 
     return 0;
 }
@@ -2080,7 +2186,7 @@ static int LUACALL wxLua_wxImage_SetData(lua_State *L)
 {
     // unsigned char *data
     size_t len = 0;
-    unsigned char *data = (unsigned char *)lua_tolstring(L, 2, &len);
+    unsigned char *data = (unsigned char *)wxlua_getstringtypelen(L, 2, &len);
     // get this
     wxImage *self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetData
@@ -2409,7 +2515,7 @@ static int LUACALL wxLua_wxImageFromData_constructor(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char* data
-    unsigned char *data = (unsigned char *)lua_tostring(L, 3);
+    unsigned char *data = (unsigned char *)wxlua_getstringtype(L, 3);
     // int height
     int height = (int)wxlua_getintegertype(L, 2);
     // int width
@@ -2607,13 +2713,13 @@ static int LUACALL wxLua_wxImage_constructor5(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 3);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 3);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 2);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 2);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSize);
     // call constructor
-    wxImage* returns = new wxImage(*sz, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data);
+    wxImage* returns = new wxImage(*sz, data, alpha, static_data);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxImage);
     // push the constructed class pointer
@@ -2636,15 +2742,15 @@ static int LUACALL wxLua_wxImage_constructor4(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 4);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 4);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 3);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 3);
     // int height
     int height = (int)wxlua_getnumbertype(L, 2);
     // int width
     int width = (int)wxlua_getnumbertype(L, 1);
     // call constructor
-    wxImage* returns = new wxImage(width, height, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data);
+    wxImage* returns = new wxImage(width, height, data, alpha, static_data);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxImage);
     // push the constructed class pointer
@@ -2667,11 +2773,11 @@ static int LUACALL wxLua_wxImage_constructor3(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 2);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 2);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSize);
     // call constructor
-    wxImage* returns = new wxImage(*sz, (unsigned char*)(const char*)data, static_data);
+    wxImage* returns = new wxImage(*sz, data, static_data);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxImage);
     // push the constructed class pointer
@@ -3285,7 +3391,13 @@ static int LUACALL wxLua_wxImageHistogramEntry_Get_index(lua_State *L)
 {
     // get this
     wxImageHistogramEntry *self = (wxImageHistogramEntry *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImageHistogramEntry);
-    // push the result number
+    // push the result integer? number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(self->index) == (double)(self->index)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, self->index);
+} else
+#endif
     lua_pushnumber(L, self->index);
     // return the number of values
     return 1;
@@ -3299,7 +3411,13 @@ static int LUACALL wxLua_wxImageHistogramEntry_Get_value(lua_State *L)
 {
     // get this
     wxImageHistogramEntry *self = (wxImageHistogramEntry *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImageHistogramEntry);
-    // push the result number
+    // push the result integer? number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(self->value) == (double)(self->value)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, self->value);
+} else
+#endif
     lua_pushnumber(L, self->value);
     // return the number of values
     return 1;
@@ -3550,6 +3668,12 @@ static int LUACALL wxLua_wxImageHistogram_MakeKey(lua_State *L)
     // call MakeKey
     unsigned long returns = (wxImageHistogram::MakeKey(r, g, b));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3601,6 +3725,12 @@ static int LUACALL wxLua_wxImageHistogram_count(lua_State *L)
     // call count
     size_t returns = (self->count(key));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3657,6 +3787,12 @@ static int LUACALL wxLua_wxImageHistogram_erase(lua_State *L)
     // call erase
     size_t returns = (self->erase(key));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3694,6 +3830,12 @@ static int LUACALL wxLua_wxImageHistogram_size(lua_State *L)
     // call size
     size_t returns = (self->size());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3839,6 +3981,12 @@ static int LUACALL wxLua_wxImageHandler_GetImageCount(lua_State *L)
     // call GetImageCount
     int returns = (self->GetImageCount(*stream));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3889,6 +4037,12 @@ static int LUACALL wxLua_wxImageHandler_GetType(lua_State *L)
     // call GetType
     long returns = (self->GetType());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

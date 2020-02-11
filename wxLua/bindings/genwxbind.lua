@@ -17,7 +17,7 @@
 -- Globals
 -- ---------------------------------------------------------------------------
 
-WXLUA_BINDING_VERSION = 33 -- Used to verify that the bindings are updated
+WXLUA_BINDING_VERSION = 37 -- Used to verify that the bindings are updated
                            -- This must match modules/wxlua/wxldefs.h
                            -- otherwise a compile time error will be generated.
 
@@ -36,6 +36,7 @@ typedefTable        = {} -- all typedefs read from the interface files
 dataTypeTable       = {} -- all datatypes; int, double, class names, see AllocDataType
 dataTypeAttribTable = {} -- attributes for data types; unsigned, const
 dataTypeUIntTable   = {} -- datatypes that are unsigned numbers
+dataTypeFloatTable  = {} -- datatypes that are float (and similar) numbers
 dataTypeBoolTable   = {} -- datatypes that are boolean
 functionAttribTable = {} -- attributes for functions; static, virtual
 
@@ -288,6 +289,7 @@ function InitDataTypes()
     --AllocDataType("wxArrayInt",            "special", true) -- special, but we only convert input, not output
     AllocDataType("IntArray_FromLuaTable", "special", true)
     AllocDataType("wxPointArray_FromLuaTable", "special", true);
+    AllocDataType("wxPoint2DDoubleArray_FromLuaTable", "special", true);
     AllocDataType("voidptr_long",          "special", true)
     AllocDataType("any",                   "special", true)
 
@@ -299,6 +301,13 @@ function InitDataTypes()
     dataTypeAttribTable["%ungc"]   = true -- this object won't be gc by Lua
 
     dataTypeAttribTable["%IncRef"] = true -- special to wxGridCellWorker/wxRefCounter classes and IncRef() will be called on it
+
+    -- datatypes that are float numbers to be treated differently
+    dataTypeFloatTable["float"]     = true
+    dataTypeFloatTable["double"]    = true
+    dataTypeFloatTable["wxFloat32"] = true
+    dataTypeFloatTable["wxFloat64"] = true
+    dataTypeFloatTable["wxDouble"]  = true
 
     -- datatypes that are unsigned integers to be treated differently
     dataTypeUIntTable["size_t"]         = true
@@ -546,6 +555,20 @@ function IsDataTypeUInt(datatype)
         return dataTypeUIntTable[dtype.Name] or false
     else
         print("ERROR: Missing data type '"..tostring(datatype).."' in IsDataTypeUInt.")
+    end
+
+    return false
+end
+
+-- ---------------------------------------------------------------------------
+-- Is this data type an unsigned integer
+-- ---------------------------------------------------------------------------
+function IsDataTypeFloat(datatype)
+    local dtype = GetDataTypedefBase(string.gsub(datatype, "const ", ""))
+    if dtype then
+        return dataTypeFloatTable[dtype.Name] or false
+    else
+        print("ERROR: Missing data type '"..tostring(datatype).."' in IsDataTypeFloat.")
     end
 
     return false
@@ -1029,6 +1052,7 @@ function InitKeywords()
     preprocConditionTable["wxLUA_USE_wxAnimation"]             = "wxLUA_USE_wxAnimation"
     preprocConditionTable["wxLUA_USE_wxApp"]                   = "wxLUA_USE_wxApp"
     preprocConditionTable["wxLUA_USE_wxArrayInt"]              = "wxLUA_USE_wxArrayInt"
+    preprocConditionTable["wxLUA_USE_wxArrayDouble"]           = "wxLUA_USE_wxArrayDouble"
     preprocConditionTable["wxLUA_USE_wxArrayString"]           = "wxLUA_USE_wxArrayString"
     preprocConditionTable["wxLUA_USE_wxArtProvider"]           = "wxLUA_USE_wxArtProvider"
     preprocConditionTable["wxLUA_USE_wxAUI"]                   = "wxLUA_USE_wxAUI"
@@ -1437,6 +1461,7 @@ function ReadOverrideFile(override_file)
     end
 
     for line in io.lines(filename) do
+        line = line:gsub("%s+$","") -- drop all trailing whitespaces not handled by io.lines
         local lineData = SplitString(line, delimiters)
         local isOverride = false
         local isEnd = false
@@ -1521,6 +1546,7 @@ function ReadInterfaceFile(filename)
     local linenumber = 0
 
     for line in io.lines(filename) do
+        line = line:gsub("%s+$","") -- drop all trailing whitespaces not handled by io.lines
         linenumber = linenumber + 1
 
         local lineTable =
@@ -3259,9 +3285,21 @@ function GenerateLuaLanguageBinding(interface)
                     CommentBindingTable(codeList, "    // push the result flag\n")
                     table.insert(codeList, "    lua_pushboolean(L, "..self_name..member.Name..");\n")
 
-                else
-                    CommentBindingTable(codeList, "    // push the result number\n")
+                elseif IsDataTypeFloat(memberType) then
+                    CommentBindingTable(codeList, "    // push the result floating point number\n")
                     table.insert(codeList, "    lua_pushnumber(L, "..self_name..member.Name..");\n")
+                else
+                    local val = self_name..member.Name
+                    CommentBindingTable(codeList, "    // push the result integer? number\n")
+                    table.insert(codeList, ([[
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(%s) == (double)(%s)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, %s);
+} else
+#endif
+    lua_pushnumber(L, %s);
+]]):format(val, val, val, val))
                 end
 
                 CommentBindingTable(codeList, "    // return the number of values\n")
@@ -3693,6 +3731,12 @@ function GenerateLuaLanguageBinding(interface)
                         overload_argList = overload_argList.."&wxluatype_wxArrayInt, "
                         argItem = "wxlua_getwxArrayInt(L, "..argNum..")"
                         declare = "wxLuaSmartwxArrayInt"
+                    elseif ((argType == "wxArrayDouble") and
+                            ((indirectionCount == 0) or
+                             ((indirectionCount == 1) and (argPtr == "&") and string.find(argTypeWithAttrib, "const", 1, 1)))) then
+                        overload_argList = overload_argList.."&wxluatype_wxArrayDouble, "
+                        argItem = "wxlua_getwxArrayDouble(L, "..argNum..")"
+                        declare = "wxLuaSmartwxArrayDouble"
                     elseif argType == "IntArray_FromLuaTable" then
                         overload_argList = overload_argList.."&wxluatype_TTABLE, "
                         argItem = "NULL; ptr = "..argName.." = wxlua_getintarray(L, "..argNum..", count_)"
@@ -3704,6 +3748,12 @@ function GenerateLuaLanguageBinding(interface)
                         argItem = "wxlua_getwxPointArray(L, "..argNum..")"
                         declare = "wxLuaSharedPtr<std::vector<wxPoint> >"
                         argListOverride = "(int)("..argName.." ? "..argName.."->size() : 0), ("..argName.." && (!"..argName.."->empty())) ? &"..argName .. "->at(0) : NULL"
+
+                    elseif (argType == "wxPoint2DDoubleArray_FromLuaTable") then
+                        overload_argList = overload_argList.."&wxluatype_TTABLE, "
+                        argItem = "wxlua_getwxPoint2DDoubleArray(L, "..argNum..")"
+                        declare = "wxLuaSharedPtr<std::vector<wxPoint2DDouble> >"
+                        argListOverride = "(size_t)("..argName.." ? "..argName.."->size() : 0), ("..argName.." && (!"..argName.."->empty())) ? &"..argName .. "->at(0) : NULL"
 
                     elseif argType == "LuaTable" then
                         -- THIS MUST BE AN OVERRIDE AND HANDLED THERE, we just set overload_argList
@@ -3778,12 +3828,12 @@ function GenerateLuaLanguageBinding(interface)
                         elseif argType == "char" then
                             overload_argList = overload_argList.."&wxluatype_TSTRING, "
                             argItem = "wxlua_getstringtype(L, "..argNum..")"
-
-                            argTypeWithAttrib = "wxCharBuffer"
-                            if (origArgTypeWithAttrib ~= "const char") then
-                                argCast = "("..origArgTypeWithAttrib.."*)(const char*)"
-                            else
-                                argCast = origArgTypeWithAttrib.."*"
+                            argTypeWithAttrib = "const char *"
+                            if (origArgTypeWithAttrib == "unsigned char" or origArgTypeWithAttrib == "const unsigned char") then
+                                argTypeWithAttrib = origArgTypeWithAttrib .. " *"
+                                argItem = "("..argTypeWithAttrib..")"..argItem
+                            elseif (origArgTypeWithAttrib ~= "const char") then
+                                argCast = "("..origArgTypeWithAttrib.."*)"
                             end
                         else
                             if isTranslated and (origIndirectionCount == 0) then
@@ -4284,9 +4334,20 @@ function GenerateLuaLanguageBinding(interface)
                         elseif returnPtr == "*" then
                             CommentBindingTable(codeList, "    // push the result pointer\n")
                             table.insert(codeList, "    lua_pushlightuserdata(L, (void *)returns);\n")
+                        elseif IsDataTypeFloat(member.DataType) then
+                            CommentBindingTable(codeList, "    // push the result floating point number\n")
+                            table.insert(codeList, "    lua_pushnumber(L, returns);\n")
                         else -- Number
                             CommentBindingTable(codeList, "    // push the result number\n")
-                            table.insert(codeList, "    lua_pushnumber(L, returns);\n")
+                            table.insert(codeList, [[
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+    lua_pushnumber(L, returns);
+]])
                         end
 
                         table.insert(codeList, "\n    return 1;\n")
@@ -4784,6 +4845,12 @@ function GenerateHookCppFileHeader(fileData, fileName, add_includes)
         table.insert(fileData, "#ifdef __GNUC__\n")
         table.insert(fileData, "    #pragma GCC diagnostic ignored \"-Wunused-variable\"\n")
         table.insert(fileData, "#endif // __GNUC__\n")
+
+        -- Allow to use lua_pushinteger in override files and convert it as needed
+        table.insert(fileData, "\n")
+        table.insert(fileData, "#if LUA_VERSION_NUM < 503\n")
+        table.insert(fileData, "#define lua_pushinteger lua_pushnumber\n")
+        table.insert(fileData, "#endif\n")
     end
 
     return fileData

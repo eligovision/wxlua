@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxUSE_GRAPHICS_CONTEXT
 // ---------------------------------------------------------------------------
@@ -143,7 +147,7 @@ int wxGraphicsObject_methodCount = sizeof(wxGraphicsObject_methods)/sizeof(wxLua
 #endif  // wxUSE_GRAPHICS_CONTEXT
 
 
-#if wxUSE_GRAPHICS_CONTEXT
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 // ---------------------------------------------------------------------------
 // Bind class wxGraphicsPenInfo
 // ---------------------------------------------------------------------------
@@ -161,7 +165,7 @@ static int LUACALL wxLua_wxGraphicsPenInfo_GetWidth(lua_State *L)
     wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
     // call GetWidth
     wxDouble returns = (self->GetWidth());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -189,7 +193,7 @@ static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_delete[] = { &wxlua
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_delete }};
 
 
-#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_constructor1[] = { &wxluatype_wxColour, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGraphicsPenInfo_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor1[1] = {{ wxLua_wxGraphicsPenInfo_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_constructor1 }};
@@ -214,7 +218,7 @@ static int LUACALL wxLua_wxGraphicsPenInfo_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
 
 static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor[1] = {{ wxLua_wxGraphicsPenInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -234,19 +238,19 @@ static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload[] =
 {
 
-#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxGraphicsPenInfo_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_constructor1 },
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxGraphicsPenInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 
 void wxLua_wxGraphicsPenInfo_delete_function(void** p)
 {
@@ -260,16 +264,16 @@ wxLuaBindMethod wxGraphicsPenInfo_methods[] = {
     { "Width", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Width, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsPenInfo_delete, 1, NULL },
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
     { "wxGraphicsPenInfo", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload, s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload_count, 0 },
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 
     { 0, 0, 0, 0 },
 };
 
 int wxGraphicsPenInfo_methodCount = sizeof(wxGraphicsPenInfo_methods)/sizeof(wxLuaBindMethod) - 1;
 
-#endif  // wxUSE_GRAPHICS_CONTEXT
+#endif  // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 
 #if wxUSE_GRAPHICS_CONTEXT
@@ -1594,7 +1598,7 @@ static int LUACALL wxLua_wxGraphicsGradientStop_GetPosition(lua_State *L)
     wxGraphicsGradientStop * self = (wxGraphicsGradientStop *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsGradientStop);
     // call GetPosition
     float returns = (self->GetPosition());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1756,6 +1760,12 @@ static int LUACALL wxLua_wxGraphicsGradientStops_GetCount(lua_State *L)
     // call GetCount
     size_t returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1939,10 +1949,12 @@ static int LUACALL wxLua_wxGraphicsContext_BeginLayer(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_ClearRectangle[] = { &wxluatype_wxGraphicsContext, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_ClearRectangle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_ClearRectangle[1] = {{ wxLua_wxGraphicsContext_ClearRectangle, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxGraphicsContext_ClearRectangle }};
-//     virtual void ClearRectangle(wxDouble x, wxDouble y, wxDouble w, wxDouble h);
+//     %wxchkver_3_1_1 virtual void ClearRectangle(wxDouble x, wxDouble y, wxDouble w, wxDouble h);
 static int LUACALL wxLua_wxGraphicsContext_ClearRectangle(lua_State *L)
 {
     // wxDouble h
@@ -1960,6 +1972,8 @@ static int LUACALL wxLua_wxGraphicsContext_ClearRectangle(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Clip1[] = { &wxluatype_wxGraphicsContext, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Clip1(lua_State *L);
@@ -2314,11 +2328,11 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFromNativeWindow(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromUnknownDC[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateFromUnknownDC[1] = {{ wxLua_wxGraphicsContext_CreateFromUnknownDC, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromUnknownDC }};
-//     static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
+//     %wxchkver_3_1_1 static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
 static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L)
 {
     // const wxDC dc
@@ -2332,7 +2346,7 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateLinearGradientBrush1[] = { &wxluatype_wxGraphicsContext, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGraphicsGradientStops, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateLinearGradientBrush1(lua_State *L);
@@ -2450,10 +2464,12 @@ static int LUACALL wxLua_wxGraphicsContext_CreatePath(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen1[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxGraphicsPenInfo, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreatePen1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreatePen1[1] = {{ wxLua_wxGraphicsContext_CreatePen1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen1 }};
-//     wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info) const;
+//     %wxchkver_3_1_1 wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info) const;
 static int LUACALL wxLua_wxGraphicsContext_CreatePen1(lua_State *L)
 {
     // const wxGraphicsPenInfo info
@@ -2471,6 +2487,7 @@ static int LUACALL wxLua_wxGraphicsContext_CreatePen1(lua_State *L)
     return 1;
 }
 
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxPen, NULL };
@@ -2709,32 +2726,27 @@ static int LUACALL wxLua_wxGraphicsContext_DrawIcon(lua_State *L)
 
 #endif // (wxLUA_USE_wxIcon) && (wxUSE_GRAPHICS_CONTEXT)
 
-#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines[] = { &wxluatype_wxGraphicsContext, &wxluatype_TINTEGER, &wxluatype_wxPoint2DDouble, &wxluatype_TINTEGER, NULL };
+#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines[] = { &wxluatype_wxGraphicsContext, &wxluatype_TTABLE, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_DrawLines(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_DrawLines[1] = {{ wxLua_wxGraphicsContext_DrawLines, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines }};
-//     virtual void DrawLines( size_t n, const wxPoint2DDouble *points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_DrawLines[1] = {{ wxLua_wxGraphicsContext_DrawLines, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines }};
+//     virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
 static int LUACALL wxLua_wxGraphicsContext_DrawLines(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // wxPolygonFillMode fillStyle = wxODDEVEN_RULE
-    wxPolygonFillMode fillStyle = (argCount >= 4 ? (wxPolygonFillMode)wxlua_getenumtype(L, 4) : wxODDEVEN_RULE);
-    // const wxPoint2DDouble points
-    const wxPoint2DDouble * points = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint2DDouble);
-    // size_t n
-    size_t n = (size_t)wxlua_getuintegertype(L, 2);
+    wxPolygonFillMode fillStyle = (argCount >= 3 ? (wxPolygonFillMode)wxlua_getenumtype(L, 3) : wxODDEVEN_RULE);
+    // wxPoint2DDoubleArray_FromLuaTable points
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > points = wxlua_getwxPoint2DDoubleArray(L, 2);
     // get this
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call DrawLines
-    self->DrawLines(n, points, fillStyle);
+    self->DrawLines((size_t)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL, fillStyle);
 
     return 0;
 }
 
-#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
-
-#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_DrawPath[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxGraphicsPath, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_DrawPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_DrawPath[1] = {{ wxLua_wxGraphicsContext_DrawPath, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_DrawPath }};
@@ -3001,7 +3013,7 @@ static int LUACALL wxLua_wxGraphicsContext_GetAlpha(lua_State *L)
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call GetAlpha
     wxDouble returns = (self->GetAlpha());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3020,15 +3032,23 @@ static int LUACALL wxLua_wxGraphicsContext_GetAntialiasMode(lua_State *L)
     // call GetAntialiasMode
     wxAntialiasMode returns = (self->GetAntialiasMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetClipBox[] = { &wxluatype_wxGraphicsContext, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetClipBox(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetClipBox[1] = {{ wxLua_wxGraphicsContext_GetClipBox, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxGraphicsContext_GetClipBox }};
-//     virtual void GetClipBox(wxDouble* x, wxDouble* y, wxDouble* w, wxDouble* h);// = 0;
+//     %wxchkver_3_1_1 virtual void GetClipBox(wxDouble* x, wxDouble* y, wxDouble* w, wxDouble* h);// = 0;
 static int LUACALL wxLua_wxGraphicsContext_GetClipBox(lua_State *L)
 {
     // wxDouble h
@@ -3047,6 +3067,8 @@ static int LUACALL wxLua_wxGraphicsContext_GetClipBox(lua_State *L)
     return 0;
 }
 
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetCompositionMode[] = { &wxluatype_wxGraphicsContext, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetCompositionMode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetCompositionMode[1] = {{ wxLua_wxGraphicsContext_GetCompositionMode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_GetCompositionMode }};
@@ -3058,6 +3080,12 @@ static int LUACALL wxLua_wxGraphicsContext_GetCompositionMode(lua_State *L)
     // call GetCompositionMode
     wxCompositionMode returns = (self->GetCompositionMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3092,6 +3120,12 @@ static int LUACALL wxLua_wxGraphicsContext_GetInterpolationQuality(lua_State *L)
     // call GetInterpolationQuality
     wxInterpolationQuality returns = (self->GetInterpolationQuality());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3113,6 +3147,28 @@ static int LUACALL wxLua_wxGraphicsContext_GetNativeContext(lua_State *L)
     return 1;
 }
 
+
+#if (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetPartialTextExtents[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, &wxluatype_wxArrayDouble, NULL };
+static int LUACALL wxLua_wxGraphicsContext_GetPartialTextExtents(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetPartialTextExtents[1] = {{ wxLua_wxGraphicsContext_GetPartialTextExtents, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_GetPartialTextExtents }};
+//     virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
+static int LUACALL wxLua_wxGraphicsContext_GetPartialTextExtents(lua_State *L)
+{
+    // wxArrayDouble widths
+    wxArrayDouble * widths = (wxArrayDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxArrayDouble);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call GetPartialTextExtents
+    self->GetPartialTextExtents(text, *widths);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetSize[] = { &wxluatype_wxGraphicsContext, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetSize[1] = {{ wxLua_wxGraphicsContext_GetSize, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_GetSize }};
@@ -3131,31 +3187,31 @@ static int LUACALL wxLua_wxGraphicsContext_GetSize(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent[1] = {{ wxLua_wxGraphicsContext_GetTextExtent, WXLUAMETHOD_METHOD, 4, 6, s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent }};
-//                                 wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent[1] = {{ wxLua_wxGraphicsContext_GetTextExtent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent }};
+// %override wxLua_wxGraphicsContext_GetTextExtent
+// void GetTextExtent(const wxString& string, wxCoord *w, wxCoord *h, wxCoord *descent = NULL, wxCoord *externalLeading = NULL, wxFont *font = NULL)
 static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L)
 {
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // wxDouble externalLeading = NULL
-    wxDouble * externalLeading = (argCount >= 6 ? (wxDouble *)wxlua_touserdata(L, 6) : NULL);
-    // wxDouble descent = NULL
-    wxDouble * descent = (argCount >= 5 ? (wxDouble *)wxlua_touserdata(L, 5) : NULL);
-    // wxDouble height
-    wxDouble * height = (wxDouble *)wxlua_touserdata(L, 4);
-    // wxDouble width
-    wxDouble * width = (wxDouble *)wxlua_touserdata(L, 3);
-    // const wxString text
-    const wxString text = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
-    // call GetTextExtent
-    self->GetTextExtent(text, width, height, descent, externalLeading);
+    wxDouble externalLeading;
+    wxDouble descent;
+    wxDouble h;
+    wxDouble w;
 
-    return 0;
+    wxString string = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxGraphicsContext *self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call GetTextExtent
+    self->GetTextExtent(string, &w, &h, &descent, &externalLeading);
+    lua_pushnumber(L, w);
+    lua_pushnumber(L, h);
+    lua_pushnumber(L, descent);
+    lua_pushnumber(L, externalLeading);
+    // return the number of parameters
+    return 4;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTransform[] = { &wxluatype_wxGraphicsContext, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetTransform(lua_State *L);
@@ -3544,47 +3600,41 @@ static int LUACALL wxLua_wxGraphicsContext_StrokeLine(lua_State *L)
     return 0;
 }
 
-
-#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines1[] = { &wxluatype_wxGraphicsContext, &wxluatype_TINTEGER, &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines1[] = { &wxluatype_wxGraphicsContext, &wxluatype_TTABLE, &wxluatype_TTABLE, NULL };
 static int LUACALL wxLua_wxGraphicsContext_StrokeLines1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines1[1] = {{ wxLua_wxGraphicsContext_StrokeLines1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines1 }};
-//     virtual void StrokeLines( size_t n, const wxPoint2DDouble *beginPoints, const wxPoint2DDouble *endPoints);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines1[1] = {{ wxLua_wxGraphicsContext_StrokeLines1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines1 }};
+// %override wxLua_wxGraphicsContext_StrokeLines1
+//     virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable beginPoints, wxPoint2DDoubleArray_FromLuaTable endPoints );
 static int LUACALL wxLua_wxGraphicsContext_StrokeLines1(lua_State *L)
 {
-    // const wxPoint2DDouble endPoints
-    const wxPoint2DDouble * endPoints = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint2DDouble);
-    // const wxPoint2DDouble beginPoints
-    const wxPoint2DDouble * beginPoints = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint2DDouble);
-    // size_t n
-    size_t n = (size_t)wxlua_getuintegertype(L, 2);
+    // wxPoint2DDoubleArray_FromLuaTable endPoints
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > endPoints = wxlua_getwxPoint2DDoubleArray(L, 3);
+    // wxPoint2DDoubleArray_FromLuaTable beginPoints
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > beginPoints = wxlua_getwxPoint2DDoubleArray(L, 2);
     // get this
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call StrokeLines
-    self->StrokeLines(n, beginPoints, endPoints);
+    self->StrokeLines((size_t)(beginPoints ? beginPoints->size() : 0), (beginPoints && (!beginPoints->empty())) ? &beginPoints->at(0) : NULL, (endPoints && (!endPoints->empty())) ? &endPoints->at(0) : NULL);
 
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines[] = { &wxluatype_wxGraphicsContext, &wxluatype_TINTEGER, &wxluatype_wxPoint2DDouble, NULL };
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines[] = { &wxluatype_wxGraphicsContext, &wxluatype_TTABLE, NULL };
 static int LUACALL wxLua_wxGraphicsContext_StrokeLines(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines[1] = {{ wxLua_wxGraphicsContext_StrokeLines, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines }};
-//     virtual void StrokeLines( size_t n, const wxPoint2DDouble *points);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines[1] = {{ wxLua_wxGraphicsContext_StrokeLines, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines }};
+//     virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable points );
 static int LUACALL wxLua_wxGraphicsContext_StrokeLines(lua_State *L)
 {
-    // const wxPoint2DDouble points
-    const wxPoint2DDouble * points = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint2DDouble);
-    // size_t n
-    size_t n = (size_t)wxlua_getuintegertype(L, 2);
+    // wxPoint2DDoubleArray_FromLuaTable points
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > points = wxlua_getwxPoint2DDoubleArray(L, 2);
     // get this
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call StrokeLines
-    self->StrokeLines(n, points);
+    self->StrokeLines((size_t)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL);
 
     return 0;
 }
-
-#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_StrokePath[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxGraphicsPath, NULL };
 static int LUACALL wxLua_wxGraphicsContext_StrokePath(lua_State *L);
@@ -3697,10 +3747,16 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBr
 };
 static int s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload[] =
 {
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
     { wxLua_wxGraphicsContext_CreatePen1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen1 },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
     { wxLua_wxGraphicsContext_CreatePen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen },
@@ -3708,6 +3764,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload[] =
 };
 static int s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateRadialGradientBrush_overload[] =
 {
@@ -3790,22 +3849,16 @@ static int s_wxluafunc_wxLua_wxGraphicsContext_SetPen_overload_count = sizeof(s_
 
 #endif // ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
 
-#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT))
+#if (wxUSE_GRAPHICS_CONTEXT)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines_overload[] =
 {
-
-#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT)
-    { wxLua_wxGraphicsContext_StrokeLines1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines1 },
-#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT)
-
-#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT)
-    { wxLua_wxGraphicsContext_StrokeLines, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines },
-#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGraphicsContext_StrokeLines1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines1 },
+    { wxLua_wxGraphicsContext_StrokeLines, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_StrokeLines },
 };
 static int s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT))
+#endif // (wxUSE_GRAPHICS_CONTEXT)
 
 void wxLua_wxGraphicsContext_delete_function(void** p)
 {
@@ -3816,7 +3869,10 @@ void wxLua_wxGraphicsContext_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "BeginLayer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_BeginLayer, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
     { "ClearRectangle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_ClearRectangle, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxRegion) && (wxUSE_GRAPHICS_CONTEXT))
     { "Clip", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_Clip_overload, s_wxluafunc_wxLua_wxGraphicsContext_Clip_overload_count, 0 },
@@ -3847,9 +3903,9 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "CreateFromNative", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsContext_CreateFromNative, 1, NULL },
     { "CreateFromNativeWindow", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsContext_CreateFromNativeWindow, 1, NULL },
 
-#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
     { "CreateFromUnknownDC", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsContext_CreateFromUnknownDC, 1, NULL },
-#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
     { "CreateLinearGradientBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload, s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload_count, 0 },
@@ -3858,8 +3914,11 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "CreateMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreateMatrix, 1, NULL },
     { "CreatePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreatePath, 1, NULL },
 
-#if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
     { "CreatePen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload, s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
     { "CreateRadialGradientBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreateRadialGradientBrush_overload, s_wxluafunc_wxLua_wxGraphicsContext_CreateRadialGradientBrush_overload_count, 0 },
 #endif // (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
 
@@ -3876,11 +3935,8 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "DrawIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawIcon, 1, NULL },
 #endif // (wxLUA_USE_wxIcon) && (wxUSE_GRAPHICS_CONTEXT)
 
-#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
-    { "DrawLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawLines, 1, NULL },
-#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
-
 #if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+    { "DrawLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawLines, 1, NULL },
     { "DrawPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawPath, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
 
@@ -3907,11 +3963,20 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
 #endif // (0) && (wxUSE_GRAPHICS_CONTEXT)
 
     { "GetAntialiasMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetAntialiasMode, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
     { "GetClipBox", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetClipBox, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "GetCompositionMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetCompositionMode, 1, NULL },
     { "GetDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetDPI, 1, NULL },
     { "GetInterpolationQuality", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetInterpolationQuality, 1, NULL },
     { "GetNativeContext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetNativeContext, 1, NULL },
+
+#if (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+    { "GetPartialTextExtents", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetPartialTextExtents, 1, NULL },
+#endif // (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "GetSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetSize, 1, NULL },
     { "GetTextExtent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent, 1, NULL },
     { "GetTransform", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetTransform, 1, NULL },
@@ -3950,9 +4015,9 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "StartPage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_StartPage, 1, NULL },
     { "StrokeLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_StrokeLine, 1, NULL },
 
-#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT))
+#if (wxUSE_GRAPHICS_CONTEXT)
     { "StrokeLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines_overload, s_wxluafunc_wxLua_wxGraphicsContext_StrokeLines_overload_count, 0 },
-#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxUSE_GRAPHICS_CONTEXT))
+#endif // (wxUSE_GRAPHICS_CONTEXT)
 
     { "StrokePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_StrokePath, 1, NULL },
     { "Translate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_Translate, 1, NULL },
@@ -4272,10 +4337,12 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreatePath(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreatePen[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_wxGraphicsPenInfo, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreatePen(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreatePen[1] = {{ wxLua_wxGraphicsRenderer_CreatePen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreatePen }};
-//     virtual wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info);// = 0;
+//     %wxchkver_3_1_1 virtual wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info);// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreatePen(lua_State *L)
 {
     // const wxGraphicsPenInfo info
@@ -4292,6 +4359,8 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreatePen(lua_State *L)
 
     return 1;
 }
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateRadialGradientBrush[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGraphicsGradientStops, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateRadialGradientBrush(lua_State *L);
@@ -4379,10 +4448,12 @@ static int LUACALL wxLua_wxGraphicsRenderer_GetDefaultRenderer(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetName[] = { &wxluatype_wxGraphicsRenderer, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_GetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_GetName[1] = {{ wxLua_wxGraphicsRenderer_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetName }};
-//     virtual wxString GetName() const;// = 0;
+//     %wxchkver_3_1_0 virtual wxString GetName() const;// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_GetName(lua_State *L)
 {
     // get this
@@ -4398,7 +4469,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_GetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetVersion[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_GetVersion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_GetVersion[1] = {{ wxLua_wxGraphicsRenderer_GetVersion, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetVersion }};
-//     virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
+//     %wxchkver_3_1_0 virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_GetVersion(lua_State *L)
 {
     // get number of arguments
@@ -4416,6 +4487,8 @@ static int LUACALL wxLua_wxGraphicsRenderer_GetVersion(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_delete[] = { &wxluatype_wxGraphicsRenderer, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsRenderer_delete }};
@@ -4479,13 +4552,21 @@ wxLuaBindMethod wxGraphicsRenderer_methods[] = {
     { "CreateMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateMatrix, 1, NULL },
     { "CreateMeasuringContext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateMeasuringContext, 1, NULL },
     { "CreatePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreatePath, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
     { "CreatePen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreatePen, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "CreateRadialGradientBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateRadialGradientBrush, 1, NULL },
     { "CreateSubBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateSubBitmap, 1, NULL },
     { "GetCairoRenderer", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsRenderer_GetCairoRenderer, 1, NULL },
     { "GetDefaultRenderer", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsRenderer_GetDefaultRenderer, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
     { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_GetName, 1, NULL },
     { "GetVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_GetVersion, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsRenderer_delete, 1, NULL },
 
     { 0, 0, 0, 0 },

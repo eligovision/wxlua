@@ -16,7 +16,7 @@
 #include "wx/dynarray.h"
 #include "wx/font.h"
 #include "wx/image.h"
-#include "wx/peninfobase.h"
+#include "wx/pen.h"
 #include "wx/vector.h"
 
 enum wxAntialiasMode
@@ -78,6 +78,9 @@ class %delete wxGraphicsObject : public wxObject
 //    wxGraphicsObjectRefData* GetGraphicsData() const;
 };
 
+
+#if %wxchkver_3_1_1
+
 // ----------------------------------------------------------------------------
 // wxGraphicsPenInfo describes a wxGraphicsPen
 // ----------------------------------------------------------------------------
@@ -97,6 +100,8 @@ class %delete wxGraphicsPenInfo// : public wxPenInfoBase<wxGraphicsPenInfo>
 
     wxDouble GetWidth() const;
 };
+
+#endif // !%wxchkver_3_1_1
 
 class %delete wxGraphicsPen : public wxGraphicsObject
 {
@@ -328,7 +333,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
 #endif
 
     // Create a context from a DC of unknown type, if supported, returns NULL otherwise
-    static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
+    %wxchkver_3_1_1 static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
     static %gc wxGraphicsContext* CreateFromNative( void * context );
     static %gc wxGraphicsContext* CreateFromNativeWindow( void * window );
     static %gc wxGraphicsContext* Create( wxWindow* window );
@@ -363,7 +368,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
 
     wxGraphicsPen CreatePen(const wxPen& pen) const;
 
-    wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info) const;
+    %wxchkver_3_1_1 wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info) const;
 
     virtual wxGraphicsBrush CreateBrush(const wxBrush& brush ) const;
 
@@ -427,7 +432,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     virtual void ResetClip();// = 0;
 
     // returns bounding box of the clipping region
-    virtual void GetClipBox(wxDouble* x, wxDouble* y, wxDouble* w, wxDouble* h);// = 0;
+    %wxchkver_3_1_1 virtual void GetClipBox(wxDouble* x, wxDouble* y, wxDouble* w, wxDouble* h);// = 0;
 
     // returns the native context
     virtual void * GetNativeContext();// = 0;
@@ -522,7 +527,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     virtual void DrawPath( const wxGraphicsPath& path, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
 
     // paints a transparent rectangle (only useful for bitmaps or windows)
-    virtual void ClearRectangle(wxDouble x, wxDouble y, wxDouble w, wxDouble h);
+    %wxchkver_3_1_1 virtual void ClearRectangle(wxDouble x, wxDouble y, wxDouble w, wxDouble h);
 
     //
     // text
@@ -538,11 +543,10 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     void DrawText( const wxString &str, wxDouble x, wxDouble y,
                    wxDouble angle, const wxGraphicsBrush& backgroundBrush );
 
+    // %override [wxDouble width, wxDouble height, wxDouble descent, wxDouble externalLeading] int GetTextExtent(const wxString& string;
+    void GetTextExtent(const wxString& string);
 
-    virtual void GetTextExtent( const wxString &text, wxDouble *width, wxDouble *height,
-                                wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
-
-//    virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
+    virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
 
     //
     // image support
@@ -562,13 +566,21 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     virtual void StrokeLine( wxDouble x1, wxDouble y1, wxDouble x2, wxDouble y2);
 
     // stroke lines connecting each of the points
-    virtual void StrokeLines( size_t n, const wxPoint2DDouble *points);
+    // virtual void StrokeLines( size_t n, const wxPoint2DDouble *points);
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
+    virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable points );
 
     // stroke disconnected lines from begin to end points
-    virtual void StrokeLines( size_t n, const wxPoint2DDouble *beginPoints, const wxPoint2DDouble *endPoints);
+    // virtual void StrokeLines( size_t n, const wxPoint2DDouble *beginPoints, const wxPoint2DDouble *endPoints);
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
+    // Note: We need an override here, because the C++ API accepts only one 'n',
+    //  both for beginPoints and endPoints.
+    virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable beginPoints, wxPoint2DDoubleArray_FromLuaTable endPoints );
 
     // draws a polygon
-    virtual void DrawLines( size_t n, const wxPoint2DDouble *points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
+    // virtual void DrawLines( size_t n, const wxPoint2DDouble *points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
+    virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
 
     // draws a rectangle
     virtual void DrawRectangle( wxDouble x, wxDouble y, wxDouble w, wxDouble h);
@@ -657,7 +669,7 @@ class %delete wxGraphicsRenderer : public wxObject
 
     // Paints
 
-    virtual wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info);// = 0;
+    %wxchkver_3_1_1 virtual wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info);// = 0;
 
     virtual wxGraphicsBrush CreateBrush(const wxBrush& brush );// = 0;
 
@@ -693,8 +705,8 @@ class %delete wxGraphicsRenderer : public wxObject
     // create a subimage from a native image representation
     virtual wxGraphicsBitmap CreateSubBitmap( const wxGraphicsBitmap &bitmap, wxDouble x, wxDouble y, wxDouble w, wxDouble h  );// = 0;
 
-    virtual wxString GetName() const;// = 0;
-    virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
+    %wxchkver_3_1_0 virtual wxString GetName() const;// = 0;
+    %wxchkver_3_1_0 virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
 };
 
 class %delete wxGCDC: public wxDC

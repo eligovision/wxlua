@@ -22,6 +22,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 // ---------------------------------------------------------------------------
@@ -295,6 +299,12 @@ static int LUACALL wxLua_wxHtmlSelection_GetFromCharacterPos(lua_State *L)
     // call GetFromCharacterPos
     wxCoord returns = (self->GetFromCharacterPos());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -350,6 +360,12 @@ static int LUACALL wxLua_wxHtmlSelection_GetToCharacterPos(lua_State *L)
     // call GetToCharacterPos
     wxCoord returns = (self->GetToCharacterPos());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -590,6 +606,12 @@ static int LUACALL wxLua_wxHtmlRenderingState_GetBgMode(lua_State *L)
     // call GetBgMode
     int returns = (self->GetBgMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -626,6 +648,12 @@ static int LUACALL wxLua_wxHtmlRenderingState_GetSelectionState(lua_State *L)
     // call GetSelectionState
     wxHtmlSelectionState returns = (self->GetSelectionState());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -835,7 +863,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -854,7 +882,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -875,7 +903,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -894,7 +922,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -1054,6 +1082,12 @@ static int LUACALL wxLua_wxHtmlCell_GetDescent(lua_State *L)
     // call GetDescent
     int returns = (self->GetDescent());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1086,6 +1120,12 @@ static int LUACALL wxLua_wxHtmlCell_GetHeight(lua_State *L)
     // call GetHeight
     int returns = (self->GetHeight());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1223,6 +1263,12 @@ static int LUACALL wxLua_wxHtmlCell_GetPosX(lua_State *L)
     // call GetPosX
     int returns = (self->GetPosX());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1239,6 +1285,12 @@ static int LUACALL wxLua_wxHtmlCell_GetPosY(lua_State *L)
     // call GetPosY
     int returns = (self->GetPosY());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1255,6 +1307,12 @@ static int LUACALL wxLua_wxHtmlCell_GetWidth(lua_State *L)
     // call GetWidth
     int returns = (self->GetWidth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1561,6 +1619,12 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetAlignHor(lua_State *L)
     // call GetAlignHor
     int returns = (self->GetAlignHor());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1577,6 +1641,12 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetAlignVer(lua_State *L)
     // call GetAlignVer
     int returns = (self->GetAlignVer());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1618,6 +1688,12 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetIndent(lua_State *L)
     // call GetIndent
     int returns = (self->GetIndent(ind));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1636,6 +1712,12 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetIndentUnits(lua_State *L)
     // call GetIndentUnits
     int returns = (self->GetIndentUnits(ind));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2359,6 +2441,12 @@ static int LUACALL wxLua_wxHtmlTag_GetBeginPos(lua_State *L)
     // call GetBeginPos
     int returns = (self->GetBeginPos());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2375,6 +2463,12 @@ static int LUACALL wxLua_wxHtmlTag_GetEndPos1(lua_State *L)
     // call GetEndPos1
     int returns = (self->GetEndPos1());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2391,6 +2485,12 @@ static int LUACALL wxLua_wxHtmlTag_GetEndPos2(lua_State *L)
     // call GetEndPos2
     int returns = (self->GetEndPos2());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2476,7 +2576,7 @@ static int LUACALL wxLua_wxHtmlTag_GetParamAsInt(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, value);
+    lua_pushinteger(L, value);
     // return the number of parameters
     return 2;
 }
@@ -3534,6 +3634,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetAlign(lua_State *L)
     // call GetAlign
     int returns = (self->GetAlign());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3550,6 +3656,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetCharHeight(lua_State *L)
     // call GetCharHeight
     int returns = (self->GetCharHeight());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3566,6 +3678,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetCharWidth(lua_State *L)
     // call GetCharWidth
     int returns = (self->GetCharWidth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3618,6 +3736,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontBold(lua_State *L)
     // call GetFontBold
     int returns = (self->GetFontBold());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3650,6 +3774,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontFixed(lua_State *L)
     // call GetFontFixed
     int returns = (self->GetFontFixed());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3666,6 +3796,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontItalic(lua_State *L)
     // call GetFontItalic
     int returns = (self->GetFontItalic());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3682,6 +3818,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontSize(lua_State *L)
     // call GetFontSize
     int returns = (self->GetFontSize());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3698,6 +3840,12 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontUnderlined(lua_State *L)
     // call GetFontUnderlined
     int returns = (self->GetFontUnderlined());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4433,6 +4581,12 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append3(lua_State *L)
     // call Append
     int returns = (self->Append(item, clientData));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4453,6 +4607,12 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L)
     // call Append
     int returns = (self->Append(item, (void*)number));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4471,6 +4631,12 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append1(lua_State *L)
     // call Append
     int returns = (self->Append(item));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4575,6 +4741,12 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_GetCount(lua_State *L)
     // call GetCount
     unsigned int returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4591,6 +4763,12 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_GetSelection(lua_State *L)
     // call GetSelection
     int returns = (self->GetSelection());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4821,6 +4999,12 @@ static int LUACALL wxLua_wxHtmlDCRenderer_FindNextPageBreak(lua_State *L)
     // call FindNextPageBreak
     int returns = (self->FindNextPageBreak(pos));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4839,6 +5023,12 @@ static int LUACALL wxLua_wxHtmlDCRenderer_GetTotalHeight(lua_State *L)
     // call GetTotalHeight
     int returns = (self->GetTotalHeight());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4855,6 +5045,12 @@ static int LUACALL wxLua_wxHtmlDCRenderer_GetTotalWidth(lua_State *L)
     // call GetTotalWidth
     int returns = (self->GetTotalWidth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4887,6 +5083,12 @@ static int LUACALL wxLua_wxHtmlDCRenderer_Render1(lua_State *L)
     // call Render
     int returns = (self->Render(x, y, *known_pagebreaks, from, dont_render, to));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

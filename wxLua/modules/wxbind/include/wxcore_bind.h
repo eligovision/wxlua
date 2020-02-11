@@ -19,9 +19,9 @@
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 33
+#if WXLUA_BINDING_VERSION > 37
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 33
+#endif //WXLUA_BINDING_VERSION > 37
 // ---------------------------------------------------------------------------
 
 // binding class
@@ -104,6 +104,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
     #include "wx/gbsizer.h"
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+    #include "wx/affinematrix2d.h"
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     #include "wx/bmpbuttn.h"
@@ -531,7 +535,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/font.h"
     #include "wx/geometry.h"
     #include "wx/image.h"
-    #include "wx/peninfobase.h"
+    #include "wx/pen.h"
     #include "wx/vector.h"
 #endif // wxUSE_GRAPHICS_CONTEXT
 
@@ -654,9 +658,22 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBoxSizer;
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
 
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAffineMatrix2D;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMatrix2D;
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPenInfo;
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPenInfo;
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSystemAppearance;
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBitmapButton;
@@ -1292,7 +1309,6 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsObject;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPath;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPen;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsPenInfo;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGraphicsRenderer;
 #endif // wxUSE_GRAPHICS_CONTEXT
 
