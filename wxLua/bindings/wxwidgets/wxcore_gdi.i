@@ -1783,6 +1783,7 @@ class %delete wxDisplay
     static size_t GetCount();
     wxVideoMode  GetCurrentMode() const;
     static int GetFromPoint(const wxPoint& pt);
+    static int GetFromWindow(const wxWindow* win);
     wxRect  GetGeometry() const;
     wxArrayVideoModes  GetModes(const wxVideoMode& mode = wxDefaultVideoMode) const;
     wxString  GetName() const;
