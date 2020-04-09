@@ -257,7 +257,7 @@ class wxDataViewCustomRenderer : public wxDataViewCustomRendererBase
 // wxDataViewProgressRenderer
 // ---------------------------------------------------------
 
-class wxDataViewProgressRenderer : public wxDataViewCustomRenderer
+class wxDataViewProgressRenderer : public wxDataViewRenderer
 {
     static wxString GetDefaultType();
 
@@ -286,7 +286,7 @@ class wxDataViewIconTextRenderer: public wxDataViewTextRenderer
 // wxDataViewChoiceRenderer
 // -------------------------------------
 
-class wxDataViewChoiceRenderer : public wxDataViewCustomRenderer
+class wxDataViewChoiceRenderer : public wxDataViewRenderer
 {
     wxDataViewChoiceRenderer(const wxArrayString &choices,
                              wxDataViewCellMode mode = wxDATAVIEW_CELL_EDITABLE,

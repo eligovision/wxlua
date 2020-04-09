@@ -25662,7 +25662,7 @@ static const char* wxluabaseclassnames_wxDataViewCheckIconText[] = { wxluaclassn
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewCheckIconText[] = { NULL };
 static const char* wxluabaseclassnames_wxDataViewChoiceByIndexRenderer[] = { wxluaclassname_wxDataViewChoiceRenderer, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewChoiceByIndexRenderer[] = { NULL };
-static const char* wxluabaseclassnames_wxDataViewChoiceRenderer[] = { wxluaclassname_wxDataViewCustomRenderer, NULL };
+static const char* wxluabaseclassnames_wxDataViewChoiceRenderer[] = { wxluaclassname_wxDataViewRenderer, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewChoiceRenderer[] = { NULL };
 static const char* wxluabaseclassnames_wxDataViewColumn[] = { wxluaclassname_wxDataViewColumnBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewColumn[] = { NULL };
@@ -25684,7 +25684,7 @@ static const char* wxluabaseclassnames_wxDataViewListModel[] = { wxluaclassname_
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewListModel[] = { NULL };
 static const char* wxluabaseclassnames_wxDataViewListStore[] = { wxluaclassname_wxDataViewIndexListModel, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewListStore[] = { NULL };
-static const char* wxluabaseclassnames_wxDataViewProgressRenderer[] = { wxluaclassname_wxDataViewCustomRenderer, NULL };
+static const char* wxluabaseclassnames_wxDataViewProgressRenderer[] = { wxluaclassname_wxDataViewRenderer, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewProgressRenderer[] = { NULL };
 static const char* wxluabaseclassnames_wxDataViewRenderer[] = { wxluaclassname_wxDataViewCustomRendererBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataViewRenderer[] = { NULL };
@@ -26147,8 +26147,8 @@ wxLuaBindClass* wxLuaGetClassList_wxadv(size_t &count)
 #if wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl
         { wxluaclassname_wxDataViewBitmapRenderer, wxDataViewBitmapRenderer_methods, wxDataViewBitmapRenderer_methodCount, CLASSINFO(wxDataViewBitmapRenderer), &wxluatype_wxDataViewBitmapRenderer, wxluabaseclassnames_wxDataViewBitmapRenderer, wxluabaseclassbinds_wxDataViewBitmapRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewBitmapRenderer_delete_function, }, 
         { wxluaclassname_wxDataViewCheckIconText, wxDataViewCheckIconText_methods, wxDataViewCheckIconText_methodCount, CLASSINFO(wxDataViewCheckIconText), &wxluatype_wxDataViewCheckIconText, wxluabaseclassnames_wxDataViewCheckIconText, wxluabaseclassbinds_wxDataViewCheckIconText, NULL, NULL, NULL, 0, &wxLua_wxDataViewCheckIconText_delete_function, }, 
-        { wxluaclassname_wxDataViewChoiceByIndexRenderer, wxDataViewChoiceByIndexRenderer_methods, wxDataViewChoiceByIndexRenderer_methodCount, NULL, &wxluatype_wxDataViewChoiceByIndexRenderer, wxluabaseclassnames_wxDataViewChoiceByIndexRenderer, wxluabaseclassbinds_wxDataViewChoiceByIndexRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewChoiceByIndexRenderer_delete_function, }, 
-        { wxluaclassname_wxDataViewChoiceRenderer, wxDataViewChoiceRenderer_methods, wxDataViewChoiceRenderer_methodCount, NULL, &wxluatype_wxDataViewChoiceRenderer, wxluabaseclassnames_wxDataViewChoiceRenderer, wxluabaseclassbinds_wxDataViewChoiceRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewChoiceRenderer_delete_function, }, 
+        { wxluaclassname_wxDataViewChoiceByIndexRenderer, wxDataViewChoiceByIndexRenderer_methods, wxDataViewChoiceByIndexRenderer_methodCount, CLASSINFO(wxDataViewChoiceByIndexRenderer), &wxluatype_wxDataViewChoiceByIndexRenderer, wxluabaseclassnames_wxDataViewChoiceByIndexRenderer, wxluabaseclassbinds_wxDataViewChoiceByIndexRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewChoiceByIndexRenderer_delete_function, }, 
+        { wxluaclassname_wxDataViewChoiceRenderer, wxDataViewChoiceRenderer_methods, wxDataViewChoiceRenderer_methodCount, CLASSINFO(wxDataViewChoiceRenderer), &wxluatype_wxDataViewChoiceRenderer, wxluabaseclassnames_wxDataViewChoiceRenderer, wxluabaseclassbinds_wxDataViewChoiceRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewChoiceRenderer_delete_function, }, 
         { wxluaclassname_wxDataViewColumn, wxDataViewColumn_methods, wxDataViewColumn_methodCount, NULL, &wxluatype_wxDataViewColumn, wxluabaseclassnames_wxDataViewColumn, wxluabaseclassbinds_wxDataViewColumn, NULL, NULL, NULL, 0, &wxLua_wxDataViewColumn_delete_function, }, 
         { wxluaclassname_wxDataViewColumnBase, wxDataViewColumnBase_methods, wxDataViewColumnBase_methodCount, NULL, &wxluatype_wxDataViewColumnBase, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDataViewColumnBase_delete_function, }, 
         { wxluaclassname_wxDataViewCtrl, wxDataViewCtrl_methods, wxDataViewCtrl_methodCount, CLASSINFO(wxDataViewCtrl), &wxluatype_wxDataViewCtrl, wxluabaseclassnames_wxDataViewCtrl, wxluabaseclassbinds_wxDataViewCtrl, NULL, NULL, NULL, 0, &wxLua_wxDataViewCtrl_delete_function, }, 
@@ -26166,7 +26166,7 @@ wxLuaBindClass* wxLuaGetClassList_wxadv(size_t &count)
         { wxluaclassname_wxDataViewListStoreLine, wxDataViewListStoreLine_methods, wxDataViewListStoreLine_methodCount, NULL, &wxluatype_wxDataViewListStoreLine, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDataViewListStoreLine_delete_function, }, 
         { wxluaclassname_wxDataViewModel, wxDataViewModel_methods, wxDataViewModel_methodCount, NULL, &wxluatype_wxDataViewModel, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDataViewModel_delete_function, }, 
         { wxluaclassname_wxDataViewModelNotifier, wxDataViewModelNotifier_methods, wxDataViewModelNotifier_methodCount, NULL, &wxluatype_wxDataViewModelNotifier, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDataViewModelNotifier_delete_function, }, 
-        { wxluaclassname_wxDataViewProgressRenderer, wxDataViewProgressRenderer_methods, wxDataViewProgressRenderer_methodCount, NULL, &wxluatype_wxDataViewProgressRenderer, wxluabaseclassnames_wxDataViewProgressRenderer, wxluabaseclassbinds_wxDataViewProgressRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewProgressRenderer_delete_function, }, 
+        { wxluaclassname_wxDataViewProgressRenderer, wxDataViewProgressRenderer_methods, wxDataViewProgressRenderer_methodCount, CLASSINFO(wxDataViewProgressRenderer), &wxluatype_wxDataViewProgressRenderer, wxluabaseclassnames_wxDataViewProgressRenderer, wxluabaseclassbinds_wxDataViewProgressRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewProgressRenderer_delete_function, }, 
         { wxluaclassname_wxDataViewRenderer, wxDataViewRenderer_methods, wxDataViewRenderer_methodCount, CLASSINFO(wxDataViewRenderer), &wxluatype_wxDataViewRenderer, wxluabaseclassnames_wxDataViewRenderer, wxluabaseclassbinds_wxDataViewRenderer, NULL, NULL, NULL, 0, &wxLua_wxDataViewRenderer_delete_function, }, 
         { wxluaclassname_wxDataViewRendererBase, wxDataViewRendererBase_methods, wxDataViewRendererBase_methodCount, CLASSINFO(wxDataViewRendererBase), &wxluatype_wxDataViewRendererBase, wxluabaseclassnames_wxDataViewRendererBase, wxluabaseclassbinds_wxDataViewRendererBase, NULL, NULL, NULL, 0, &wxLua_wxDataViewRendererBase_delete_function, }, 
 #endif // wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl

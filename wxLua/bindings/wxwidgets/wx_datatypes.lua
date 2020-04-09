@@ -1324,7 +1324,7 @@ wx_dataTypeTable =
   },
   wxDataViewChoiceRenderer = {
     BaseClasses = {
-      [1] = "wxDataViewCustomRenderer",
+      [1] = "wxDataViewRenderer",
     },
     Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
     IsNumber = false,
@@ -1470,7 +1470,7 @@ wx_dataTypeTable =
   },
   wxDataViewProgressRenderer = {
     BaseClasses = {
-      [1] = "wxDataViewCustomRenderer",
+      [1] = "wxDataViewRenderer",
     },
     Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
     IsNumber = false,
