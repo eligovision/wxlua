@@ -136,6 +136,7 @@ extern WXDLLIMPEXP_BINDWXADV wxLuaBinding* wxLuaBinding_wxadv_init();
 #endif // wxCHECK_VERSION(2,8,0) && wxUSE_HYPERLINKCTRL && wxLUA_USE_wxHyperlinkCtrl
 
 #if wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataFormatArray;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewBitmapRenderer;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewCheckIconText;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewChoiceByIndexRenderer;
