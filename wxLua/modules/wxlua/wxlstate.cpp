@@ -32,8 +32,10 @@ extern "C"
     // provided by bit.c (Lua BitOp)
     int luaopen_bit(lua_State *L);
 
+#if (LUA_VERSION_NUM < 502)
     // provided by lbitlib.c for 5.1 or we use the one in 5.2 or LuaJIT.
     int luaopen_bit32 (lua_State *L);
+#endif // (LUA_VERSION_NUM < 502)
 }
 
 // ----------------------------------------------------------------------------
@@ -89,9 +91,7 @@ int LUACALL wxlua_printFunction( lua_State *L )
         s = lua_tostring(L, -1);    /* get result */
         if (s == NULL)
         {
-            // FIXME use wxlua_error here? right now wxlua_error doesn't do anything special - JL
-            return luaL_error(L, LUA_QL("tostring") " must return a string to "
-                              LUA_QL("print"));
+            return luaL_error(L, "'tostring' must return a string to 'print'");
         }
 
         if (i > 1) msg.Append(wxT("\t")); // Lua uses a tab in luaB_print
@@ -710,9 +710,11 @@ bool wxLuaState::Create(lua_State* L, int state_type)
             lua_pushstring(L, "bit");
             lua_call(L, 1, 0);
 
+#if (LUA_VERSION_NUM < 502)
             lua_pushcfunction(L, luaopen_bit32);
             lua_pushstring(L, "bit32");
             lua_call(L, 1, 0);
+#endif // (LUA_VERSION_NUM < 502)
 
             RegisterBindings();
         }

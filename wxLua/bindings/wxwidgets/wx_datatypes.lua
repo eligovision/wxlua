@@ -4399,6 +4399,12 @@ wx_dataTypeTable =
     Name = "wxPortId",
     ValueType = "enum",
   },
+  wxPosixPermissions = {
+    Condition = "wxLUA_USE_wxFile && wxUSE_FILE",
+    IsNumber = true,
+    Name = "wxPosixPermissions",
+    ValueType = "enum",
+  },
   wxPostScriptDC = {
     BaseClasses = {
       [1] = "wxDC",
