@@ -64,6 +64,7 @@ class %delete wxDataViewItemArray
     wxDataViewItem operator[](size_t nIndex);
 };
 
+
 // class wxDataFormatArray
 class %delete wxDataFormatArray
 {
@@ -468,12 +469,6 @@ class %delete wxDataViewColumn : public wxDataViewColumnBase
                       unsigned int model_column, int width = wxDVC_DEFAULT_WIDTH,
                       wxAlignment align = wxALIGN_CENTER,
                       int flags = wxDATAVIEW_COL_RESIZABLE );
-
-#if %__WXMAC__
-    // Should be presented in wxSettableHeaderColumn
-    // virtual int GetMaxWidth() const;
-    // virtual void SetMaxWidth(int maxWidth);
-#endif
 };
 
 

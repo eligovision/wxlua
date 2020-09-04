@@ -29,11 +29,11 @@ include( build/CMakewxAppLib.cmake )
 # wxLua version
 # ===========================================================================
 
-set( wxLua_VERSION           "3.0.0.8" )
+set( wxLua_VERSION           "3.0.0.9" )
 set( wxLua_MAJOR_VERSION     "3" )
 set( wxLua_MINOR_VERSION     "0" )
 set( wxLua_RELEASE_VERSION   "0" )
-set( wxLua_SUBRELEASE_NUMBER "8")
+set( wxLua_SUBRELEASE_NUMBER "9")
 
 # ===========================================================================
 # wxWidgets libraries and wxLua bindings setup
@@ -156,8 +156,8 @@ endif()
 set(wxLua_LUA_LIBRARY_VERSION ${wxLua_LUA_LIBRARY_VERSION} CACHE STRING
     "Choose the Lua library version to use, '5.1' or '5.2', see also wxLua_LUA_LIBRARY_USE_BUILTIN" FORCE)
 
-if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.3"))
-    MESSAGE(FATAL_ERROR "wxLua_LUA_LIBRARY_VERSION may only be set to '5.1' or '5.2' or '5.3'")
+if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.3") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.4"))
+    MESSAGE(FATAL_ERROR "wxLua_LUA_LIBRARY_VERSION may only be set to '5.1' or '5.2' or '5.3' or '5.4'")
 endif()
 
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
@@ -166,7 +166,11 @@ else()
     if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
         set(wxLua_LUA_LIBRARY_VERSION_NUM 52)
     else()
-        set(wxLua_LUA_LIBRARY_VERSION_NUM 53)
+        if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.3)
+            set(wxLua_LUA_LIBRARY_VERSION_NUM 53)
+        else()
+            set(wxLua_LUA_LIBRARY_VERSION_NUM 54)
+        endif()
     endif()
 endif()
 
@@ -182,6 +186,9 @@ if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
 endif()
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.3)
     set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_5_2) # Match build used in default 5.3 Makefile
+endif()
+if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.4)
+    set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_5_3) # Match build used in default 5.4 Makefile
 endif()
 
 set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL
@@ -238,8 +245,6 @@ else() # Use the built-in Lua library
     else()
         if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
             set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.2")
-        else()
-            set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.3")
         endif()
     endif()
 
