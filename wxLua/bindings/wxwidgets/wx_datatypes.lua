@@ -1436,6 +1436,15 @@ wx_dataTypeTable =
     Name = "wxDataViewItemAttr",
     ValueType = "class",
   },
+  wxDataViewListCtrl = {
+    BaseClasses = {
+      [1] = "wxDataViewCtrl",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewListCtrl",
+    ValueType = "class",
+  },
   wxDataViewListModel = {
     BaseClasses = {
       [1] = "wxDataViewModel",
