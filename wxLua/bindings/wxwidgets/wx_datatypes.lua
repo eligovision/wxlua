@@ -1229,6 +1229,15 @@ wx_dataTypeTable =
     Name = "wxDLFlags",
     ValueType = "enum",
   },
+  wxDPIChangedEvent = {
+    BaseClasses = {
+      [1] = "wxEvent",
+    },
+    Condition = "wxCHECK_VERSION(3,1,3)",
+    IsNumber = false,
+    Name = "wxDPIChangedEvent",
+    ValueType = "class",
+  },
   wxDataFormat = {
     Condition = "wxLUA_USE_wxDataObject && wxUSE_DATAOBJ",
     IsNumber = false,
