@@ -123,6 +123,9 @@ class wxDialog : public wxTopLevelWindow
     // void SetTitle(const wxString& title) - in wxToplevelWindow
     // bool Show(const bool show) - see wxWindow
     int ShowModal();
+#if %msw
+    void ShowGripper(bool show);
+#endif
 };
 
 #endif // wxLUA_USE_wxDialog
