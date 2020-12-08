@@ -11,6 +11,7 @@
 wx_typedefTable =
 {
   WXHANDLE = "void *",
+  wxArchitecture = "wxBitness",
   ["wxDateTime::wxDateTime_t"] = "unsigned short",
   wxDouble = "double",
   wxInt32 = "int",
@@ -276,6 +277,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxArchitecture = {
+    Condition = "!wxCHECK_VERSION(3,1,5)",
     IsNumber = true,
     Name = "wxArchitecture",
     ValueType = "enum",
@@ -708,6 +710,12 @@ wx_dataTypeTable =
   wxBitmapType = {
     IsNumber = true,
     Name = "wxBitmapType",
+    ValueType = "enum",
+  },
+  wxBitness = {
+    Condition = "wxCHECK_VERSION(3,1,5)",
+    IsNumber = true,
+    Name = "wxBitness",
     ValueType = "enum",
   },
   wxBookCtrlBase = {

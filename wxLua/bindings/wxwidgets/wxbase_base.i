@@ -209,6 +209,24 @@ enum wxPortId
     wxPORT_DFB           // wxDFB, using wxUniversal
 };
 
+#if %wxchkver_3_1_5
+
+enum wxBitness
+{
+    wxBITNESS_INVALID = -1,     // returned on error
+
+    wxBITNESS_32,
+    wxBITNESS_64,
+
+    wxBITNESS_MAX
+};
+
+typedef wxBitness wxArchitecture;
+
+#endif
+
+#if !%wxchkver_3_1_5
+
 enum wxArchitecture
 {
     wxARCH_INVALID,         // returned on error
@@ -218,6 +236,8 @@ enum wxArchitecture
 
     wxARCH_MAX
 };
+
+#endif  // %wxchkver_3_1_5
 
 enum wxEndianness
 {

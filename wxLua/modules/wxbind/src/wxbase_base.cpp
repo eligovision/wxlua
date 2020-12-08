@@ -252,6 +252,8 @@ static int LUACALL wxLua_wxPlatformInfo_Get(lua_State *L)
     return 1;
 }
 
+
+#if !wxCHECK_VERSION(3,1,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArch[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetArch(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArch[1] = {{ wxLua_wxPlatformInfo_GetArch, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArch }};
@@ -292,6 +294,8 @@ static int LUACALL wxLua_wxPlatformInfo_GetArchName(lua_State *L)
     return 1;
 }
 
+#endif // !wxCHECK_VERSION(3,1,5)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1[] = { &wxluatype_wxPlatformInfo, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetArchName1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchName1[1] = {{ wxLua_wxPlatformInfo_GetArchName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1 }};
@@ -308,6 +312,8 @@ static int LUACALL wxLua_wxPlatformInfo_GetArchName1(lua_State *L)
     return 1;
 }
 
+
+#if !wxCHECK_VERSION(3,1,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchitecture[] = { &wxluatype_wxPlatformInfo, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetArchitecture(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchitecture[1] = {{ wxLua_wxPlatformInfo_GetArchitecture, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchitecture }};
@@ -331,6 +337,8 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
     return 1;
 }
+
+#endif // !wxCHECK_VERSION(3,1,5)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetEndianness[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetEndianness(lua_State *L);
@@ -768,6 +776,8 @@ static int LUACALL wxLua_wxPlatformInfo_IsUsingUniversalWidgets(lua_State *L)
     return 1;
 }
 
+
+#if !wxCHECK_VERSION(3,1,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_SetArchitecture[] = { &wxluatype_wxPlatformInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPlatformInfo_SetArchitecture(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_SetArchitecture[1] = {{ wxLua_wxPlatformInfo_SetArchitecture, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPlatformInfo_SetArchitecture }};
@@ -783,6 +793,8 @@ static int LUACALL wxLua_wxPlatformInfo_SetArchitecture(lua_State *L)
 
     return 0;
 }
+
+#endif // !wxCHECK_VERSION(3,1,5)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_SetEndianness[] = { &wxluatype_wxPlatformInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPlatformInfo_SetEndianness(lua_State *L);
@@ -870,13 +882,19 @@ static int LUACALL wxLua_wxPlatformInfo_SetToolkitVersion(lua_State *L)
 
 
 
+#if (!wxCHECK_VERSION(3,1,5))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload[] =
 {
+
+#if !wxCHECK_VERSION(3,1,5)
     { wxLua_wxPlatformInfo_GetArchName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName },
+#endif // !wxCHECK_VERSION(3,1,5)
     { wxLua_wxPlatformInfo_GetArchName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1 },
 };
 static int s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload_count = sizeof(s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (!wxCHECK_VERSION(3,1,5))
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetEndianness_overload[] =
@@ -954,11 +972,18 @@ wxLuaBindMethod wxPlatformInfo_methods[] = {
     { "CheckOSVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_CheckOSVersion, 1, NULL },
     { "CheckToolkitVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_CheckToolkitVersion, 1, NULL },
     { "Get", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_Get, 1, NULL },
+
+#if !wxCHECK_VERSION(3,1,5)
     { "GetArch", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetArch, 1, NULL },
+#endif // !wxCHECK_VERSION(3,1,5)
 
+#if (!wxCHECK_VERSION(3,1,5))
     { "GetArchName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload_count, 0 },
+#endif // (!wxCHECK_VERSION(3,1,5))
 
+#if !wxCHECK_VERSION(3,1,5)
     { "GetArchitecture", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetArchitecture, 1, NULL },
+#endif // !wxCHECK_VERSION(3,1,5)
 
     { "GetEndianness", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetEndianness_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetEndianness_overload_count, 0 },
     { "GetEndiannessName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetEndiannessName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetEndiannessName_overload_count, 0 },
@@ -977,7 +1002,11 @@ wxLuaBindMethod wxPlatformInfo_methods[] = {
     { "GetToolkitMinorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMinorVersion, 1, NULL },
     { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_IsOk, 1, NULL },
     { "IsUsingUniversalWidgets", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_IsUsingUniversalWidgets, 1, NULL },
+
+#if !wxCHECK_VERSION(3,1,5)
     { "SetArchitecture", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_SetArchitecture, 1, NULL },
+#endif // !wxCHECK_VERSION(3,1,5)
+
     { "SetEndianness", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_SetEndianness, 1, NULL },
     { "SetOSVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_SetOSVersion, 1, NULL },
     { "SetOperatingSystemId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_SetOperatingSystemId, 1, NULL },
