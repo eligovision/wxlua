@@ -4875,6 +4875,15 @@ wx_dataTypeTable =
     Name = "wxScrolledWindow",
     ValueType = "class",
   },
+  wxSearchCtrl = {
+    BaseClasses = {
+      [1] = "wxTextCtrl",
+    },
+    Condition = "wxUSE_SEARCHCTRL",
+    IsNumber = false,
+    Name = "wxSearchCtrl",
+    ValueType = "class",
+  },
   wxSeekMode = {
     Condition = "wxLUA_USE_wxFile && wxUSE_FILE",
     IsNumber = true,
