@@ -18411,11 +18411,12 @@ static int LUACALL wxLua_wxSearchCtrl_SetDescriptiveText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_SetMenu[] = { &wxluatype_wxSearchCtrl, &wxluatype_wxMenu, NULL };
 static int LUACALL wxLua_wxSearchCtrl_SetMenu(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_SetMenu[1] = {{ wxLua_wxSearchCtrl_SetMenu, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSearchCtrl_SetMenu }};
-//     virtual void SetMenu(wxMenu* menu);
+//     virtual void SetMenu(%ungc wxMenu* menu);
 static int LUACALL wxLua_wxSearchCtrl_SetMenu(lua_State *L)
 {
     // wxMenu menu
     wxMenu * menu = (wxMenu *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMenu);
+    if (wxluaO_isgcobject(L, menu)) wxluaO_undeletegcobject(L, menu);
     // get this
     wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
     // call SetMenu
