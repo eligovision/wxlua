@@ -2438,6 +2438,8 @@ public:
     virtual void ShowSearchButton(bool show);
     void        SetDescriptiveText(const wxString& text);
     wxString    GetDescriptiveText() const;
+
+    wxString GetValue() const;
 };
 
 #endif
