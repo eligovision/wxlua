@@ -2432,11 +2432,15 @@ public:
     virtual wxMenu* GetMenu();
     virtual bool IsSearchButtonVisible() const;
     virtual bool IsCancelButtonVisible() const;
-    virtual void SetMenu(wxMenu* menu);
+    // wxLua Note: menu will delete the control when it is destroyed.
+    virtual void SetMenu(%ungc wxMenu* menu);
     virtual void ShowCancelButton(bool show);
     virtual void ShowSearchButton(bool show);
     void        SetDescriptiveText(const wxString& text);
     wxString    GetDescriptiveText() const;
+
+    virtual void SetValue(const wxString& value);
+    wxString GetValue() const;
 };
 
 #endif
