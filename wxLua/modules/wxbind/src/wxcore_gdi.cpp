@@ -18164,11 +18164,11 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDisplay_GetFromWindow1[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxDisplay_GetFromWindow1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDisplay_GetFromWindow1[1] = {{ wxLua_wxDisplay_GetFromWindow1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDisplay_GetFromWindow1 }};
-//     static int GetFromWindow(wxWindow* win);
+//     static int GetFromWindow(const wxWindow* win);
 static int LUACALL wxLua_wxDisplay_GetFromWindow1(lua_State *L)
 {
-    // wxWindow win
-    wxWindow * win = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // const wxWindow win
+    const wxWindow * win = (const wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetFromWindow
     int returns = (wxDisplay::GetFromWindow(win));
     // push the result number

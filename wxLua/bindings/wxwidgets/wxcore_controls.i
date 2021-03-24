@@ -112,8 +112,8 @@ public:
     bool ShowColumnsMenu(const wxPoint& pt, const wxString& title = wxEmptyString);
     void AddColumnsItems(wxMenu& menu, int idColumnsBase = 0);
     bool ShowCustomizeDialog();
-    // int GetColumnTitleWidth(const wxHeaderColumn& col);
-    int GetColumnTitleWidth(unsigned int idx);
+    // %wxchkver_2_9_4 int GetColumnTitleWidth(const wxHeaderColumn& col);
+    %wxchkver_3_1_3 int GetColumnTitleWidth(unsigned int idx);
 };
 
 class wxHeaderCtrlSimple : public wxHeaderCtrl
@@ -1017,11 +1017,11 @@ class wxSpinCtrl : public wxControl
     wxSpinCtrl(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl");
     bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl");
 
-    int GetBase() const;
+    %wxchkver_2_9_5 int GetBase() const;
     int GetMax() const;
     int GetMin() const;
     int GetValue() const;
-    bool SetBase(int base);
+    %wxchkver_2_9_5 bool SetBase(int base);
     void SetRange(int minVal, int maxVal);
     void SetSelection(long from, long to);
     void SetValue(const wxString& text);
@@ -1381,6 +1381,7 @@ class wxTreeCtrl : public wxControl
     %wxchkver_3_0_0 void SetFocusedItem(const wxTreeItemId& item);
     wxImageList* GetImageList() const;
     int GetIndent() const;
+    unsigned int GetSpacing() const;
     wxColour GetItemBackgroundColour(const wxTreeItemId& item) const;
     wxLuaTreeItemData* GetItemData(const wxTreeItemId& item) const;
     wxFont GetItemFont(const wxTreeItemId& item) const;
@@ -1414,6 +1415,7 @@ class wxTreeCtrl : public wxControl
     // void SetButtonsImageList(wxImageList* imageList); // This function is only available in the generic version.
     void SetImageList(wxImageList* imageList);
     %wxchkver_3_0_0 void SetIndent(unsigned int indent);
+    void SetSpacing(unsigned int spacing);
     void SetItemBackgroundColour(const wxTreeItemId& item, const wxColour& col);
     void SetItemBold(const wxTreeItemId& item, bool bold = true);
     void SetItemData(const wxTreeItemId& item, %ungc wxLuaTreeItemData* data);

@@ -347,6 +347,16 @@ enum wxFontStyle
 
 enum wxFontWeight
 {
+#if %wxchkver_3_1_2
+    wxFONTWEIGHT_INVALID,
+    wxFONTWEIGHT_THIN,
+    wxFONTWEIGHT_EXTRALIGHT,
+    wxFONTWEIGHT_MEDIUM,
+    wxFONTWEIGHT_SEMIBOLD,
+    wxFONTWEIGHT_EXTRABOLD,
+    wxFONTWEIGHT_HEAVY,
+    wxFONTWEIGHT_EXTRAHEAVY,
+#endif //%wxchkver_3_1_2
     wxFONTWEIGHT_NORMAL,
     wxFONTWEIGHT_LIGHT,
     wxFONTWEIGHT_BOLD,
@@ -1045,7 +1055,7 @@ class %delete wxIcon : public wxGDIObject
 
 #include "wx/iconbndl.h"
 
-class %delete wxIconBundle
+class %delete wxIconBundle : public wxGDIObject
 {
     wxIconBundle();
     !%wxchkver_2_9 || %wxcompat_2_8 wxIconBundle(const wxString& file, long type);
@@ -1794,7 +1804,7 @@ class %delete wxDisplay
     bool  IsPrimary();
     !%wxchkver_3_0_0 bool  IsOk() const;
     !%wxchkver_3_0_0 wxDisplay(size_t index = 0);
-    static int GetFromWindow(wxWindow* win);
+    static int GetFromWindow(const wxWindow* win);
 };
 
 #endif //wxLUA_USE_wxDisplay && wxUSE_DISPLAY

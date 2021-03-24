@@ -13387,25 +13387,9 @@ static int LUACALL wxLua_wxDataViewCtrlBase_GetItemRect(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel1[] = { &wxluatype_wxDataViewCtrlBase, NULL };
-static int LUACALL wxLua_wxDataViewCtrlBase_GetModel1(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel1[1] = {{ wxLua_wxDataViewCtrlBase_GetModel1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel1 }};
-//     const wxDataViewModel* GetModel() const;
-static int LUACALL wxLua_wxDataViewCtrlBase_GetModel1(lua_State *L)
-{
-    // get this
-    wxDataViewCtrlBase * self = (wxDataViewCtrlBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewCtrlBase);
-    // call GetModel
-    const wxDataViewModel* returns = (const wxDataViewModel*)self->GetModel();
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataViewModel);
-
-    return 1;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel[] = { &wxluatype_wxDataViewCtrlBase, NULL };
 static int LUACALL wxLua_wxDataViewCtrlBase_GetModel(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel[1] = {{ wxLua_wxDataViewCtrlBase_GetModel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel }};
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel[1] = {{ wxLua_wxDataViewCtrlBase_GetModel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel }};
 //     wxDataViewModel* GetModel();
 static int LUACALL wxLua_wxDataViewCtrlBase_GetModel(lua_State *L)
 {
@@ -14284,17 +14268,6 @@ static int s_wxluafunc_wxLua_wxDataViewCtrlBase_EnableDropTarget_overload_count 
 
 #endif // (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_DRAG_AND_DROP)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl))||(((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))
 
-#if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload[] =
-{
-    { wxLua_wxDataViewCtrlBase_GetModel1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel1 },
-    { wxLua_wxDataViewCtrlBase_GetModel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel },
-};
-static int s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload_count = sizeof(s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
 #if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_PrependBitmapColumn_overload[] =
@@ -14420,10 +14393,7 @@ wxLuaBindMethod wxDataViewCtrlBase_methods[] = {
     { "GetItemRect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetItemRect, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-    { "GetModel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload_count, 0 },
-#endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
+    { "GetModel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel, 1, NULL },
     { "GetSelectedItemsCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetSelectedItemsCount, 1, NULL },
     { "GetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetSelection, 1, NULL },
     { "GetSelections", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetSelections, 1, NULL },
@@ -14606,11 +14576,11 @@ static int LUACALL wxLua_wxDataViewCtrl_EnsureVisible(lua_State *L)
 }
 
 
-#if ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+#if (((defined (wxHAS_GENERIC_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,1))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_GenericGetHeader[] = { &wxluatype_wxDataViewCtrl, NULL };
 static int LUACALL wxLua_wxDataViewCtrl_GenericGetHeader(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_GenericGetHeader[1] = {{ wxLua_wxDataViewCtrl_GenericGetHeader, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrl_GenericGetHeader }};
-//     wxHeaderCtrl* GenericGetHeader() const;
+//     %wxchkver_3_1_1 wxHeaderCtrl* GenericGetHeader() const;
 static int LUACALL wxLua_wxDataViewCtrl_GenericGetHeader(lua_State *L)
 {
     // get this
@@ -14623,7 +14593,7 @@ static int LUACALL wxLua_wxDataViewCtrl_GenericGetHeader(lua_State *L)
     return 1;
 }
 
-#endif // ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+#endif // (((defined (wxHAS_GENERIC_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,1))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_GetColumn[] = { &wxluatype_wxDataViewCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDataViewCtrl_GetColumn(lua_State *L);
@@ -14918,11 +14888,11 @@ static int LUACALL wxLua_wxDataViewCtrl_UnselectAll(lua_State *L)
 
 
 #if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxDataViewCtrl_constructor1(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor1[1] = {{ wxLua_wxDataViewCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor1 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor[1] = {{ wxLua_wxDataViewCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor }};
 //            const wxString& name = wxDataViewCtrlNameStr );
-static int LUACALL wxLua_wxDataViewCtrl_constructor1(lua_State *L)
+static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -14952,37 +14922,7 @@ static int LUACALL wxLua_wxDataViewCtrl_constructor1(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
-static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor[1] = {{ wxLua_wxDataViewCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-// 	wxDataViewCtrl();
-static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L)
-{
-    // call constructor
-    wxDataViewCtrl* returns = new wxDataViewCtrl();
-    // add to tracked window list, it will check validity
-    wxluaW_addtrackedwindow(L, returns);
-    // push the constructed class pointer
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataViewCtrl);
 
-    return 1;
-}
-
-
-
-
-#if (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload[] =
-{
-
-#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
-    { wxLua_wxDataViewCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor1 },
-#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
-    { wxLua_wxDataViewCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
-};
-static int s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 
 void wxLua_wxDataViewCtrl_delete_function(void** p)
 {
@@ -15003,9 +14943,9 @@ wxLuaBindMethod wxDataViewCtrl_methods[] = {
     { "EditItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_EditItem, 1, NULL },
     { "EnsureVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_EnsureVisible, 1, NULL },
 
-#if ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+#if (((defined (wxHAS_GENERIC_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,1))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
     { "GenericGetHeader", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GenericGetHeader, 1, NULL },
-#endif // ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+#endif // (((defined (wxHAS_GENERIC_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,1))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
 
     { "GetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GetColumn, 1, NULL },
     { "GetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GetColumnCount, 1, NULL },
@@ -15027,9 +14967,9 @@ wxLuaBindMethod wxDataViewCtrl_methods[] = {
     { "Unselect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_Unselect, 1, NULL },
     { "UnselectAll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_UnselectAll, 1, NULL },
 
-#if (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-    { "wxDataViewCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload, s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload_count, 0 },
-#endif // (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    { "wxDataViewCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDataViewCtrl_constructor, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
     { 0, 0, 0, 0 },
 };
@@ -27428,6 +27368,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxadv(size_t &count)
         { "wxDATAVIEW_CELL_INSENSITIVE", wxDATAVIEW_CELL_INSENSITIVE },
         { "wxDATAVIEW_CELL_PRELIT", wxDATAVIEW_CELL_PRELIT },
         { "wxDATAVIEW_CELL_SELECTED", wxDATAVIEW_CELL_SELECTED },
+        { "wxDATAVIEW_COL_HIDDEN", wxDATAVIEW_COL_HIDDEN },
+        { "wxDATAVIEW_COL_REORDERABLE", wxDATAVIEW_COL_REORDERABLE },
+        { "wxDATAVIEW_COL_RESIZABLE", wxDATAVIEW_COL_RESIZABLE },
+        { "wxDATAVIEW_COL_SORTABLE", wxDATAVIEW_COL_SORTABLE },
         { "wxDVC_DEFAULT_MINWIDTH", wxDVC_DEFAULT_MINWIDTH },
         { "wxDVC_DEFAULT_RENDERER_SIZE", wxDVC_DEFAULT_RENDERER_SIZE },
         { "wxDVC_DEFAULT_WIDTH", wxDVC_DEFAULT_WIDTH },

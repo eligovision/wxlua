@@ -1344,9 +1344,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFILTER_INCLUDE_LIST", wxFILTER_INCLUDE_LIST },
         { "wxFILTER_NONE", wxFILTER_NONE },
         { "wxFILTER_NUMERIC", wxFILTER_NUMERIC },
+#endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+#if ((wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxCHECK_VERSION(3,1,3))
         { "wxFILTER_SPACE", wxFILTER_SPACE },
         { "wxFILTER_XDIGITS", wxFILTER_XDIGITS },
-#endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+#endif // ((wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxCHECK_VERSION(3,1,3))
 
 #if wxLUA_USE_wxFont
         { "wxFIXED", wxFIXED },
@@ -1425,10 +1428,33 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFONTSTYLE_NORMAL", wxFONTSTYLE_NORMAL },
         { "wxFONTSTYLE_SLANT", wxFONTSTYLE_SLANT },
         { "wxFONTWEIGHT_BOLD", wxFONTWEIGHT_BOLD },
+#endif // wxLUA_USE_wxFont
+
+#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+        { "wxFONTWEIGHT_EXTRABOLD", wxFONTWEIGHT_EXTRABOLD },
+        { "wxFONTWEIGHT_EXTRAHEAVY", wxFONTWEIGHT_EXTRAHEAVY },
+        { "wxFONTWEIGHT_EXTRALIGHT", wxFONTWEIGHT_EXTRALIGHT },
+        { "wxFONTWEIGHT_HEAVY", wxFONTWEIGHT_HEAVY },
+        { "wxFONTWEIGHT_INVALID", wxFONTWEIGHT_INVALID },
+#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+
+#if wxLUA_USE_wxFont
         { "wxFONTWEIGHT_LIGHT", wxFONTWEIGHT_LIGHT },
         { "wxFONTWEIGHT_MAX", wxFONTWEIGHT_MAX },
+#endif // wxLUA_USE_wxFont
+
+#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+        { "wxFONTWEIGHT_MEDIUM", wxFONTWEIGHT_MEDIUM },
+#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+
+#if wxLUA_USE_wxFont
         { "wxFONTWEIGHT_NORMAL", wxFONTWEIGHT_NORMAL },
 #endif // wxLUA_USE_wxFont
+
+#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+        { "wxFONTWEIGHT_SEMIBOLD", wxFONTWEIGHT_SEMIBOLD },
+        { "wxFONTWEIGHT_THIN", wxFONTWEIGHT_THIN },
+#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
 
         { "wxFORWARD", wxFORWARD },
 
@@ -5601,6 +5627,8 @@ static const char* wxluabaseclassnames_wxIFFHandler[] = { wxluaclassname_wxImage
 static wxLuaBindClass* wxluabaseclassbinds_wxIFFHandler[] = { NULL };
 static const char* wxluabaseclassnames_wxIcon[] = { wxluaclassname_wxGDIObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxIcon[] = { NULL };
+static const char* wxluabaseclassnames_wxIconBundle[] = { wxluaclassname_wxGDIObject, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxIconBundle[] = { NULL };
 static const char* wxluabaseclassnames_wxIconizeEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxIconizeEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxIdleEvent[] = { wxluaclassname_wxEvent, NULL };
@@ -7864,7 +7892,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxIcon
         { wxluaclassname_wxIcon, wxIcon_methods, wxIcon_methodCount, CLASSINFO(wxIcon), &wxluatype_wxIcon, wxluabaseclassnames_wxIcon, wxluabaseclassbinds_wxIcon, NULL, NULL, NULL, 0, &wxLua_wxIcon_delete_function, }, 
-        { wxluaclassname_wxIconBundle, wxIconBundle_methods, wxIconBundle_methodCount, NULL, &wxluatype_wxIconBundle, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxIconBundle_delete_function, }, 
+        { wxluaclassname_wxIconBundle, wxIconBundle_methods, wxIconBundle_methodCount, CLASSINFO(wxIconBundle), &wxluatype_wxIconBundle, wxluabaseclassnames_wxIconBundle, wxluabaseclassbinds_wxIconBundle, NULL, NULL, NULL, 0, &wxLua_wxIconBundle_delete_function, }, 
 #endif // wxLUA_USE_wxIcon
 
         { wxluaclassname_wxIconizeEvent, wxIconizeEvent_methods, wxIconizeEvent_methodCount, CLASSINFO(wxIconizeEvent), &wxluatype_wxIconizeEvent, wxluabaseclassnames_wxIconizeEvent, wxluabaseclassbinds_wxIconizeEvent, NULL, NULL, NULL, 0, &wxLua_wxIconizeEvent_delete_function, }, 

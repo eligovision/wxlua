@@ -11,7 +11,6 @@
 wx_typedefTable =
 {
   WXHANDLE = "void *",
-  wxArchitecture = "wxBitness",
   ["wxDateTime::wxDateTime_t"] = "unsigned short",
   wxDouble = "double",
   wxInt32 = "int",
@@ -277,7 +276,6 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxArchitecture = {
-    Condition = "!wxCHECK_VERSION(3,1,5)",
     IsNumber = true,
     Name = "wxArchitecture",
     ValueType = "enum",
@@ -1131,6 +1129,9 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxConfigBase = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
     Condition = "wxLUA_USE_wxConfig && wxUSE_CONFIG",
     IsNumber = false,
     Name = "wxConfigBase",
@@ -1371,6 +1372,12 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxDataViewColumnBase",
     ValueType = "class",
+  },
+  wxDataViewColumnFlags = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = true,
+    Name = "wxDataViewColumnFlags",
+    ValueType = "enum",
   },
   wxDataViewCtrl = {
     BaseClasses = {
@@ -2146,6 +2153,15 @@ wx_dataTypeTable =
     Condition = "wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)",
     IsNumber = false,
     Name = "wxFileSystemWatcherEvent",
+    ValueType = "class",
+  },
+  wxFileTranslationsLoader = {
+    BaseClasses = {
+      [1] = "wxTranslationsLoader",
+    },
+    Condition = "(wxCHECK_VERSION(2,9,1) && wxLUA_USE_wxTranslations) && (wxUSE_INTL)",
+    IsNumber = false,
+    Name = "wxFileTranslationsLoader",
     ValueType = "class",
   },
   wxFileType = {
@@ -3227,6 +3243,9 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxIconBundle = {
+    BaseClasses = {
+      [1] = "wxGDIObject",
+    },
     Condition = "wxLUA_USE_wxIcon",
     IsNumber = false,
     Name = "wxIconBundle",
@@ -4095,6 +4114,12 @@ wx_dataTypeTable =
     Name = "wxMoveEvent",
     ValueType = "class",
   },
+  wxMsgCatalog = {
+    Condition = "(wxCHECK_VERSION(2,9,1) && wxLUA_USE_wxTranslations) && (wxUSE_INTL)",
+    IsNumber = false,
+    Name = "wxMsgCatalog",
+    ValueType = "class",
+  },
   wxMultiChoiceDialog = {
     BaseClasses = {
       [1] = "wxDialog",
@@ -4786,6 +4811,15 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxRendererVersion::dummy",
     ValueType = "enum",
+  },
+  wxResourceTranslationsLoader = {
+    BaseClasses = {
+      [1] = "wxTranslationsLoader",
+    },
+    Condition = "(defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1) && wxLUA_USE_wxTranslations) && (wxUSE_INTL)",
+    IsNumber = false,
+    Name = "wxResourceTranslationsLoader",
+    ValueType = "class",
   },
   wxSashDragStatus = {
     Condition = "wxLUA_USE_wxSashWindow && wxUSE_SASH",
@@ -5753,6 +5787,18 @@ wx_dataTypeTable =
     Name = "wxTraceMask",
     ValueType = "number",
   },
+  wxTranslations = {
+    Condition = "(wxCHECK_VERSION(2,9,1) && wxLUA_USE_wxTranslations) && (wxUSE_INTL)",
+    IsNumber = false,
+    Name = "wxTranslations",
+    ValueType = "class",
+  },
+  wxTranslationsLoader = {
+    Condition = "(wxCHECK_VERSION(2,9,1) && wxLUA_USE_wxTranslations) && (wxUSE_INTL)",
+    IsNumber = false,
+    Name = "wxTranslationsLoader",
+    ValueType = "class",
+  },
   wxTreeCtrl = {
     BaseClasses = {
       [1] = "wxControl",
@@ -6403,6 +6449,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxToolbar = "wxLUA_USE_wxToolbar",
   wxLUA_USE_wxToolbook = "wxLUA_USE_wxToolbook",
   wxLUA_USE_wxTooltip = "wxLUA_USE_wxTooltip",
+  wxLUA_USE_wxTranslations = "wxLUA_USE_wxTranslations",
   wxLUA_USE_wxTreeCtrl = "wxLUA_USE_wxTreeCtrl",
   wxLUA_USE_wxTreeListCtrl = "wxLUA_USE_wxTreeListCtrl",
   wxLUA_USE_wxTreebook = "wxLUA_USE_wxTreebook",

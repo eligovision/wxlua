@@ -17,6 +17,13 @@
 #define wxDVC_DEFAULT_MINWIDTH
 #define wxDVR_DEFAULT_ALIGNMENT
 
+enum wxDataViewColumnFlags
+{
+    wxDATAVIEW_COL_RESIZABLE,
+    wxDATAVIEW_COL_SORTABLE,
+    wxDATAVIEW_COL_REORDERABLE,
+    wxDATAVIEW_COL_HIDDEN
+};
 
 // TODO: in base
 // class %delete wxVariant : public wxObject
@@ -488,7 +495,6 @@ class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxC
 {
     virtual bool AssociateModel( wxDataViewModel *model );
     wxDataViewModel* GetModel();
-    const wxDataViewModel* GetModel() const;
 
     wxDataViewColumn *PrependTextColumn( const wxString &label, unsigned int model_column,
                     wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT, int width = -1,
@@ -663,8 +669,6 @@ class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxC
 // class wxDataViewCtrl
 class wxDataViewCtrl : public wxDataViewCtrlBase
 {
-	wxDataViewCtrl();
-
     wxDataViewCtrl(wxWindow *parent, wxWindowID id,
            const wxPoint& pos = wxDefaultPosition,
            const wxSize& size = wxDefaultSize, long style = 0,
@@ -705,11 +709,11 @@ class wxDataViewCtrl : public wxDataViewCtrlBase
     virtual wxRect GetItemRect( const wxDataViewItem & item, const wxDataViewColumn *column = NULL );
     virtual void EditItem(const wxDataViewItem& item, const wxDataViewColumn *column);
 
-#if %msw || !defined(wxUSE_NATIVE_DATAVIEWCTRL)
+#if defined(wxHAS_GENERIC_DATAVIEWCTRL)
     // The returned pointer is null if the control has wxDV_NO_HEADER style.
     //
     // This method is only available in the generic versions.
-    wxHeaderCtrl* GenericGetHeader() const;
+    %wxchkver_3_1_1 wxHeaderCtrl* GenericGetHeader() const;
 #endif
 };
 

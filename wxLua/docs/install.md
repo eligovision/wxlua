@@ -1,6 +1,6 @@
-% wxLua 3.0.0.9 - Installation Guide
+% wxLua 3.1.0.0 - Installation Guide
 % John Labenski, Francesco Montorsi, Paul Kulchenko
-% 2020-08-20
+% 2020-09-12
 
 This document describes how to build the wxLua libraries, editors, and
 interpreters. wxLua is written in C and C++ and can be built on MS
@@ -541,17 +541,10 @@ flexible.
 
 ### 4.1 - Getting the wxLua Source Code
 
--   For more information see :
-    [http://wxlua.sourceforge.net/download.php](http://wxlua.sourceforge.net/download.php)
--   Briefly, download a source code archive
-    [http://sourceforge.net/projects/wxlua/files/wxlua/](http://sourceforge.net/projects/wxlua/files/wxlua/)
-    for your platform.
--   Or use subversion to get the most up to date source code or the code
-    at a specific revision number.
-    -   For more information see here :
-        [http://sourceforge.net/scm/?type=svn&group_id=140042](http://sourceforge.net/scm/?type=svn&group_id=140042)
-    -   To get the latest trunk, use this command :
-        -   `svn checkout https://wxlua.svn.sourceforge.net/svnroot/wxlua/trunk/wxLua wxLua-trunk`
+-   You can download a source code archive from
+    [https://github.com/pkulchenko/wxlua/tags](https://github.com/pkulchenko/wxlua/tags).
+-   Alternatively, you can use [git](https://git-scm.com/) to get the most up to date source code from
+    [https://github.com/pkulchenko/wxlua](https://github.com/pkulchenko/wxlua).
 -   Do not checkout into a directory name with spaces to make your life easier.
 
 
