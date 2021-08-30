@@ -72,34 +72,6 @@ class %delete wxDataViewItemArray
 };
 
 
-// class wxDataFormatArray
-class %delete wxDataFormatArray
-{
-    wxDataFormatArray();
-    wxDataFormatArray(const wxDataFormatArray& array);
-
-	// TODO:
-    // %override [Lua table] wxDataFormatArray::ToLuaTable() const;
-    // returns a table array of the wxDataFormat
-//    int ToLuaTable() const;
-
-    void Add(wxDataFormat num);
-    void Alloc(size_t count);
-    void Clear();
-    void Empty();
-    int  GetCount() const;
-    bool IsEmpty() const;
-    int  Index(wxDataFormat n, bool searchFromEnd = false);
-    void Insert(wxDataFormat num, int n, int copies = 1);
-    wxDataFormat Item(int n);
-    void Remove(wxDataFormat n);
-    void RemoveAt(size_t index);
-    void Shrink();
-
-    wxDataFormat operator[](size_t nIndex);
-};
-
-
 // class wxDataViewModelNotifier
 class %delete wxDataViewModelNotifier
 {
@@ -654,8 +626,10 @@ class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxC
 
 #if wxUSE_DRAG_AND_DROP
     virtual bool EnableDragSource(const wxDataFormat& format);
+    // %override bool wxDataView::EnableDropTargets([Lua table of wxDataFormat]);
+    // C++ Func: virtual bool EnableDropTargets(const wxVector<wxDataFormat>& formats);
+    virtual bool EnableDropTargets();
     virtual bool EnableDropTarget(const wxDataFormat& format);
-    virtual bool EnableDropTarget(const wxDataFormatArray& formats);
 #endif // wxUSE_DRAG_AND_DROP
 
 //    virtual bool SetHeaderAttr(const wxItemAttr& attr);
