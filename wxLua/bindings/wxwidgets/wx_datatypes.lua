@@ -1253,12 +1253,6 @@ wx_dataTypeTable =
     Name = "wxDataFormat",
     ValueType = "class",
   },
-  wxDataFormatArray = {
-    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
-    IsNumber = false,
-    Name = "wxDataFormatArray",
-    ValueType = "class",
-  },
   wxDataFormatId = {
     Condition = "wxLUA_USE_wxDataObject && wxUSE_DATAOBJ",
     IsNumber = true,

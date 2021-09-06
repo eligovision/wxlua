@@ -445,3 +445,29 @@ int wxLua_wxDataViewEvent_GetDataBuffer(lua_State *L)
     return 1;
 }
 %end
+
+
+%override wxLua_wxDataViewCtrlBase_EnableDropTargets
+// bool EnableDropTargets(const wxVector<wxDataFormat>& formats)
+static int LUACALL wxLua_wxDataViewCtrlBase_EnableDropTargets(lua_State *L)
+{
+    // get this
+    wxDataViewCtrlBase *self = (wxDataViewCtrlBase*)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewCtrlBase);
+    // check if we have a table argument
+    if (!wxlua_iswxluatype(lua_type(L, 2), WXLUA_TTABLE))
+        wxlua_argerror(L, 2, wxT("a 'table'"));
+    int count = lua_objlen(L, 2);
+
+    wxVector<wxDataFormat> formats(count);
+    for (int idx = 1; idx <= count; idx++) {
+        lua_rawgeti(L, 2, idx);
+        formats[idx - 1] = *((wxDataFormat*)wxluaT_getuserdatatype(L, -1, wxluatype_wxDataFormat));
+        lua_pop(L, 1);
+    }
+
+    bool result = self->EnableDropTargets(formats);
+    lua_pushboolean(L, result);
+
+    return 1;
+}
+%end
