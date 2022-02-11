@@ -368,6 +368,66 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
+#if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap }};
+//     wxBitmap GetBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call GetBitmap
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmap());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetDisabledBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap }};
+//     wxBitmap GetDisabledBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call GetDisabledBitmap
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetDisabledBitmap());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetHoverBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap }};
+//     wxBitmap GetHoverBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call GetHoverBitmap
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetHoverBitmap());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetId[] = { &wxluatype_wxAuiToolBarItem, NULL };
 static int LUACALL wxLua_wxAuiToolBarItem_GetId(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetId[1] = {{ wxLua_wxAuiToolBarItem_GetId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetId }};
@@ -1066,6 +1126,12 @@ wxLuaBindMethod wxAuiToolBarItem_methods[] = {
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "GetAlignment", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetAlignment, 1, NULL },
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+    { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap, 1, NULL },
+    { "GetDisabledBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap, 1, NULL },
+    { "GetHoverBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap, 1, NULL },
+#endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
     { "GetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetId, 1, NULL },
     { "GetKind", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetKind, 1, NULL },
