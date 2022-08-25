@@ -18665,3 +18665,182 @@ int wxSearchCtrl_methodCount = sizeof(wxSearchCtrl_methods)/sizeof(wxLuaBindMeth
 
 #endif  // wxUSE_SEARCHCTRL
 
+
+#if wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+// ---------------------------------------------------------------------------
+// Bind class wxActivityIndicator
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxActivityIndicator'
+int wxluatype_wxActivityIndicator = WXLUA_TUNKNOWN;
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxActivityIndicator_Create[] = { &wxluatype_wxActivityIndicator, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxActivityIndicator_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_Create[1] = {{ wxLua_wxActivityIndicator_Create, WXLUAMETHOD_METHOD, 2, 7, s_wxluatypeArray_wxLua_wxActivityIndicator_Create }};
+//                 long style = 0, const wxString& name="activityindicator");
+static int LUACALL wxLua_wxActivityIndicator_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = "activityindicator"
+    const wxString name = (argCount >= 7 ? wxlua_getwxStringtype(L, 7) : wxString(wxT("activityindicator")));
+    // long style = 0
+    long style = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : 0);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 5 ? (const wxSize *)wxluaT_getuserdatatype(L, 5, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 4 ? (const wxPoint *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint) : &wxDefaultPosition);
+    // wxWindowID winid = wxID_ANY
+    wxWindowID winid = (argCount >= 3 ? (wxWindowID)wxlua_getnumbertype(L, 3) : wxID_ANY);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxActivityIndicator * self = (wxActivityIndicator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxActivityIndicator);
+    // call Create
+    bool returns = (self->Create(parent, winid, *pos, *size, style, name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxActivityIndicator_IsRunning[] = { &wxluatype_wxActivityIndicator, NULL };
+static int LUACALL wxLua_wxActivityIndicator_IsRunning(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_IsRunning[1] = {{ wxLua_wxActivityIndicator_IsRunning, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxActivityIndicator_IsRunning }};
+//     virtual bool IsRunning() const;
+static int LUACALL wxLua_wxActivityIndicator_IsRunning(lua_State *L)
+{
+    // get this
+    wxActivityIndicator * self = (wxActivityIndicator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxActivityIndicator);
+    // call IsRunning
+    bool returns = (self->IsRunning());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxActivityIndicator_Start[] = { &wxluatype_wxActivityIndicator, NULL };
+static int LUACALL wxLua_wxActivityIndicator_Start(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_Start[1] = {{ wxLua_wxActivityIndicator_Start, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxActivityIndicator_Start }};
+//     virtual void Start();
+static int LUACALL wxLua_wxActivityIndicator_Start(lua_State *L)
+{
+    // get this
+    wxActivityIndicator * self = (wxActivityIndicator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxActivityIndicator);
+    // call Start
+    self->Start();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxActivityIndicator_Stop[] = { &wxluatype_wxActivityIndicator, NULL };
+static int LUACALL wxLua_wxActivityIndicator_Stop(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_Stop[1] = {{ wxLua_wxActivityIndicator_Stop, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxActivityIndicator_Stop }};
+//     virtual void Stop();
+static int LUACALL wxLua_wxActivityIndicator_Stop(lua_State *L)
+{
+    // get this
+    wxActivityIndicator * self = (wxActivityIndicator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxActivityIndicator);
+    // call Stop
+    self->Stop();
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxActivityIndicator_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxActivityIndicator_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_constructor1[1] = {{ wxLua_wxActivityIndicator_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 6, s_wxluatypeArray_wxLua_wxActivityIndicator_constructor1 }};
+//                         long style = 0, const wxString& name="activityindicator");
+static int LUACALL wxLua_wxActivityIndicator_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = "activityindicator"
+    const wxString name = (argCount >= 6 ? wxlua_getwxStringtype(L, 6) : wxString(wxT("activityindicator")));
+    // long style = 0
+    long style = (argCount >= 5 ? (long)wxlua_getnumbertype(L, 5) : 0);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 4 ? (const wxSize *)wxluaT_getuserdatatype(L, 4, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 3 ? (const wxPoint *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint) : &wxDefaultPosition);
+    // wxWindowID winid = wxID_ANY
+    wxWindowID winid = (argCount >= 2 ? (wxWindowID)wxlua_getnumbertype(L, 2) : wxID_ANY);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxActivityIndicator* returns = new wxActivityIndicator(parent, winid, *pos, *size, style, name);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxActivityIndicator);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+
+static int LUACALL wxLua_wxActivityIndicator_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_constructor[1] = {{ wxLua_wxActivityIndicator_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// 	wxActivityIndicator();
+static int LUACALL wxLua_wxActivityIndicator_constructor(lua_State *L)
+{
+    // call constructor
+    wxActivityIndicator* returns = new wxActivityIndicator();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxActivityIndicator);
+
+    return 1;
+}
+
+
+
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)))||(wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxActivityIndicator_constructor_overload[] =
+{
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+    { wxLua_wxActivityIndicator_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 6, s_wxluatypeArray_wxLua_wxActivityIndicator_constructor1 },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+    { wxLua_wxActivityIndicator_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxActivityIndicator_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxActivityIndicator_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)))||(wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+
+void wxLua_wxActivityIndicator_delete_function(void** p)
+{
+    wxActivityIndicator* o = (wxActivityIndicator*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxActivityIndicator_methods[] = {
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxActivityIndicator_Create, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+
+    { "IsRunning", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxActivityIndicator_IsRunning, 1, NULL },
+    { "Start", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxActivityIndicator_Start, 1, NULL },
+    { "Stop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxActivityIndicator_Stop, 1, NULL },
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)))||(wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+    { "wxActivityIndicator", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxActivityIndicator_constructor_overload, s_wxluafunc_wxLua_wxActivityIndicator_constructor_overload_count, 0 },
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)))||(wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxActivityIndicator_methodCount = sizeof(wxActivityIndicator_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+

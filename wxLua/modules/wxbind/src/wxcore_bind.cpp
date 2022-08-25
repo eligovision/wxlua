@@ -5081,6 +5081,7 @@ static const char* wxluaclassname_wxANIHandler = "wxANIHandler";
 static const char* wxluaclassname_wxAcceleratorEntry = "wxAcceleratorEntry";
 static const char* wxluaclassname_wxAcceleratorTable = "wxAcceleratorTable";
 static const char* wxluaclassname_wxActivateEvent = "wxActivateEvent";
+static const char* wxluaclassname_wxActivityIndicator = "wxActivityIndicator";
 static const char* wxluaclassname_wxAffineMatrix2D = "wxAffineMatrix2D";
 static const char* wxluaclassname_wxAnyButton = "wxAnyButton";
 static const char* wxluaclassname_wxApp = "wxApp";
@@ -5438,6 +5439,8 @@ static const char* wxluabaseclassnames_wxAcceleratorTable[] = { wxluaclassname_w
 static wxLuaBindClass* wxluabaseclassbinds_wxAcceleratorTable[] = { NULL };
 static const char* wxluabaseclassnames_wxActivateEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxActivateEvent[] = { NULL };
+static const char* wxluabaseclassnames_wxActivityIndicator[] = { wxluaclassname_wxControl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxActivityIndicator[] = { NULL };
 static const char* wxluabaseclassnames_wxAnyButton[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxAnyButton[] = { NULL };
 static const char* wxluabaseclassnames_wxApp[] = { wxluaclassname_wxAppConsole, NULL };
@@ -7401,6 +7404,12 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxWindowList_delete_function(void** p);
 #endif // wxLUA_USE_wxWindowList && !wxUSE_STL
 
+#if wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+    extern wxLuaBindMethod wxActivityIndicator_methods[];
+    extern int wxActivityIndicator_methodCount;
+    extern void wxLua_wxActivityIndicator_delete_function(void** p);
+#endif // wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+
 #if wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog
     extern wxLuaBindMethod wxMultiChoiceDialog_methods[];
     extern int wxMultiChoiceDialog_methodCount;
@@ -7525,6 +7534,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL
 
         { wxluaclassname_wxActivateEvent, wxActivateEvent_methods, wxActivateEvent_methodCount, CLASSINFO(wxActivateEvent), &wxluatype_wxActivateEvent, wxluabaseclassnames_wxActivateEvent, wxluabaseclassbinds_wxActivateEvent, NULL, NULL, NULL, 0, &wxLua_wxActivateEvent_delete_function, }, 
+
+#if wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+        { wxluaclassname_wxActivityIndicator, wxActivityIndicator_methods, wxActivityIndicator_methodCount, CLASSINFO(wxActivityIndicator), &wxluatype_wxActivityIndicator, wxluabaseclassnames_wxActivityIndicator, wxluabaseclassbinds_wxActivityIndicator, NULL, NULL, NULL, 0, &wxLua_wxActivityIndicator_delete_function, }, 
+#endif // wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
 
 #if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
         { wxluaclassname_wxAffineMatrix2D, wxAffineMatrix2D_methods, wxAffineMatrix2D_methodCount, NULL, &wxluatype_wxAffineMatrix2D, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxAffineMatrix2D_delete_function, }, 

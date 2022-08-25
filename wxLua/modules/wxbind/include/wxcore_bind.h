@@ -527,6 +527,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/validate.h"
 #endif // wxLUA_USE_wxValidator && wxUSE_VALIDATORS
 
+#if wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+    #include "wx/activityindicator.h"
+#endif // wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+
 #if wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
     #include "wx/fdrepdlg.h"
 #endif // wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
@@ -1299,6 +1303,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxLUA_USE_wxWindowList && !wxUSE_STL
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowList;
 #endif // wxLUA_USE_wxWindowList && !wxUSE_STL
+
+#if wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxActivityIndicator;
+#endif // wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
 
 #if wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMultiChoiceDialog;

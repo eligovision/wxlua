@@ -207,6 +207,15 @@ wx_dataTypeTable =
     Name = "wxActivateEvent",
     ValueType = "class",
   },
+  wxActivityIndicator = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)",
+    IsNumber = false,
+    Name = "wxActivityIndicator",
+    ValueType = "class",
+  },
   wxAffineMatrix2D = {
     Condition = "(wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)",
     IsNumber = false,
