@@ -2446,3 +2446,28 @@ public:
 };
 
 #endif
+
+#if wxUSE_ACTIVITYINDICATOR && %wxchkver_3_1_0
+
+#include "wx/activityindicator.h"
+
+class wxActivityIndicator : public wxControl
+{
+public:
+	wxActivityIndicator();
+
+	wxActivityIndicator(wxWindow* parent, wxWindowID winid = wxID_ANY,
+                        const wxPoint& pos = wxDefaultPosition, const wxSize& size=wxDefaultSize,
+                        long style = 0, const wxString& name="activityindicator");
+
+    bool Create(wxWindow* parent, wxWindowID winid = wxID_ANY,
+                const wxPoint& pos = wxDefaultPosition, const wxSize& size=wxDefaultSize,
+                long style = 0, const wxString& name="activityindicator");
+
+    virtual void Start();
+    virtual void Stop();
+
+    virtual bool IsRunning() const;
+};
+
+#endif
