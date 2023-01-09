@@ -350,7 +350,7 @@ class %delete wxFileName
     wxString GetLongPath() const;
     wxDateTime GetModificationTime() const;
     wxString GetName() const;
-    wxString GetPath(int flags = 0, wxPathFormat format = wxPATH_NATIVE) const;
+    wxString GetPath(int flags = wxPATH_GET_VOLUME, wxPathFormat format = wxPATH_NATIVE) const;
     static int GetPathSeparator(wxPathFormat format = wxPATH_NATIVE);
     static wxString GetPathSeparators(wxPathFormat format = wxPATH_NATIVE);
     static wxString  GetPathTerminators(wxPathFormat format = wxPATH_NATIVE);

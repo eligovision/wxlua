@@ -1724,15 +1724,15 @@ static int LUACALL wxLua_wxFileName_GetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetPath[] = { &wxluatype_wxFileName, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFileName_GetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetPath[1] = {{ wxLua_wxFileName_GetPath, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetPath }};
-//     wxString GetPath(int flags = 0, wxPathFormat format = wxPATH_NATIVE) const;
+//     wxString GetPath(int flags = wxPATH_GET_VOLUME, wxPathFormat format = wxPATH_NATIVE) const;
 static int LUACALL wxLua_wxFileName_GetPath(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // wxPathFormat format = wxPATH_NATIVE
     wxPathFormat format = (argCount >= 3 ? (wxPathFormat)wxlua_getenumtype(L, 3) : wxPATH_NATIVE);
-    // int flags = 0
-    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 0);
+    // int flags = wxPATH_GET_VOLUME
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxPATH_GET_VOLUME);
     // get this
     wxFileName * self = (wxFileName *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileName);
     // call GetPath
