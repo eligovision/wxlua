@@ -17,6 +17,7 @@ wx_typedefTable =
   wxLogLevel = "unsigned long",
   wxNotebookPage = "wxWindow",
   wxPreviewWindow = "wxScrolledWindow",
+  wxTextAttrDimensionFlags = "unsigned short",
   wxTextCoord = "long",
   wxTextPos = "long",
   wxTraceMask = "unsigned long",
@@ -1094,6 +1095,28 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxComboBox && wxUSE_COMBOBOX",
     IsNumber = false,
     Name = "wxComboBox",
+    ValueType = "class",
+  },
+  wxComboCtrl = {
+    BaseClasses = {
+      [1] = "wxControl",
+      [2] = "wxTextEntry",
+    },
+    Condition = "wxUSE_COMBOCTRL",
+    IsNumber = false,
+    Name = "wxComboCtrl",
+    ValueType = "class",
+  },
+  wxComboCtrlFeatures = {
+    Condition = "wxUSE_COMBOCTRL",
+    IsNumber = false,
+    Name = "wxComboCtrlFeatures",
+    ValueType = "struct",
+  },
+  wxComboPopup = {
+    Condition = "wxUSE_COMBOCTRL",
+    IsNumber = false,
+    Name = "wxComboPopup",
     ValueType = "class",
   },
   wxCommand = {
@@ -3095,6 +3118,11 @@ wx_dataTypeTable =
     Name = "wxHtmlLinkInfo",
     ValueType = "class",
   },
+  wxHtmlListBox = {
+    IsNumber = false,
+    Name = "wxHtmlListBox",
+    ValueType = "class",
+  },
   wxHtmlParser = {
     BaseClasses = {
       [1] = "wxObject",
@@ -3981,6 +4009,15 @@ wx_dataTypeTable =
     Name = "wxMemoryInputStream",
     ValueType = "class",
   },
+  wxMemoryOutputStream = {
+    BaseClasses = {
+      [1] = "wxOutputStream",
+    },
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxMemoryOutputStream",
+    ValueType = "class",
+  },
   wxMemorySize = {
     IsNumber = true,
     Name = "wxMemorySize",
@@ -4216,6 +4253,15 @@ wx_dataTypeTable =
     },
     IsNumber = false,
     Name = "wxNotifyEvent",
+    ValueType = "class",
+  },
+  wxNumberEntryDialog = {
+    BaseClasses = {
+      [1] = "wxDialog",
+    },
+    Condition = "wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog",
+    IsNumber = false,
+    Name = "wxNumberEntryDialog",
     ValueType = "class",
   },
   wxObject = {
@@ -4491,6 +4537,12 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxPortId",
     ValueType = "enum",
+  },
+  wxPosition = {
+    Condition = "wxLUA_USE_Geometry && wxUSE_GEOMETRY",
+    IsNumber = false,
+    Name = "wxPosition",
+    ValueType = "class",
   },
   wxPosixPermissions = {
     Condition = "wxLUA_USE_wxFile && wxUSE_FILE",
@@ -4836,6 +4888,600 @@ wx_dataTypeTable =
     Name = "wxResourceTranslationsLoader",
     ValueType = "class",
   },
+  wxRichTextAction = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextAction",
+    ValueType = "class",
+  },
+  wxRichTextAttr = {
+    BaseClasses = {
+      [1] = "wxTextAttr",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextAttr",
+    ValueType = "class",
+  },
+  wxRichTextAttrArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextAttrArray",
+    ValueType = "class",
+  },
+  wxRichTextBox = {
+    BaseClasses = {
+      [1] = "wxRichTextParagraphLayoutBox",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextBox",
+    ValueType = "class",
+  },
+  wxRichTextBoxStyleDefinition = {
+    BaseClasses = {
+      [1] = "wxRichTextStyleDefinition",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextBoxStyleDefinition",
+    ValueType = "class",
+  },
+  wxRichTextBuffer = {
+    BaseClasses = {
+      [1] = "wxRichTextParagraphLayoutBox",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextBuffer",
+    ValueType = "class",
+  },
+  wxRichTextBufferDataObject = {
+    BaseClasses = {
+      [1] = "wxDataObjectSimple",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_DATAOBJ)",
+    IsNumber = false,
+    Name = "wxRichTextBufferDataObject",
+    ValueType = "class",
+  },
+  wxRichTextCell = {
+    BaseClasses = {
+      [1] = "wxRichTextBox",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextCell",
+    ValueType = "class",
+  },
+  wxRichTextCharacterStyleDefinition = {
+    BaseClasses = {
+      [1] = "wxRichTextStyleDefinition",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextCharacterStyleDefinition",
+    ValueType = "class",
+  },
+  wxRichTextCommand = {
+    BaseClasses = {
+      [1] = "wxCommand",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextCommand",
+    ValueType = "class",
+  },
+  wxRichTextCommandId = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxRichTextCommandId",
+    ValueType = "enum",
+  },
+  wxRichTextCompositeObject = {
+    BaseClasses = {
+      [1] = "wxRichTextObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextCompositeObject",
+    ValueType = "class",
+  },
+  wxRichTextContextMenuPropertiesInfo = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextContextMenuPropertiesInfo",
+    ValueType = "class",
+  },
+  wxRichTextCtrl = {
+    BaseClasses = {
+      [1] = "wxControl",
+      [2] = "wxTextCtrlIface",
+      [3] = "wxScrollHelper",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextCtrl",
+    ValueType = "class",
+  },
+  wxRichTextCtrlSelectionState = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxRichTextCtrlSelectionState",
+    ValueType = "enum",
+  },
+  wxRichTextDrawingContext = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextDrawingContext",
+    ValueType = "class",
+  },
+  wxRichTextDrawingHandler = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextDrawingHandler",
+    ValueType = "class",
+  },
+  wxRichTextDropSource = {
+    BaseClasses = {
+      [1] = "wxDropSource",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_DRAG_AND_DROP)",
+    IsNumber = false,
+    Name = "wxRichTextDropSource",
+    ValueType = "class",
+  },
+  wxRichTextDropTarget = {
+    BaseClasses = {
+      [1] = "wxDropTarget",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_DRAG_AND_DROP)",
+    IsNumber = false,
+    Name = "wxRichTextDropTarget",
+    ValueType = "class",
+  },
+  wxRichTextEvent = {
+    BaseClasses = {
+      [1] = "wxNotifyEvent",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_DRAG_AND_DROP)",
+    IsNumber = false,
+    Name = "wxRichTextEvent",
+    ValueType = "class",
+  },
+  wxRichTextField = {
+    BaseClasses = {
+      [1] = "wxRichTextParagraphLayoutBox",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextField",
+    ValueType = "class",
+  },
+  wxRichTextFieldType = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFieldType",
+    ValueType = "class",
+  },
+  wxRichTextFieldTypeHashMap = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFieldTypeHashMap",
+    ValueType = "class",
+  },
+  ["wxRichTextFieldTypeHashMap::iterator"] = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFieldTypeHashMap::iterator",
+    ValueType = "class",
+  },
+  wxRichTextFieldTypeStandard = {
+    BaseClasses = {
+      [1] = "wxRichTextFieldType",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFieldTypeStandard",
+    ValueType = "class",
+  },
+  ["wxRichTextFieldTypeStandard::wxRICHTEXT_FIELD_STYLE_COMPOSITE"] = {
+    IsNumber = true,
+    Name = "wxRichTextFieldTypeStandard::wxRICHTEXT_FIELD_STYLE_COMPOSITE",
+    ValueType = "enum",
+  },
+  wxRichTextFileHandler = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFileHandler",
+    ValueType = "class",
+  },
+  wxRichTextFileType = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxRichTextFileType",
+    ValueType = "enum",
+  },
+  wxRichTextFontTable = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFontTable",
+    ValueType = "class",
+  },
+  wxRichTextFormattingDialog = {
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)",
+    IsNumber = false,
+    Name = "wxRichTextFormattingDialog",
+    ValueType = "class",
+  },
+  ["wxRichTextFormattingDialog::Option_AllowPixelFontSize"] = {
+    IsNumber = true,
+    Name = "wxRichTextFormattingDialog::Option_AllowPixelFontSize",
+    ValueType = "enum",
+  },
+  wxRichTextFormattingDialogFactory = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)",
+    IsNumber = false,
+    Name = "wxRichTextFormattingDialogFactory",
+    ValueType = "class",
+  },
+  wxRichTextHTMLHandler = {
+    BaseClasses = {
+      [1] = "wxRichTextFileHandler",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)",
+    IsNumber = false,
+    Name = "wxRichTextHTMLHandler",
+    ValueType = "class",
+  },
+  wxRichTextHeaderFooterData = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextHeaderFooterData",
+    ValueType = "class",
+  },
+  wxRichTextHitTestFlags = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxRichTextHitTestFlags",
+    ValueType = "enum",
+  },
+  wxRichTextImage = {
+    BaseClasses = {
+      [1] = "wxRichTextObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextImage",
+    ValueType = "class",
+  },
+  wxRichTextImageBlock = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextImageBlock",
+    ValueType = "class",
+  },
+  wxRichTextLine = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextLine",
+    ValueType = "class",
+  },
+  wxRichTextLineList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)",
+    IsNumber = false,
+    Name = "wxRichTextLineList",
+    ValueType = "class",
+  },
+  wxRichTextListStyleDefinition = {
+    BaseClasses = {
+      [1] = "wxRichTextParagraphStyleDefinition",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextListStyleDefinition",
+    ValueType = "class",
+  },
+  wxRichTextObject = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObject",
+    ValueType = "class",
+  },
+  wxRichTextObjectAddress = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectAddress",
+    ValueType = "class",
+  },
+  wxRichTextObjectList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectList",
+    ValueType = "class",
+  },
+  wxRichTextObjectPropertiesDialog = {
+    BaseClasses = {
+      [1] = "wxRichTextFormattingDialog",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)",
+    IsNumber = false,
+    Name = "wxRichTextObjectPropertiesDialog",
+    ValueType = "class",
+  },
+  wxRichTextObjectPtrArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectPtrArray",
+    ValueType = "class",
+  },
+  wxRichTextObjectPtrArrayArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectPtrArrayArray",
+    ValueType = "class",
+  },
+  wxRichTextOddEvenPage = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxRichTextOddEvenPage",
+    ValueType = "enum",
+  },
+  wxRichTextPageLocation = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxRichTextPageLocation",
+    ValueType = "enum",
+  },
+  wxRichTextParagraph = {
+    BaseClasses = {
+      [1] = "wxRichTextCompositeObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextParagraph",
+    ValueType = "class",
+  },
+  wxRichTextParagraphLayoutBox = {
+    BaseClasses = {
+      [1] = "wxRichTextCompositeObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextParagraphLayoutBox",
+    ValueType = "class",
+  },
+  wxRichTextParagraphStyleDefinition = {
+    BaseClasses = {
+      [1] = "wxRichTextStyleDefinition",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextParagraphStyleDefinition",
+    ValueType = "class",
+  },
+  wxRichTextPlainText = {
+    BaseClasses = {
+      [1] = "wxRichTextObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextPlainText",
+    ValueType = "class",
+  },
+  wxRichTextPlainTextHandler = {
+    BaseClasses = {
+      [1] = "wxRichTextFileHandler",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextPlainTextHandler",
+    ValueType = "class",
+  },
+  wxRichTextPrinting = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextPrinting",
+    ValueType = "class",
+  },
+  wxRichTextPrintout = {
+    BaseClasses = {
+      [1] = "wxPrintout",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextPrintout",
+    ValueType = "class",
+  },
+  wxRichTextProperties = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextProperties",
+    ValueType = "class",
+  },
+  wxRichTextRange = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextRange",
+    ValueType = "class",
+  },
+  wxRichTextRangeArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextRangeArray",
+    ValueType = "class",
+  },
+  wxRichTextRectArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextRectArray",
+    ValueType = "class",
+  },
+  wxRichTextRenderer = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextRenderer",
+    ValueType = "class",
+  },
+  wxRichTextSelection = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextSelection",
+    ValueType = "class",
+  },
+  wxRichTextStdRenderer = {
+    BaseClasses = {
+      [1] = "wxRichTextRenderer",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextStdRenderer",
+    ValueType = "class",
+  },
+  wxRichTextStyleComboCtrl = {
+    BaseClasses = {
+      [1] = "wxComboCtrl",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxRichTextStyleComboCtrl",
+    ValueType = "class",
+  },
+  wxRichTextStyleDefinition = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextStyleDefinition",
+    ValueType = "class",
+  },
+  wxRichTextStyleListBox = {
+    BaseClasses = {
+      [1] = "wxHtmlListBox",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxRichTextStyleListBox",
+    ValueType = "class",
+  },
+  ["wxRichTextStyleListBox::wxRichTextStyleType"] = {
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_HTML)",
+    IsNumber = true,
+    Name = "wxRichTextStyleListBox::wxRichTextStyleType",
+    ValueType = "enum",
+  },
+  wxRichTextStyleListCtrl = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxRichTextStyleListCtrl",
+    ValueType = "class",
+  },
+  wxRichTextStyleOrganiserDialog = {
+    BaseClasses = {
+      [1] = "wxDialog",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextStyleOrganiserDialog",
+    ValueType = "class",
+  },
+  wxRichTextStyleSheet = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextStyleSheet",
+    ValueType = "class",
+  },
+  wxRichTextTable = {
+    BaseClasses = {
+      [1] = "wxRichTextBox",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextTable",
+    ValueType = "class",
+  },
+  wxRichTextTableBlock = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextTableBlock",
+    ValueType = "class",
+  },
+  wxRichTextVariantArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextVariantArray",
+    ValueType = "class",
+  },
+  wxRichTextXMLHandler = {
+    BaseClasses = {
+      [1] = "wxRichTextFileHandler",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)",
+    IsNumber = false,
+    Name = "wxRichTextXMLHandler",
+    ValueType = "class",
+  },
+  wxRichTextXMLHelper = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)",
+    IsNumber = false,
+    Name = "wxRichTextXMLHelper",
+    ValueType = "class",
+  },
   wxSashDragStatus = {
     Condition = "wxLUA_USE_wxSashWindow && wxUSE_SASH",
     IsNumber = true,
@@ -4901,6 +5547,12 @@ wx_dataTypeTable =
     Name = "wxScrollEvent",
     ValueType = "class",
   },
+  wxScrollHelper = {
+    Condition = "wxLUA_USE_wxScrolledWindow",
+    IsNumber = false,
+    Name = "wxScrollHelper",
+    ValueType = "class",
+  },
   wxScrollWinEvent = {
     BaseClasses = {
       [1] = "wxEvent",
@@ -4918,6 +5570,7 @@ wx_dataTypeTable =
   wxScrolledWindow = {
     BaseClasses = {
       [1] = "wxPanel",
+      [2] = "wxScrollHelper",
     },
     Condition = "wxLUA_USE_wxScrolledWindow",
     IsNumber = false,
@@ -5422,6 +6075,24 @@ wx_dataTypeTable =
     Name = "wxStringClientData",
     ValueType = "class",
   },
+  wxStringInputStream = {
+    BaseClasses = {
+      [1] = "wxInputStream",
+    },
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxStringInputStream",
+    ValueType = "class",
+  },
+  wxStringOutputStream = {
+    BaseClasses = {
+      [1] = "wxOutputStream",
+    },
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxStringOutputStream",
+    ValueType = "class",
+  },
   wxStringTokenizer = {
     BaseClasses = {
       [1] = "wxObject",
@@ -5449,6 +6120,24 @@ wx_dataTypeTable =
     },
     IsNumber = false,
     Name = "wxStyledTextEvent",
+    ValueType = "class",
+  },
+  wxSymbolListCtrl = {
+    BaseClasses = {
+      [1] = "wxVScrolledWindow",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxSymbolListCtrl",
+    ValueType = "class",
+  },
+  wxSymbolPickerDialog = {
+    BaseClasses = {
+      [1] = "wxDialog",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxSymbolPickerDialog",
     ValueType = "class",
   },
   wxSysColourChangedEvent = {
@@ -5570,6 +6259,12 @@ wx_dataTypeTable =
     Name = "wxTempFile",
     ValueType = "class",
   },
+  wxTextAreaBase = {
+    Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
+    IsNumber = false,
+    Name = "wxTextAreaBase",
+    ValueType = "class",
+  },
   wxTextAttr = {
     Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
     IsNumber = false,
@@ -5582,6 +6277,137 @@ wx_dataTypeTable =
     Name = "wxTextAttrAlignment",
     ValueType = "enum",
   },
+  wxTextAttrBorder = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextAttrBorder",
+    ValueType = "class",
+  },
+  wxTextAttrBorderFlags = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextAttrBorderFlags",
+    ValueType = "enum",
+  },
+  wxTextAttrBorderStyle = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextAttrBorderStyle",
+    ValueType = "enum",
+  },
+  wxTextAttrBorderWidth = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextAttrBorderWidth",
+    ValueType = "enum",
+  },
+  wxTextAttrBorders = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextAttrBorders",
+    ValueType = "class",
+  },
+  wxTextAttrBulletStyle = {
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)",
+    IsNumber = true,
+    Name = "wxTextAttrBulletStyle",
+    ValueType = "enum",
+  },
+  wxTextAttrDimension = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextAttrDimension",
+    ValueType = "class",
+  },
+  wxTextAttrDimensionConverter = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextAttrDimensionConverter",
+    ValueType = "class",
+  },
+  wxTextAttrDimensionFlags = {
+    IsNumber = true,
+    Name = "wxTextAttrDimensionFlags",
+    ValueType = "number",
+  },
+  wxTextAttrDimensions = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextAttrDimensions",
+    ValueType = "class",
+  },
+  wxTextAttrEffects = {
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)",
+    IsNumber = true,
+    Name = "wxTextAttrEffects",
+    ValueType = "enum",
+  },
+  wxTextAttrLineSpacing = {
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)",
+    IsNumber = true,
+    Name = "wxTextAttrLineSpacing",
+    ValueType = "enum",
+  },
+  wxTextAttrSize = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextAttrSize",
+    ValueType = "class",
+  },
+  wxTextAttrUnits = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextAttrUnits",
+    ValueType = "enum",
+  },
+  wxTextAttrValueFlags = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextAttrValueFlags",
+    ValueType = "enum",
+  },
+  wxTextBoxAttr = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxTextBoxAttr",
+    ValueType = "class",
+  },
+  wxTextBoxAttrClearStyle = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextBoxAttrClearStyle",
+    ValueType = "enum",
+  },
+  wxTextBoxAttrCollapseMode = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextBoxAttrCollapseMode",
+    ValueType = "enum",
+  },
+  wxTextBoxAttrFlags = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextBoxAttrFlags",
+    ValueType = "enum",
+  },
+  wxTextBoxAttrFloatStyle = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextBoxAttrFloatStyle",
+    ValueType = "enum",
+  },
+  wxTextBoxAttrPosition = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextBoxAttrPosition",
+    ValueType = "enum",
+  },
+  wxTextBoxAttrVerticalAlignment = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = true,
+    Name = "wxTextBoxAttrVerticalAlignment",
+    ValueType = "enum",
+  },
   wxTextCoord = {
     IsNumber = true,
     Name = "wxTextCoord",
@@ -5591,6 +6417,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
       [2] = "wxTextEntry",
+      [3] = "wxTextAreaBase",
     },
     Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
     IsNumber = false,
@@ -5602,6 +6429,16 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxTextCtrlHitTestResult",
     ValueType = "enum",
+  },
+  wxTextCtrlIface = {
+    BaseClasses = {
+      [1] = "wxTextAreaBase",
+      [2] = "wxTextEntry",
+    },
+    Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
+    IsNumber = false,
+    Name = "wxTextCtrlIface",
+    ValueType = "class",
   },
   wxTextDataObject = {
     BaseClasses = {
@@ -6005,6 +6842,11 @@ wx_dataTypeTable =
     Name = "wxUpdateUIMode",
     ValueType = "enum",
   },
+  wxVScrolledWindow = {
+    IsNumber = false,
+    Name = "wxVScrolledWindow",
+    ValueType = "class",
+  },
   wxValidator = {
     BaseClasses = {
       [1] = "wxEvtHandler",
@@ -6012,6 +6854,33 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxValidator && wxUSE_VALIDATORS",
     IsNumber = false,
     Name = "wxValidator",
+    ValueType = "class",
+  },
+  wxVariant = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxUSE_VARIANT",
+    IsNumber = false,
+    Name = "wxVariant",
+    ValueType = "class",
+  },
+  wxVariantData = {
+    BaseClasses = {
+      [1] = "wxObjectRefData",
+    },
+    Condition = "wxUSE_VARIANT",
+    IsNumber = false,
+    Name = "wxVariantData",
+    ValueType = "class",
+  },
+  wxVariantList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "wxUSE_VARIANT",
+    IsNumber = false,
+    Name = "wxVariantList",
     ValueType = "class",
   },
   wxVersionInfo = {
@@ -6309,6 +7178,8 @@ wx_preprocConditionTable =
   ["%wxchkver_3_1_3"] = "wxCHECK_VERSION(3,1,3)",
   ["%wxchkver_3_1_4"] = "wxCHECK_VERSION(3,1,4)",
   ["%wxchkver_3_1_5"] = "wxCHECK_VERSION(3,1,5)",
+  ["%wxchkver_3_1_6"] = "wxCHECK_VERSION(3,1,6)",
+  ["%wxchkver_3_2_2"] = "wxCHECK_VERSION(3,2,2)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",
   ["%wxcompat_2_8"] = "(defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)",

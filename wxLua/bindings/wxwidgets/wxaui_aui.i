@@ -105,11 +105,14 @@ class wxAuiToolBarItem
     void SetLabel(const wxString& s);
     const wxString& GetLabel() const;
     void SetBitmap(const wxBitmap& bmp);
-    wxBitmap GetBitmap() const;
+    !%wxchkver_3_1_6 const wxBitmap& GetBitmap() const;
+    %wxchkver_3_1_6 wxBitmap GetBitmap() const;
     void SetDisabledBitmap(const wxBitmap& bmp);
-    wxBitmap GetDisabledBitmap() const;
+    !%wxchkver_3_1_6 const wxBitmap& GetDisabledBitmap() const;
+    %wxchkver_3_1_6 wxBitmap GetDisabledBitmap() const;
     void SetHoverBitmap(const wxBitmap& bmp);
-    wxBitmap GetHoverBitmap() const;
+    !%wxchkver_3_1_6 const wxBitmap& GetHoverBitmap() const;
+    %wxchkver_3_1_6 wxBitmap GetHoverBitmap() const;
     void SetShortHelp(const wxString& s);
     const wxString& GetShortHelp() const;
     void SetLongHelp(const wxString& s);

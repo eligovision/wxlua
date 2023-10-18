@@ -23,6 +23,9 @@
 #ifdef Below
     #undef Below
 #endif
+#if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
+#include "wx/propgrid/propgriddefs.h"
+#endif
 
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
@@ -180,7 +183,7 @@ static int LUACALL wxLua_wxMenu_AppendSeparator(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenu_AppendSubMenu[] = { &wxluatype_wxMenu, &wxluatype_wxMenu, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMenu_AppendSubMenu(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenu_AppendSubMenu[1] = {{ wxLua_wxMenu_AppendSubMenu, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxMenu_AppendSubMenu }};
-//     wxMenuItem* AppendSubMenu(wxMenu *submenu, const wxString& text, const wxString& help = "");
+//     wxMenuItem* AppendSubMenu(%ungc wxMenu *submenu, const wxString& text, const wxString& help = "");
 static int LUACALL wxLua_wxMenu_AppendSubMenu(lua_State *L)
 {
     // get number of arguments
@@ -191,6 +194,7 @@ static int LUACALL wxLua_wxMenu_AppendSubMenu(lua_State *L)
     const wxString text = wxlua_getwxStringtype(L, 3);
     // wxMenu submenu
     wxMenu * submenu = (wxMenu *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMenu);
+    if (wxluaO_isgcobject(L, submenu)) wxluaO_undeletegcobject(L, submenu);
     // get this
     wxMenu * self = (wxMenu *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenu);
     // call AppendSubMenu
@@ -2508,13 +2512,16 @@ static int LUACALL wxLua_wxMenuItem_GetBitmap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetDisabledBitmap[] = { &wxluatype_wxMenuItem, NULL };
 static int LUACALL wxLua_wxMenuItem_GetDisabledBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetDisabledBitmap[1] = {{ wxLua_wxMenuItem_GetDisabledBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuItem_GetDisabledBitmap }};
-//     %win wxBitmap& GetDisabledBitmap() const;
+//     %win wxBitmap GetDisabledBitmap() const;
 static int LUACALL wxLua_wxMenuItem_GetDisabledBitmap(lua_State *L)
 {
     // get this
     wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
     // call GetDisabledBitmap
-    wxBitmap* returns = (wxBitmap*)&self->GetDisabledBitmap();
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetDisabledBitmap());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
 
