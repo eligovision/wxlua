@@ -1168,6 +1168,66 @@ class %delete wxBitmap : public wxGDIObject
 #endif //wxLUA_USE_wxBitmap
 
 // ---------------------------------------------------------------------------
+// wxBitmapBundle
+
+// TODO: wxLUA_USE_wxBitmapBundle
+
+#if %wxchkver_3_1_6
+
+#include "wx/bmpbndl.h"
+
+class %delete wxBitmapBundle
+{
+    wxBitmapBundle();
+    wxBitmapBundle(const wxBitmap& bitmap);
+    wxBitmapBundle(const wxIcon& icon);
+    wxBitmapBundle(const wxImage& image);
+    // wxBitmapBundle(const char* const* xpm);
+    wxBitmapBundle(const wxBitmapBundle& other);
+
+    /* static wxBitmapBundle FromBitmaps(const wxVector<wxBitmap>& bitmaps); */
+    static wxBitmapBundle FromBitmaps(const wxBitmap& bitmap1, const wxBitmap& bitmap2);
+    static wxBitmapBundle FromBitmap(const wxBitmap& bitmap);
+    static wxBitmapBundle FromImage(const wxImage& image);
+    %wxchkver_3_1_7 static wxBitmapBundle FromIconBundle(const wxIconBundle& iconBundle);
+
+    // #if wxHAS_SVG
+    // static wxBitmapBundle FromSVG(char* data, const wxSize& sizeDef);
+    // static wxBitmapBundle FromSVG(const char* data, const wxSize& sizeDef);
+    // static wxBitmapBundle FromSVG(const wxByte* data, size_t len, const wxSize& sizeDef);
+    // static wxBitmapBundle FromSVGFile(const wxString& path, const wxSize& sizeDef);
+    // static wxBitmapBundle FromSVGResource(const wxString& name, const wxSize& sizeDef);
+    // #endif
+
+    static wxBitmapBundle FromResources(const wxString& name);
+    static wxBitmapBundle FromFiles(const wxString& fullpathname);
+    static wxBitmapBundle FromFiles(const wxString& path, const wxString& filename, const wxString& extension = "png");
+    // static wxBitmapBundle FromImpl(wxBitmapBundleImpl* impl);
+
+    bool IsOk() const;
+    %wxchkver_3_1_7 void Clear();
+
+    wxSize GetDefaultSize() const;
+    wxSize GetPreferredBitmapSizeAtScale(double scale) const;
+    wxSize GetPreferredBitmapSizeFor(const wxWindow* window) const;
+    wxSize GetPreferredLogicalSizeFor(const wxWindow* window) const;
+    wxBitmap GetBitmap(const wxSize& size) const;
+    wxIcon GetIcon(const wxSize& size) const;
+    wxBitmap GetBitmapFor(const wxWindow* window) const;
+    wxIcon GetIconFor(const wxWindow* window) const;
+    // wxBitmapBundleImpl* GetImpl() const;
+
+    bool IsSameAs(const wxBitmapBundle& other);
+
+    // static wxSize GetConsensusSizeFor(double scale, const wxVector<wxBitmapBundle>& bundles);
+    // static wxSize GetConsensusSizeFor(wxWindow* win, const wxVector<wxBitmapBundle>& bundles);
+    // static wxImageList* CreateImageList(wxWindow* win, const wxVector<wxBitmapBundle>& bundles);
+};
+
+#endif %wxchkver_3_1_6
+
+
+// ---------------------------------------------------------------------------
 // wxCursor
 
 #if wxLUA_USE_wxCursor
