@@ -5265,6 +5265,7 @@ static const char* wxluaclassname_wxAutoBufferedPaintDC = "wxAutoBufferedPaintDC
 static const char* wxluaclassname_wxBMPHandler = "wxBMPHandler";
 static const char* wxluaclassname_wxBestHelpController = "wxBestHelpController";
 static const char* wxluaclassname_wxBitmap = "wxBitmap";
+static const char* wxluaclassname_wxBitmapBundle = "wxBitmapBundle";
 static const char* wxluaclassname_wxBitmapButton = "wxBitmapButton";
 static const char* wxluaclassname_wxBitmapDataObject = "wxBitmapDataObject";
 static const char* wxluaclassname_wxBitmapToggleButton = "wxBitmapToggleButton";
@@ -6766,6 +6767,12 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxDPIChangedEvent_delete_function(void** p);
 #endif // wxCHECK_VERSION(3,1,3)
 
+#if wxCHECK_VERSION(3,1,6)
+    extern wxLuaBindMethod wxBitmapBundle_methods[];
+    extern int wxBitmapBundle_methodCount;
+    extern void wxLua_wxBitmapBundle_delete_function(void** p);
+#endif // wxCHECK_VERSION(3,1,6)
+
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     extern wxLuaBindMethod wxPoint2DDouble_methods[];
     extern int wxPoint2DDouble_methodCount;
@@ -7802,6 +7809,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxBitmap
         { wxluaclassname_wxBitmap, wxBitmap_methods, wxBitmap_methodCount, CLASSINFO(wxBitmap), &wxluatype_wxBitmap, wxluabaseclassnames_wxBitmap, wxluabaseclassbinds_wxBitmap, NULL, NULL, NULL, 0, &wxLua_wxBitmap_delete_function, }, 
 #endif // wxLUA_USE_wxBitmap
+
+#if wxCHECK_VERSION(3,1,6)
+        { wxluaclassname_wxBitmapBundle, wxBitmapBundle_methods, wxBitmapBundle_methodCount, NULL, &wxluatype_wxBitmapBundle, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxBitmapBundle_delete_function, }, 
+#endif // wxCHECK_VERSION(3,1,6)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
         { wxluaclassname_wxBitmapButton, wxBitmapButton_methods, wxBitmapButton_methodCount, CLASSINFO(wxBitmapButton), &wxluatype_wxBitmapButton, wxluabaseclassnames_wxBitmapButton, wxluabaseclassbinds_wxBitmapButton, NULL, NULL, NULL, 0, &wxLua_wxBitmapButton_delete_function, }, 

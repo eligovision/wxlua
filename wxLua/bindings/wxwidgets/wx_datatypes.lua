@@ -679,6 +679,12 @@ wx_dataTypeTable =
     Name = "wxBitmap",
     ValueType = "class",
   },
+  wxBitmapBundle = {
+    Condition = "wxCHECK_VERSION(3,1,6)",
+    IsNumber = false,
+    Name = "wxBitmapBundle",
+    ValueType = "class",
+  },
   wxBitmapButton = {
     BaseClasses = {
       [1] = "wxAnyButton",
@@ -7179,6 +7185,7 @@ wx_preprocConditionTable =
   ["%wxchkver_3_1_4"] = "wxCHECK_VERSION(3,1,4)",
   ["%wxchkver_3_1_5"] = "wxCHECK_VERSION(3,1,5)",
   ["%wxchkver_3_1_6"] = "wxCHECK_VERSION(3,1,6)",
+  ["%wxchkver_3_1_7"] = "wxCHECK_VERSION(3,1,7)",
   ["%wxchkver_3_2_2"] = "wxCHECK_VERSION(3,2,2)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",

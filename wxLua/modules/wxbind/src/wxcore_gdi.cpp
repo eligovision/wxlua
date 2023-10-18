@@ -12386,6 +12386,611 @@ int wxBitmap_methodCount = sizeof(wxBitmap_methods)/sizeof(wxLuaBindMethod) - 1;
 #endif  // wxLUA_USE_wxBitmap
 
 
+#if wxCHECK_VERSION(3,1,6)
+// ---------------------------------------------------------------------------
+// Bind class wxBitmapBundle
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxBitmapBundle'
+int wxluatype_wxBitmapBundle = WXLUA_TUNKNOWN;
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_Clear[] = { &wxluatype_wxBitmapBundle, NULL };
+static int LUACALL wxLua_wxBitmapBundle_Clear(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_Clear[1] = {{ wxLua_wxBitmapBundle_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_Clear }};
+//     %wxchkver_3_1_7 void Clear();
+static int LUACALL wxLua_wxBitmapBundle_Clear(lua_State *L)
+{
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call Clear
+    self->Clear();
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromBitmap[] = { &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromBitmap[1] = {{ wxLua_wxBitmapBundle_FromBitmap, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_FromBitmap }};
+//     static wxBitmapBundle FromBitmap(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxBitmapBundle_FromBitmap(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call FromBitmap
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromBitmap(*bitmap));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromBitmaps[] = { &wxluatype_wxBitmap, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromBitmaps(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromBitmaps[1] = {{ wxLua_wxBitmapBundle_FromBitmaps, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_FromBitmaps }};
+//     static wxBitmapBundle FromBitmaps(const wxBitmap& bitmap1, const wxBitmap& bitmap2);
+static int LUACALL wxLua_wxBitmapBundle_FromBitmaps(lua_State *L)
+{
+    // const wxBitmap bitmap2
+    const wxBitmap * bitmap2 = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // const wxBitmap bitmap1
+    const wxBitmap * bitmap1 = (const wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call FromBitmaps
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromBitmaps(*bitmap1, *bitmap2));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromFiles1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromFiles1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromFiles1[1] = {{ wxLua_wxBitmapBundle_FromFiles1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 3, s_wxluatypeArray_wxLua_wxBitmapBundle_FromFiles1 }};
+//     static wxBitmapBundle FromFiles(const wxString& path, const wxString& filename, const wxString& extension = "png");
+static int LUACALL wxLua_wxBitmapBundle_FromFiles1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString extension = "png"
+    const wxString extension = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxT("png")));
+    // const wxString filename
+    const wxString filename = wxlua_getwxStringtype(L, 2);
+    // const wxString path
+    const wxString path = wxlua_getwxStringtype(L, 1);
+    // call FromFiles
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromFiles(path, filename, extension));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromFiles[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromFiles(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromFiles[1] = {{ wxLua_wxBitmapBundle_FromFiles, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_FromFiles }};
+//     static wxBitmapBundle FromFiles(const wxString& fullpathname);
+static int LUACALL wxLua_wxBitmapBundle_FromFiles(lua_State *L)
+{
+    // const wxString fullpathname
+    const wxString fullpathname = wxlua_getwxStringtype(L, 1);
+    // call FromFiles
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromFiles(fullpathname));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+
+#if (((wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxIcon)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromIconBundle[] = { &wxluatype_wxIconBundle, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromIconBundle(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromIconBundle[1] = {{ wxLua_wxBitmapBundle_FromIconBundle, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_FromIconBundle }};
+//     %wxchkver_3_1_7 static wxBitmapBundle FromIconBundle(const wxIconBundle& iconBundle);
+static int LUACALL wxLua_wxBitmapBundle_FromIconBundle(lua_State *L)
+{
+    // const wxIconBundle iconBundle
+    const wxIconBundle * iconBundle = (const wxIconBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIconBundle);
+    // call FromIconBundle
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromIconBundle(*iconBundle));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxIcon)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromImage[] = { &wxluatype_wxImage, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromImage(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromImage[1] = {{ wxLua_wxBitmapBundle_FromImage, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_FromImage }};
+//     static wxBitmapBundle FromImage(const wxImage& image);
+static int LUACALL wxLua_wxBitmapBundle_FromImage(lua_State *L)
+{
+    // const wxImage image
+    const wxImage * image = (const wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
+    // call FromImage
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromImage(*image));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_FromResources[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxBitmapBundle_FromResources(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromResources[1] = {{ wxLua_wxBitmapBundle_FromResources, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_FromResources }};
+//     static wxBitmapBundle FromResources(const wxString& name);
+static int LUACALL wxLua_wxBitmapBundle_FromResources(lua_State *L)
+{
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 1);
+    // call FromResources
+    // allocate a new object using the copy constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(wxBitmapBundle::FromResources(name));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetBitmap[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetBitmap[1] = {{ wxLua_wxBitmapBundle_GetBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetBitmap }};
+//     wxBitmap GetBitmap(const wxSize& size) const;
+static int LUACALL wxLua_wxBitmapBundle_GetBitmap(lua_State *L)
+{
+    // const wxSize size
+    const wxSize * size = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetBitmap
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmap(*size));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetBitmapFor[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetBitmapFor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetBitmapFor[1] = {{ wxLua_wxBitmapBundle_GetBitmapFor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetBitmapFor }};
+//     wxBitmap GetBitmapFor(const wxWindow* window) const;
+static int LUACALL wxLua_wxBitmapBundle_GetBitmapFor(lua_State *L)
+{
+    // const wxWindow window
+    const wxWindow * window = (const wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetBitmapFor
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmapFor(window));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetDefaultSize[] = { &wxluatype_wxBitmapBundle, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetDefaultSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetDefaultSize[1] = {{ wxLua_wxBitmapBundle_GetDefaultSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_GetDefaultSize }};
+//     wxSize GetDefaultSize() const;
+static int LUACALL wxLua_wxBitmapBundle_GetDefaultSize(lua_State *L)
+{
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetDefaultSize
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetDefaultSize());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetIcon[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetIcon(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetIcon[1] = {{ wxLua_wxBitmapBundle_GetIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetIcon }};
+//     wxIcon GetIcon(const wxSize& size) const;
+static int LUACALL wxLua_wxBitmapBundle_GetIcon(lua_State *L)
+{
+    // const wxSize size
+    const wxSize * size = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetIcon
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIcon(*size));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetIconFor[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetIconFor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetIconFor[1] = {{ wxLua_wxBitmapBundle_GetIconFor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetIconFor }};
+//     wxIcon GetIconFor(const wxWindow* window) const;
+static int LUACALL wxLua_wxBitmapBundle_GetIconFor(lua_State *L)
+{
+    // const wxWindow window
+    const wxWindow * window = (const wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetIconFor
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIconFor(window));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale[] = { &wxluatype_wxBitmapBundle, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale[1] = {{ wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale }};
+//     wxSize GetPreferredBitmapSizeAtScale(double scale) const;
+static int LUACALL wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale(lua_State *L)
+{
+    // double scale
+    double scale = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetPreferredBitmapSizeAtScale
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetPreferredBitmapSizeAtScale(scale));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor[1] = {{ wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor }};
+//     wxSize GetPreferredBitmapSizeFor(const wxWindow* window) const;
+static int LUACALL wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor(lua_State *L)
+{
+    // const wxWindow window
+    const wxWindow * window = (const wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetPreferredBitmapSizeFor
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetPreferredBitmapSizeFor(window));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor[1] = {{ wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor }};
+//     wxSize GetPreferredLogicalSizeFor(const wxWindow* window) const;
+static int LUACALL wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor(lua_State *L)
+{
+    // const wxWindow window
+    const wxWindow * window = (const wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call GetPreferredLogicalSizeFor
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetPreferredLogicalSizeFor(window));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_IsOk[] = { &wxluatype_wxBitmapBundle, NULL };
+static int LUACALL wxLua_wxBitmapBundle_IsOk(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_IsOk[1] = {{ wxLua_wxBitmapBundle_IsOk, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_IsOk }};
+//     bool IsOk() const;
+static int LUACALL wxLua_wxBitmapBundle_IsOk(lua_State *L)
+{
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call IsOk
+    bool returns = (self->IsOk());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_IsSameAs[] = { &wxluatype_wxBitmapBundle, &wxluatype_wxBitmapBundle, NULL };
+static int LUACALL wxLua_wxBitmapBundle_IsSameAs(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_IsSameAs[1] = {{ wxLua_wxBitmapBundle_IsSameAs, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapBundle_IsSameAs }};
+//     bool IsSameAs(const wxBitmapBundle& other);
+static int LUACALL wxLua_wxBitmapBundle_IsSameAs(lua_State *L)
+{
+    // const wxBitmapBundle other
+    const wxBitmapBundle * other = (const wxBitmapBundle *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmapBundle);
+    // get this
+    wxBitmapBundle * self = (wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call IsSameAs
+    bool returns = (self->IsSameAs(*other));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_delete[] = { &wxluatype_wxBitmapBundle, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_constructor4[] = { &wxluatype_wxBitmapBundle, NULL };
+static int LUACALL wxLua_wxBitmapBundle_constructor4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_constructor4[1] = {{ wxLua_wxBitmapBundle_constructor4, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor4 }};
+//     wxBitmapBundle(const wxBitmapBundle& other);
+static int LUACALL wxLua_wxBitmapBundle_constructor4(lua_State *L)
+{
+    // const wxBitmapBundle other
+    const wxBitmapBundle * other = (const wxBitmapBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapBundle);
+    // call constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(*other);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_constructor3[] = { &wxluatype_wxImage, NULL };
+static int LUACALL wxLua_wxBitmapBundle_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_constructor3[1] = {{ wxLua_wxBitmapBundle_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor3 }};
+//     wxBitmapBundle(const wxImage& image);
+static int LUACALL wxLua_wxBitmapBundle_constructor3(lua_State *L)
+{
+    // const wxImage image
+    const wxImage * image = (const wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
+    // call constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(*image);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_constructor2[] = { &wxluatype_wxIcon, NULL };
+static int LUACALL wxLua_wxBitmapBundle_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_constructor2[1] = {{ wxLua_wxBitmapBundle_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor2 }};
+//     wxBitmapBundle(const wxIcon& icon);
+static int LUACALL wxLua_wxBitmapBundle_constructor2(lua_State *L)
+{
+    // const wxIcon icon
+    const wxIcon * icon = (const wxIcon *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIcon);
+    // call constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(*icon);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapBundle_constructor1[] = { &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmapBundle_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_constructor1[1] = {{ wxLua_wxBitmapBundle_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor1 }};
+//     wxBitmapBundle(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxBitmapBundle_constructor1(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call constructor
+    wxBitmapBundle* returns = new wxBitmapBundle(*bitmap);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+
+static int LUACALL wxLua_wxBitmapBundle_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_constructor[1] = {{ wxLua_wxBitmapBundle_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxBitmapBundle();
+static int LUACALL wxLua_wxBitmapBundle_constructor(lua_State *L)
+{
+    // call constructor
+    wxBitmapBundle* returns = new wxBitmapBundle();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmapBundle);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapBundle);
+
+    return 1;
+}
+
+
+
+
+#if (wxCHECK_VERSION(3,1,6))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_FromFiles_overload[] =
+{
+    { wxLua_wxBitmapBundle_FromFiles1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 3, s_wxluatypeArray_wxLua_wxBitmapBundle_FromFiles1 },
+    { wxLua_wxBitmapBundle_FromFiles, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_FromFiles },
+};
+static int s_wxluafunc_wxLua_wxBitmapBundle_FromFiles_overload_count = sizeof(s_wxluafunc_wxLua_wxBitmapBundle_FromFiles_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxCHECK_VERSION(3,1,6))
+
+#if (wxCHECK_VERSION(3,1,6))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapBundle_constructor_overload[] =
+{
+    { wxLua_wxBitmapBundle_constructor4, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor4 },
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+    { wxLua_wxBitmapBundle_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor3 },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+    { wxLua_wxBitmapBundle_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor2 },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxBitmapBundle_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmapBundle_constructor1 },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxBitmapBundle_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxBitmapBundle_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxBitmapBundle_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxCHECK_VERSION(3,1,6))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap))
+
+void wxLua_wxBitmapBundle_delete_function(void** p)
+{
+    wxBitmapBundle* o = (wxBitmapBundle*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxBitmapBundle_methods[] = {
+#if (wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))
+    { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_Clear, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+    { "FromBitmap", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapBundle_FromBitmap, 1, NULL },
+    { "FromBitmaps", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapBundle_FromBitmaps, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+
+#if (wxCHECK_VERSION(3,1,6))
+    { "FromFiles", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapBundle_FromFiles_overload, s_wxluafunc_wxLua_wxBitmapBundle_FromFiles_overload_count, 0 },
+#endif // (wxCHECK_VERSION(3,1,6))
+
+#if (((wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxIcon)
+    { "FromIconBundle", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapBundle_FromIconBundle, 1, NULL },
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxCHECK_VERSION(3,1,7))) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxIcon)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+    { "FromImage", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapBundle_FromImage, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+
+    { "FromResources", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapBundle_FromResources, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetBitmap, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+    { "GetBitmapFor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetBitmapFor, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetDefaultSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetDefaultSize, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetIcon, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+    { "GetIconFor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetIconFor, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon)
+
+#if (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetPreferredBitmapSizeAtScale", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetPreferredBitmapSizeAtScale, 1, NULL },
+    { "GetPreferredBitmapSizeFor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetPreferredBitmapSizeFor, 1, NULL },
+    { "GetPreferredLogicalSizeFor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_GetPreferredLogicalSizeFor, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxPointSizeRect)
+
+    { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_IsOk, 1, NULL },
+    { "IsSameAs", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapBundle_IsSameAs, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxBitmapBundle_delete, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,6))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap))
+    { "wxBitmapBundle", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxBitmapBundle_constructor_overload, s_wxluafunc_wxLua_wxBitmapBundle_constructor_overload_count, 0 },
+#endif // (wxCHECK_VERSION(3,1,6))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxIcon))||((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxBitmap))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxBitmapBundle_methodCount = sizeof(wxBitmapBundle_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxCHECK_VERSION(3,1,6)
+
+
 #if wxLUA_USE_wxCursor
 // ---------------------------------------------------------------------------
 // Bind class wxCursor

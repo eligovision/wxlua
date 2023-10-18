@@ -14089,6 +14089,31 @@ static int LUACALL wxLua_wxStaticBitmap_GetBitmap(lua_State *L)
     return 1;
 }
 
+#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+
+#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBitmap_GetIcon[] = { &wxluatype_wxStaticBitmap, NULL };
+static int LUACALL wxLua_wxStaticBitmap_GetIcon(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStaticBitmap_GetIcon[1] = {{ wxLua_wxStaticBitmap_GetIcon, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStaticBitmap_GetIcon }};
+//     virtual wxIcon GetIcon() const;
+static int LUACALL wxLua_wxStaticBitmap_GetIcon(lua_State *L)
+{
+    // get this
+    wxStaticBitmap * self = (wxStaticBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStaticBitmap);
+    // call GetIcon
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIcon());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+
+#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBitmap_SetBitmap[] = { &wxluatype_wxStaticBitmap, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxStaticBitmap_SetBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStaticBitmap_SetBitmap[1] = {{ wxLua_wxStaticBitmap_SetBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStaticBitmap_SetBitmap }};
@@ -14106,6 +14131,25 @@ static int LUACALL wxLua_wxStaticBitmap_SetBitmap(lua_State *L)
 }
 
 #endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+
+#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBitmap_SetIcon[] = { &wxluatype_wxStaticBitmap, &wxluatype_wxIcon, NULL };
+static int LUACALL wxLua_wxStaticBitmap_SetIcon(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStaticBitmap_SetIcon[1] = {{ wxLua_wxStaticBitmap_SetIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStaticBitmap_SetIcon }};
+//     virtual void SetIcon(const wxIcon& icon);
+static int LUACALL wxLua_wxStaticBitmap_SetIcon(lua_State *L)
+{
+    // const wxIcon icon
+    const wxIcon * icon = (const wxIcon *)wxluaT_getuserdatatype(L, 2, wxluatype_wxIcon);
+    // get this
+    wxStaticBitmap * self = (wxStaticBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStaticBitmap);
+    // call SetIcon
+    self->SetIcon(*icon);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
 
 #if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBitmap_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
@@ -14188,8 +14232,19 @@ wxLuaBindMethod wxStaticBitmap_methods[] = {
 
 #if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
     { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStaticBitmap_GetBitmap, 1, NULL },
+#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+
+#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+    { "GetIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStaticBitmap_GetIcon, 1, NULL },
+#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+
+#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
     { "SetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStaticBitmap_SetBitmap, 1, NULL },
 #endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+
+#if (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
+    { "SetIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStaticBitmap_SetIcon, 1, NULL },
+#endif // (wxLUA_USE_wxIcon) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
 
 #if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP))||(wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
     { "wxStaticBitmap", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxStaticBitmap_constructor_overload, s_wxluafunc_wxLua_wxStaticBitmap_constructor_overload_count, 0 },

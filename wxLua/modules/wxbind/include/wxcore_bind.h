@@ -197,6 +197,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/event.h"
 #endif // wxCHECK_VERSION(3,1,3)
 
+#if wxCHECK_VERSION(3,1,6)
+    #include "wx/bmpbndl.h"
+#endif // wxCHECK_VERSION(3,1,6)
+
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     #include "wx/geometry.h"
     #include "wx/position.h"
@@ -877,6 +881,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxCHECK_VERSION(3,1,3)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxDPIChangedEvent;
 #endif // wxCHECK_VERSION(3,1,3)
+
+#if wxCHECK_VERSION(3,1,6)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBitmapBundle;
+#endif // wxCHECK_VERSION(3,1,6)
 
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint2DDouble;
