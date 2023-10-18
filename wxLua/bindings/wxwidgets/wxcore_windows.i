@@ -1144,6 +1144,9 @@ class wxStaticBitmap : public wxControl
 
     wxBitmap GetBitmap() const;
     virtual void SetBitmap(const wxBitmap& label);
+
+    virtual void SetIcon(const wxIcon& icon);
+    virtual wxIcon GetIcon() const;
 };
 
 #endif //wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP
