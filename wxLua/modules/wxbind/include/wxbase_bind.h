@@ -34,9 +34,9 @@ extern WXDLLIMPEXP_BINDWXBASE wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Loc
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 41
+#if WXLUA_BINDING_VERSION > 44
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 41
+#endif //WXLUA_BINDING_VERSION > 44
 // ---------------------------------------------------------------------------
 
 // binding class
@@ -77,7 +77,9 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #include "wx/mimetype.h"
 #include "wx/timer.h"
 #include "wx/tokenzr.h"
+#include "wx/unichar.h"
 #include "wx/utils.h"
+#include "wx/variant.h"
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     #include "wx/stdpaths.h"
@@ -181,6 +183,7 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #if wxUSE_STREAMS
     #include "wx/datstrm.h"
     #include "wx/mstream.h"
+    #include "wx/sstream.h"
     #include "wx/stream.h"
     #include "wx/txtstrm.h"
     #include "wx/wfstream.h"
@@ -233,6 +236,7 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxPlatformInfo;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxString;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringClientData;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
+extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxUniChar;
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStandardPaths;
@@ -372,11 +376,20 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxInputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryInputStream;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStreamBase;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringInputStream;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextInputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextOutputStream;
 #endif // wxUSE_STREAMS
+
+#if wxUSE_VARIANT
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariant;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariantData;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariantList;
+#endif // wxUSE_VARIANT
 
 
 

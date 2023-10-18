@@ -19,9 +19,9 @@
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 41
+#if WXLUA_BINDING_VERSION > 44
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 41
+#endif //WXLUA_BINDING_VERSION > 44
 // ---------------------------------------------------------------------------
 
 // binding class
@@ -199,6 +199,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     #include "wx/geometry.h"
+    #include "wx/position.h"
 #endif // wxLUA_USE_Geometry && wxUSE_GEOMETRY
 
 #if wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE
@@ -530,6 +531,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
     #include "wx/activityindicator.h"
 #endif // wxUSE_ACTIVITYINDICATOR && wxCHECK_VERSION(3,1,0)
+
+#if wxUSE_COMBOCTRL
+    #include "wx/combo.h"
+#endif // wxUSE_COMBOCTRL
 
 #if wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
     #include "wx/fdrepdlg.h"
@@ -876,6 +881,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint2DDouble;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint2DInt;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPosition;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRect2DDouble;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRect2DInt;
 #endif // wxLUA_USE_Geometry && wxUSE_GEOMETRY
@@ -1204,6 +1210,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxLUA_USE_wxScrollBar && wxUSE_SCROLLBAR
 
 #if wxLUA_USE_wxScrolledWindow
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxScrollHelper;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxScrolledWindow;
 #endif // wxLUA_USE_wxScrolledWindow
 
@@ -1256,8 +1263,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxLUA_USE_wxSystemSettings
 
 #if wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextAreaBase;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextAttr;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextCtrlIface;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextEntry;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextUrlEvent;
 #endif // wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
@@ -1316,6 +1325,12 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSingleChoiceDialog;
 #endif // wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog
 
+#if wxUSE_COMBOCTRL
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxComboCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxComboCtrlFeatures;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxComboPopup;
+#endif // wxUSE_COMBOCTRL
+
 #if wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFindDialogEvent;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFindReplaceData;
@@ -1345,6 +1360,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxInfoBar;
 #endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+
+#if wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxNumberEntryDialog;
+#endif // wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
 
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxProgressDialog;

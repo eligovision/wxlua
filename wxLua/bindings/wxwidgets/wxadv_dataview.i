@@ -25,12 +25,6 @@ enum wxDataViewColumnFlags
     wxDATAVIEW_COL_HIDDEN
 };
 
-// TODO: in base
-// class %delete wxVariant : public wxObject
-// {
-//     wxVariant(const wxString& val, const wxString& name = wxEmptyString);
-// };
-
 
 // class wxDataViewItem
 class %delete wxDataViewItem
@@ -264,7 +258,8 @@ public:
     void SetText( const wxString &text );
     wxString GetText() const;
     void SetIcon( const wxIcon &icon );
-    wxIcon GetIcon() const;
+    !%wxchkver_3_1_6 const wxIcon &GetIcon() const;
+    %wxchkver_3_1_6 wxIcon GetIcon() const;
     void SetData( wxClientData *data );
     wxClientData *GetData() const;
 
@@ -289,7 +284,8 @@ class %delete wxDataViewTreeStoreContainerNode : public wxDataViewTreeStoreNode
 //	wxDataViewTreeStoreNodes::iterator FindChild(wxDataViewTreeStoreNode* node);
 
     void SetExpandedIcon( const wxIcon &icon );
-    wxIcon GetExpandedIcon() const;
+    !%wxchkver_3_1_6 const wxIcon &GetExpandedIcon() const;
+    %wxchkver_3_1_6 wxIcon GetExpandedIcon() const;
 
     void SetExpanded( bool expanded = true );
     bool IsExpanded() const;
@@ -326,9 +322,11 @@ class %delete wxDataViewTreeStore : public wxDataViewModel
     void SetItemText( const wxDataViewItem& item, const wxString &text );
     wxString GetItemText( const wxDataViewItem& item ) const;
     void SetItemIcon( const wxDataViewItem& item, const wxIcon &icon );
-    wxIcon GetItemIcon( const wxDataViewItem& item ) const;
+    !%wxchkver_3_1_6 const wxIcon &GetItemIcon( const wxDataViewItem& item ) const;
+    %wxchkver_3_1_6 wxIcon GetItemIcon( const wxDataViewItem& item ) const;
     void SetItemExpandedIcon( const wxDataViewItem& item, const wxIcon &icon );
-    wxIcon GetItemExpandedIcon( const wxDataViewItem& item ) const;
+    !%wxchkver_3_1_6 const wxIcon &GetItemExpandedIcon( const wxDataViewItem& item ) const;
+    %wxchkver_3_1_6 wxIcon GetItemExpandedIcon( const wxDataViewItem& item ) const;
     void SetItemData( const wxDataViewItem& item, wxClientData *data );
     wxClientData *GetItemData( const wxDataViewItem& item ) const;
 
@@ -748,7 +746,8 @@ public:
     void PrependColumn( wxDataViewColumn *column, const wxString &varianttype );
     // void AppendItem( const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
     // void PrependItem( const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
-    // void InsertItem( unsigned int row, const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
+    void InsertItem(unsigned int row, LuaTable wxVariantTable, wxUIntPtr data = NULL );
+    void AppendItem(LuaTable wxVariantTable, wxUIntPtr data = NULL );
     void DeleteItem( unsigned int row );
     void DeleteAllItems();
     unsigned int GetItemCount() const;
