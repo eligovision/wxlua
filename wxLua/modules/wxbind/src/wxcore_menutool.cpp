@@ -2983,10 +2983,29 @@ static int LUACALL wxLua_wxMenuItem_SetBackgroundColour(lua_State *L)
 
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
 
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap1[] = { &wxluatype_wxMenuItem, &wxluatype_wxBitmapBundle, NULL };
+static int LUACALL wxLua_wxMenuItem_SetBitmap1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetBitmap1[1] = {{ wxLua_wxMenuItem_SetBitmap1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap1 }};
+//     %wxchkver_3_1_6 void SetBitmap(const wxBitmapBundle& bmp);
+static int LUACALL wxLua_wxMenuItem_SetBitmap1(lua_State *L)
+{
+    // const wxBitmapBundle bmp
+    const wxBitmapBundle * bmp = (const wxBitmapBundle *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmapBundle);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call SetBitmap
+    self->SetBitmap(*bmp);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6))
+
 #if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap[] = { &wxluatype_wxMenuItem, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxMenuItem_SetBitmap(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetBitmap[1] = {{ wxLua_wxMenuItem_SetBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetBitmap[1] = {{ wxLua_wxMenuItem_SetBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap }};
 //     void SetBitmap(const wxBitmap& bmp); // %override use one parameter as "bool checked = true" doesn't exist on OSX/Linux
 static int LUACALL wxLua_wxMenuItem_SetBitmap(lua_State *L)
 {
@@ -3276,6 +3295,23 @@ static int LUACALL wxLua_wxMenuItem_constructor(lua_State *L)
 
 
 
+#if (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6)))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetBitmap_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6))
+    { wxLua_wxMenuItem_SetBitmap1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap1 },
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6))
+
+#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { wxLua_wxMenuItem_SetBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetBitmap },
+#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+};
+static int s_wxluafunc_wxLua_wxMenuItem_SetBitmap_overload_count = sizeof(s_wxluafunc_wxLua_wxMenuItem_SetBitmap_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6)))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
+
 void wxLua_wxMenuItem_delete_function(void** p)
 {
     wxMenuItem* o = (wxMenuItem*)(*p);
@@ -3366,9 +3402,9 @@ wxLuaBindMethod wxMenuItem_methods[] = {
     { "SetBackgroundColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBackgroundColour, 1, NULL },
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
 
-#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
-    { "SetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBitmap, 1, NULL },
-#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+#if (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6)))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
+    { "SetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBitmap_overload, s_wxluafunc_wxLua_wxMenuItem_SetBitmap_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxCHECK_VERSION(3,1,6)))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
     { "SetBitmaps", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBitmaps, 1, NULL },

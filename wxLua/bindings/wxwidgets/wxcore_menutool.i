@@ -193,6 +193,7 @@ class %delete wxMenuItem : public wxObject
     wxUSE_ACCEL virtual void SetAccel(wxAcceleratorEntry *accel);
     virtual void SetCheckable(bool checkable); // %add as it's missing from the interface files
     void SetBitmap(const wxBitmap& bmp); // %override use one parameter as "bool checked = true" doesn't exist on OSX/Linux
+    %wxchkver_3_1_6 void SetBitmap(const wxBitmapBundle& bmp);
     void SetId(int itemid); // %add as it's missing from the interface files
     void SetKind(wxItemKind kind); // %add as it's missing from the interface files
 };
