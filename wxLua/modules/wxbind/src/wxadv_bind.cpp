@@ -16166,10 +16166,12 @@ static int LUACALL wxLua_wxDataViewEvent_SetEditCancelled(lua_State *L)
     return 0;
 }
 
+
+#if (((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewEvent_SetItem[] = { &wxluatype_wxDataViewEvent, &wxluatype_wxDataViewItem, NULL };
 static int LUACALL wxLua_wxDataViewEvent_SetItem(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewEvent_SetItem[1] = {{ wxLua_wxDataViewEvent_SetItem, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewEvent_SetItem }};
-//     void SetItem(const wxDataViewItem& item);
+//     %wxcompat_3_0 void SetItem(const wxDataViewItem& item);
 static int LUACALL wxLua_wxDataViewEvent_SetItem(lua_State *L)
 {
     // const wxDataViewItem item
@@ -16181,6 +16183,8 @@ static int LUACALL wxLua_wxDataViewEvent_SetItem(lua_State *L)
 
     return 0;
 }
+
+#endif // (((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewEvent_SetPosition[] = { &wxluatype_wxDataViewEvent, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDataViewEvent_SetPosition(lua_State *L);
@@ -16411,7 +16415,11 @@ wxLuaBindMethod wxDataViewEvent_methods[] = {
 #endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
 
     { "SetEditCancelled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewEvent_SetEditCancelled, 1, NULL },
+
+#if (((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
     { "SetItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewEvent_SetItem, 1, NULL },
+#endif // (((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+
     { "SetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewEvent_SetPosition, 1, NULL },
 
 #if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_DRAG_AND_DROP)
@@ -27348,8 +27356,6 @@ wxLuaBindNumber* wxLuaGetDefineList_wxadv(size_t &count)
         { "wxGRIDTABLE_NOTIFY_ROWS_APPENDED", wxGRIDTABLE_NOTIFY_ROWS_APPENDED },
         { "wxGRIDTABLE_NOTIFY_ROWS_DELETED", wxGRIDTABLE_NOTIFY_ROWS_DELETED },
         { "wxGRIDTABLE_NOTIFY_ROWS_INSERTED", wxGRIDTABLE_NOTIFY_ROWS_INSERTED },
-        { "wxGRIDTABLE_REQUEST_VIEW_GET_VALUES", wxGRIDTABLE_REQUEST_VIEW_GET_VALUES },
-        { "wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES", wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES },
 #endif // wxLUA_USE_wxGrid && wxUSE_GRID
 
 #if (wxCHECK_VERSION(2,8,8)) && (wxLUA_USE_wxGrid && wxUSE_GRID)

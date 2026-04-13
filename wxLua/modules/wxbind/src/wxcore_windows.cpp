@@ -11537,10 +11537,13 @@ static int LUACALL wxLua_wxScrollHelper_HandleOnChar(lua_State *L)
     return 0;
 }
 
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)
+
+#if (!wxCHECK_VERSION(3,3,0)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrollHelper_HandleOnMouseEnter[] = { &wxluatype_wxScrollHelper, &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxScrollHelper_HandleOnMouseEnter(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrollHelper_HandleOnMouseEnter[1] = {{ wxLua_wxScrollHelper_HandleOnMouseEnter, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrollHelper_HandleOnMouseEnter }};
-//     void HandleOnMouseEnter(wxMouseEvent& event);
+//     !%wxchkver_3_3 void HandleOnMouseEnter(wxMouseEvent& event);
 static int LUACALL wxLua_wxScrollHelper_HandleOnMouseEnter(lua_State *L)
 {
     // wxMouseEvent event
@@ -11556,7 +11559,7 @@ static int LUACALL wxLua_wxScrollHelper_HandleOnMouseEnter(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrollHelper_HandleOnMouseLeave[] = { &wxluatype_wxScrollHelper, &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxScrollHelper_HandleOnMouseLeave(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrollHelper_HandleOnMouseLeave[1] = {{ wxLua_wxScrollHelper_HandleOnMouseLeave, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrollHelper_HandleOnMouseLeave }};
-//     void HandleOnMouseLeave(wxMouseEvent& event);
+//     !%wxchkver_3_3 void HandleOnMouseLeave(wxMouseEvent& event);
 static int LUACALL wxLua_wxScrollHelper_HandleOnMouseLeave(lua_State *L)
 {
     // wxMouseEvent event
@@ -11569,6 +11572,9 @@ static int LUACALL wxLua_wxScrollHelper_HandleOnMouseLeave(lua_State *L)
     return 0;
 }
 
+#endif // (!wxCHECK_VERSION(3,3,0)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow))
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrollHelper_HandleOnPaint[] = { &wxluatype_wxScrollHelper, &wxluatype_wxPaintEvent, NULL };
 static int LUACALL wxLua_wxScrollHelper_HandleOnPaint(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrollHelper_HandleOnPaint[1] = {{ wxLua_wxScrollHelper_HandleOnPaint, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrollHelper_HandleOnPaint }};
@@ -11946,8 +11952,14 @@ wxLuaBindMethod wxScrollHelper_methods[] = {
     { "GetTargetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_GetTargetWindow, 1, NULL },
     { "GetViewStart", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_GetViewStart, 1, NULL },
     { "HandleOnChar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_HandleOnChar, 1, NULL },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)
+
+#if (!wxCHECK_VERSION(3,3,0)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow))
     { "HandleOnMouseEnter", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_HandleOnMouseEnter, 1, NULL },
     { "HandleOnMouseLeave", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_HandleOnMouseLeave, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,3,0)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow))
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)
     { "HandleOnPaint", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_HandleOnPaint, 1, NULL },
     { "HandleOnScroll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_HandleOnScroll, 1, NULL },
     { "HandleOnSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrollHelper_HandleOnSize, 1, NULL },
