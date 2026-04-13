@@ -14,6 +14,21 @@
 
 #include "wx/propgrid/propgrid.h"
 
+// TODO: enum class in generator
+
+// %wxchkver_3_3 enum class wxPGVFBFlags : int
+// {
+//     Null,
+//     StayInProperty,
+//     Beep,
+//     MarkCell4,
+//     ShowMessage,
+//     ShowMessageBox,
+//     ShowMessageOnStatusBa,
+//     Default,
+//     Undefined
+// };
+
 enum wxPG_WINDOW_STYLES
 {
     wxPG_AUTO_SORT,
@@ -72,7 +87,8 @@ enum wxPG_VALIDATION_FAILURE_BEHAVIOR_FLAGS
 
 class wxPGValidationInfo
 {
-    unsigned char GetFailureBehavior();
+    !%wxchkver_3_3 unsigned char GetFailureBehavior();
+    // %wxchkver_3_3 wxPGVFBFlags GetFailureBehavior();
     const wxString& GetFailureMessage() const;
     wxVariant& GetValue();
     void SetFailureBehavior(unsigned char failureBehavior);
@@ -234,7 +250,8 @@ class %delete wxPropertyGridEvent : public wxCommandEvent
     unsigned int GetColumn() const;
     %ungc wxPGProperty* GetMainParent() const;
     %ungc wxPGProperty* GetProperty() const;
-    unsigned char GetValidationFailureBehavior() const;
+    !%wxchkver_3_3 unsigned char GetValidationFailureBehavior() const;
+    // %wxchkver_3_3 wxPGVFBFlags GetValidationFailureBehavior() const;
     wxString GetPropertyName() const;
     wxVariant GetPropertyValue() const;
     wxVariant GetValue() const;
@@ -282,9 +299,15 @@ public:
                            const wxString& name = wxPropertyGridManagerNameStr );
 
 
-    %ungc wxPropertyGridPage* AddPage( const wxString& label = wxEmptyString,
-                                       const wxBitmap& bmp = wxPG_NULL_BITMAP,
-                                       %ungc wxPropertyGridPage* pageObj = NULL );
+    !%wxchkver_3_3 %ungc wxPropertyGridPage* AddPage( const wxString& label = wxEmptyString,
+                                                      const wxBitmap& bmp = wxPG_NULL_BITMAP,
+                                                      %ungc wxPropertyGridPage* pageObj = NULL );
+
+    // TODO: One bind
+    %wxchkver_3_3 %ungc wxPropertyGridPage* AddPage( const wxString& label = wxString());
+    %wxchkver_3_3 %ungc wxPropertyGridPage* AddPage( const wxString& label,
+                                                     const wxBitmapBundle& bmp,
+                                                     %ungc wxPropertyGridPage* pageObj = nullptr );
 
     virtual void Clear();
     void ClearPage( int page );
@@ -748,9 +771,11 @@ class wxArrayStringProperty : public wxEditorDialogProperty
                                 int argFlags = 0 ) const;
     virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
 
-    virtual void ConvertArrayToString(const wxArrayString& arr,
-                                      wxString* pString,
-                                      const wxUniChar& delimiter) const;
+    %wxcompat_3_0 virtual void ConvertArrayToString(const wxArrayString& arr,
+                                                    wxString* pString,
+                                                    const wxUniChar& delimiter) const;
+    %wxchkver_3_3 virtual void ConvertArrayToString(const wxArrayString& arr,
+                                                    const wxUniChar& delimiter) const;
 
     virtual bool OnCustomStringEdit( wxWindow* parent, wxString& value );
 
@@ -888,7 +913,7 @@ class wxPGSpinCtrlEditor : public wxPGTextCtrlEditor
 
 #include "wx/propgrid/props.h"
 
-#define wxPG_PROP_PASSWORD
+!%wxchkver_3_3 #define wxPG_PROP_PASSWORD
 
 class %delete wxStringProperty : public wxPGProperty
 {
@@ -1130,8 +1155,8 @@ class wxFlagsProperty : public wxPGProperty
     const wxString& GetLabel( size_t ind ) const;
 };
 
-#define wxPG_PROP_USE_CHECKBOX
-#define wxPG_PROP_USE_DCC    
+!%wxchkver_3_3 #define wxPG_PROP_USE_CHECKBOX
+!%wxchkver_3_3 #define wxPG_PROP_USE_DCC    
 
 #define wxAEDIALOG_STYLE
 
@@ -1209,9 +1234,10 @@ enum wxPG_ITERATOR_FLAGS
 };
 
 
-class %delete wxPropertyGridIteratorBase
+// class %delete wxPropertyGridIteratorBase
+class wxPropertyGridIteratorBase
 {
-    wxPropertyGridIteratorBase();
+    // wxPropertyGridIteratorBase();
 
     void Assign( const wxPropertyGridIteratorBase& it );
 
@@ -1299,7 +1325,7 @@ class %delete wxPropertyGridPageState
     %ungc wxPGProperty* GetSelection() const;
     wxPropertyCategory* GetPropertyCategory( const wxPGProperty* p ) const;
     int GetVirtualWidth() const;
-    int GetColumnFullWidth(wxClientDC &dc, wxPGProperty *p, unsigned int col);
+    %wxcompat_3_0 int GetColumnFullWidth(wxClientDC &dc, wxPGProperty *p, unsigned int col);
     wxPropertyGridHitTestResult HitTest( const wxPoint& pt ) const;
     inline bool IsDisplayed() const;
     bool IsInNonCatMode() const;
@@ -1654,9 +1680,9 @@ struct %delete wxPGPaintData
     int m_drawnHeight;
 };
 
-#define wxPG_CUSTOM_IMAGE_SPACINGY
-#define wxPG_CAPRECTXMARGIN
-#define wxPG_CAPRECTYMARGIN
+!%wxchkver_3_3 #define wxPG_CUSTOM_IMAGE_SPACINGY
+!%wxchkver_3_3 #define wxPG_CAPRECTXMARGIN
+!%wxchkver_3_3 #define wxPG_CAPRECTYMARGIN
 
 
 enum wxPGPropertyFlags
@@ -1916,8 +1942,7 @@ class %delete wxPGCellRenderer : public wxObjectRefData
     virtual wxSize GetImageSize( const wxPGProperty* property,
                                  int column,
                                  int item ) const;
-    virtual void DrawCaptionSelectionRect(wxDC& dc,
-                                          int x, int y, int w, int h) const;
+    %wxcompat_3_0 virtual void DrawCaptionSelectionRect(wxDC& dc, int x, int y, int w, int h) const;
     void DrawText( wxDC& dc,
                    const wxRect& rect,
                    int imageWidth,

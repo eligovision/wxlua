@@ -370,10 +370,12 @@ class %delete wxAuiNotebookPageArray
     wxAuiNotebookPageArray();
     wxAuiNotebookPageArray(const wxAuiNotebookPageArray& array);
 
-    void Add(wxAuiNotebookPage* page);
+    !%wxchkver_3_3 void Add(wxAuiNotebookPage* page);
+    %wxchkver_3_3 void Add(wxAuiNotebookPage& page);
     void Clear();
     int  GetCount() const;
-    void Insert(wxAuiNotebookPage* page, int nIndex);
+    !%wxchkver_3_3 void Insert(wxAuiNotebookPage* page, int nIndex);
+    %wxchkver_3_3 void Insert(wxAuiNotebookPage& page, int nIndex);
     bool IsEmpty();
     wxAuiNotebookPage Item(size_t nIndex) const;
     void RemoveAt(size_t nIndex);
@@ -464,7 +466,8 @@ class %delete wxAuiSimpleTabArt : public wxAuiTabArt
 
 class wxAuiTabCtrl : public wxControl //, public wxAuiTabContainer
 {
-    wxAuiTabCtrl(wxWindow* parent,  wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0);
+    !%wxchkver_3_3 wxAuiTabCtrl(wxWindow* parent,  wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0);
+    %wxchkver_3_3 wxAuiTabCtrl(wxAuiNotebook* parent, wxWindowID id);
 
     void SetArtProvider(%ungc wxAuiTabArt* art);
     wxAuiTabArt* GetArtProvider() const;

@@ -797,7 +797,7 @@ class %delete wxDataViewEvent : public wxNotifyEvent
 
     wxDataViewEvent(const wxDataViewEvent& event);
 
-    void SetItem(const wxDataViewItem& item);
+    %wxcompat_3_0 void SetItem(const wxDataViewItem& item);
     wxDataViewItem GetItem() const;
     int GetColumn() const;
     wxDataViewModel* GetModel() const;

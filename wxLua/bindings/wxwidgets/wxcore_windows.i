@@ -949,8 +949,8 @@ class wxScrollHelper
     virtual bool SendAutoScrollEvents(wxScrollWinEvent& event) const;
     void HandleOnScroll(wxScrollWinEvent& event);
     void HandleOnSize(wxSizeEvent& event);
-    void HandleOnMouseEnter(wxMouseEvent& event);
-    void HandleOnMouseLeave(wxMouseEvent& event);
+    !%wxchkver_3_3 void HandleOnMouseEnter(wxMouseEvent& event);
+    !%wxchkver_3_3 void HandleOnMouseLeave(wxMouseEvent& event);
 #endif
 };
 

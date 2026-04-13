@@ -1227,7 +1227,7 @@
 %wxchkver_2_9_5 #define wxSTC_CSS_EXTENDED_IDENTIFIER
 %wxchkver_2_9_5 #define wxSTC_CSS_EXTENDED_PSEUDOCLASS
 %wxchkver_2_9_5 #define wxSTC_CSS_EXTENDED_PSEUDOELEMENT
-%wxchkver_2_9_5 #define wxSTC_CSS_MEDIA
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_CSS_MEDIA
 %wxchkver_2_9_5 #define wxSTC_CSS_VARIABLE
 
 /// Lexical states for SCLEX_POV
@@ -2262,16 +2262,16 @@
 %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_ANONYMOUS
 %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_NUMBER
 %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_OPERATOR
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_CHARACTER
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_CHARACTER_TOO_MANY
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_CHARACTER_ESCAPE_ERROR
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_CHARACTER
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_CHARACTER_TOO_MANY
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_CHARACTER_ESCAPE_ERROR
 %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING
 %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_ESCAPE
 %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_ESCAPE_ERROR
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_EOL_OPEN
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_VERBATIM
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_VERBATIM_SPECIAL
-%wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_VERBATIM_EOL
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_EOL_OPEN
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_VERBATIM
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_VERBATIM_SPECIAL
+!%wxchkver_3_3 && %wxchkver_2_9_5 #define wxSTC_VISUALPROLOG_STRING_VERBATIM_EOL
 
 /// Lexical states for SCLEX_STTXT
 %wxchkver_3_1_0 #define wxSTC_STTXT_DEFAULT
