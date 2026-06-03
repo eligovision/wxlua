@@ -565,7 +565,8 @@ void wxlCan::OnScroll(wxScrollWinEvent& event)
     int dx,dy;
     GetClientSize(&dx,&dy);
 
-    wxScrolledWindow::HandleOnScroll( event );
+    event.Skip();
+    // wxScrolledWindow::HandleOnScroll( event );
 
     m_pendingObjects = true;
 }

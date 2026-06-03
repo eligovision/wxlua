@@ -236,11 +236,11 @@ static int LUACALL wxLua_wxDialog_SetReturnCode(lua_State *L)
 }
 
 
-#if (defined(__WXMSW__)) && (wxLUA_USE_wxDialog)
+#if (!wxCHECK_VERSION(3,3,0)) && ((defined(__WXMSW__)) && (wxLUA_USE_wxDialog))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_ShowGripper[] = { &wxluatype_wxDialog, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDialog_ShowGripper(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_ShowGripper[1] = {{ wxLua_wxDialog_ShowGripper, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_ShowGripper }};
-//     void ShowGripper(bool show);
+//     !%wxchkver_3_3 void ShowGripper(bool show);
 static int LUACALL wxLua_wxDialog_ShowGripper(lua_State *L)
 {
     // bool show
@@ -253,7 +253,7 @@ static int LUACALL wxLua_wxDialog_ShowGripper(lua_State *L)
     return 0;
 }
 
-#endif // (defined(__WXMSW__)) && (wxLUA_USE_wxDialog)
+#endif // (!wxCHECK_VERSION(3,3,0)) && ((defined(__WXMSW__)) && (wxLUA_USE_wxDialog))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_ShowModal[] = { &wxluatype_wxDialog, NULL };
 static int LUACALL wxLua_wxDialog_ShowModal(lua_State *L);
@@ -380,9 +380,9 @@ wxLuaBindMethod wxDialog_methods[] = {
     { "IsModal", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDialog_IsModal, 1, NULL },
     { "SetReturnCode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDialog_SetReturnCode, 1, NULL },
 
-#if (defined(__WXMSW__)) && (wxLUA_USE_wxDialog)
+#if (!wxCHECK_VERSION(3,3,0)) && ((defined(__WXMSW__)) && (wxLUA_USE_wxDialog))
     { "ShowGripper", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDialog_ShowGripper, 1, NULL },
-#endif // (defined(__WXMSW__)) && (wxLUA_USE_wxDialog)
+#endif // (!wxCHECK_VERSION(3,3,0)) && ((defined(__WXMSW__)) && (wxLUA_USE_wxDialog))
 
     { "ShowModal", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDialog_ShowModal, 1, NULL },
 

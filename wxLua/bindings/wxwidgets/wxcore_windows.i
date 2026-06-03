@@ -915,8 +915,8 @@ class wxScrollHelper
     virtual void OnDraw(wxDC& dc);
     virtual void DoPrepareDC(wxDC& dc);
     wxWindow *GetTargetWindow() const;
-    void HandleOnChar(wxKeyEvent& event);
-    void HandleOnPaint(wxPaintEvent& event);
+    !%wxchkver_3_3 void HandleOnChar(wxKeyEvent& event);
+    !%wxchkver_3_3 void HandleOnPaint(wxPaintEvent& event);
     virtual void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int xPos = 0, int yPos = 0, bool noRefresh = false );
     virtual void Scroll(int x, int y);
     virtual void Scroll(const wxPoint& pt);
@@ -940,15 +940,15 @@ class wxScrollHelper
     //void DoCalcScrolledPosition(int x, int y, int *xx, int *yy) const;
     //void DoCalcUnscrolledPosition(int x, int y, int *xx, int *yy) const;
     virtual void AdjustScrollbars();
-    int CalcScrollInc(wxScrollWinEvent& event);
+    !%wxchkver_3_3 int CalcScrollInc(wxScrollWinEvent& event);
     void SetTargetWindow(wxWindow *target);
     void SetTargetRect(const wxRect& rect);
     wxRect GetTargetRect() const;
     bool IsAutoScrolling() const;
     void StopAutoScrolling();
     virtual bool SendAutoScrollEvents(wxScrollWinEvent& event) const;
-    void HandleOnScroll(wxScrollWinEvent& event);
-    void HandleOnSize(wxSizeEvent& event);
+    !%wxchkver_3_3 void HandleOnScroll(wxScrollWinEvent& event);
+    !%wxchkver_3_3 void HandleOnSize(wxSizeEvent& event);
     !%wxchkver_3_3 void HandleOnMouseEnter(wxMouseEvent& event);
     !%wxchkver_3_3 void HandleOnMouseLeave(wxMouseEvent& event);
 #endif

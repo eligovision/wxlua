@@ -2,7 +2,7 @@
 REM This batch generates all the wxLua C++ source files from interface files.
 REM The C++ source files are only modified if any changes have been made.
 REM @echo on
-SET LUA=lua.exe
+SET LUA="C:\EVI-3.7\windows-x64\bin\luajit.exe"
 
 REM Find a suitable lua.exe to run
 IF EXIST ..\bin\lua.exe SET LUA=..\bin\lua.exe

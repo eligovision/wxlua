@@ -125,7 +125,7 @@ class wxDialog : public wxTopLevelWindow
     // bool Show(const bool show) - see wxWindow
     int ShowModal();
 #if %msw
-    void ShowGripper(bool show);
+    !%wxchkver_3_3 void ShowGripper(bool show);
 #endif
 };
 
@@ -252,7 +252,7 @@ class wxMessageDialog : public wxDialog
     wxMessageDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition);
 
     // int ShowModal() - in wxDialog
-    
+
     %wxchkver_2_9_0 void SetExtendedMessage(const wxString& extendedMessage);
     %wxchkver_2_9_3 bool SetHelpLabel(const wxString& help);
     %wxchkver_2_9_3 bool SetHelpLabel(int help);
