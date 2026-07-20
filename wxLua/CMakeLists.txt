@@ -7,6 +7,9 @@
 
 project( wxLua )
 
+option( wxLua_BUILD_MODULE "Set to ON to build wxLua module" ON)
+option( wxLua_BUILD_APPS "Set to ON to build wxLua applications" ON)
+
 set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH
     "Root dir of wxLua" FORCE)
 

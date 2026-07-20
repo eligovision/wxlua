@@ -144,6 +144,8 @@ endfunction (wxLua_Apps_wxLuaFreeze_TARGETS)
 
 # ===========================================================================
 
-add_subdirectory( wxlua )
-add_subdirectory( wxluacan )
-add_subdirectory( wxluafreeze )
+if (wxLua_BUILD_APPS)
+    add_subdirectory( wxlua )
+    add_subdirectory( wxluacan )
+    add_subdirectory( wxluafreeze )
+endif ()

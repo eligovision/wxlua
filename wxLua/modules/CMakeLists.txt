@@ -630,4 +630,7 @@ add_subdirectory( wxbind )
 add_subdirectory( wxlua )
 add_subdirectory( wxlua/debug )
 add_subdirectory( wxlua/debugger )
-add_subdirectory( luamodule ) # include after everything else to get source file list
+
+if (wxLua_BUILD_MODULE)
+    add_subdirectory( luamodule ) # include after everything else to get source file list
+endif ()
