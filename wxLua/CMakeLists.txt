@@ -50,17 +50,13 @@ set( wxLua_SUBRELEASE_NUMBER "2")
 # If this CMakeLists.txt was called from another, FIND_WXWIDGETS() may have already been called.
 if (NOT DEFINED wxWidgets_COMPONENTS)
     if (UNIX)
-      set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
+      set (wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
     else()
-      set(wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
+      set (wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
     endif()
-    #set(wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
-    #set(wxWidgets_COMPONENTS stc mono) # for monolithic
 endif()
 
-FIND_WXWIDGETS(wxWidgets_COMPONENTS) # Ok to call multiple times
-# CMake's wxWidgets include that will configure the build in this dir and sub-dirs
-include( "${wxWidgets_USE_FILE}" )
+find_package (wxWidgets REQUIRED CONFIG COMPONENTS ${wxWidgets_COMPONENTS})
 
 # ---------------------------------------------------------------------------
 # Setup the location of the customizable wxluasetup.h file
